@@ -17,3 +17,4 @@
     * npy_to_img
     * img_to_npy
     * split_image
+    * apply_to_all

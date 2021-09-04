@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: NaMAZU
-Version: 0.0.5
+Version: 0.0.6
 Summary: NaMAZU: Pretty Usefull Library
 Home-page: https://github.com/NMZ0429/NaMAZU
 Author: NaMAZU Team
@@ -9,12 +9,26 @@ Maintainer: NaMAZU Team
 Maintainer-email: bunbun@icloud.com
 License: MIT
 Download-URL: https://github.com/NMZ0429/NaMAZU
-Description: # NaMAZU
+Description: <div align="center">
+        
+        <img src="utils/icon.png" width="450">
+        
+        **Libray including many(not yet) utilities**
+        
+        ---
+        
+        </div>
+        
+        # NaMAZU
         
         ## Functional API
         
-        * npy_to_jpg
-        * jpg_to_npy
+        ### image_control
+        
+            * npy_to_img
+            * img_to_npy
+            * split_image
+            * apply_to_all
 Platform: UNKNOWN
 Requires-Python: >=3.6.0
 Description-Content-Type: text/markdown
