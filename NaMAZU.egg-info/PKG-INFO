@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: NaMAZU
+Version: 0.0.5
+Summary: NaMAZU: Pretty Usefull Library
+Home-page: https://github.com/NMZ0429/NaMAZU
+Author: NaMAZU Team
+Author-email: bunbun@icloud.com
+Maintainer: NaMAZU Team
+Maintainer-email: bunbun@icloud.com
+License: MIT
+Download-URL: https://github.com/NMZ0429/NaMAZU
+Description: # NaMAZU
+        
+        ## Functional API
+        
+        * npy_to_jpg
+        * jpg_to_npy
+Platform: UNKNOWN
+Requires-Python: >=3.6.0
+Description-Content-Type: text/markdown
