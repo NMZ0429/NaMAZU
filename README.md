@@ -12,5 +12,8 @@
 
 ## Functional API
 
-* npy_to_img
-* img_to_npy
+### image_control
+
+    * npy_to_img
+    * img_to_npy
+    * split_image

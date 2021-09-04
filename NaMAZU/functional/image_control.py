@@ -42,3 +42,36 @@ def npy_to_png(npy_path: str, save: bool = False, file_name: str = None) -> np.n
         img.save(file_name + ".png")
 
     return img
+
+
+def split_image(
+    img_path: str, direction: int = 0, save: bool = False, file_name: str = None
+) -> None:
+    """Split image by vertical centre line if direction is 0 otherwise by horizontal line.
+    If save is True, resultant image is saved as file_name.
+
+    Args:
+        img_path (str): path to original
+        direction (int, optional): 1 to split image along horizontal centre. Defaults to 0.
+        save (bool, optional): Save resultant images. Defaults to False.
+        file_name (str, optional): Output name. Defaults to None.
+
+    Returns:
+        None
+    """
+    img = Image.open(img_path)
+    width, height = img.size
+
+    if direction == 0:
+        centre = width // 2
+        img1 = img.crop((0, 0, centre, height))
+        img2 = img.crop((centre, 0, width, height))
+    else:
+        centre = height // 2
+        img1 = img.crop((0, 0, width, centre))
+        img2 = img.crop((0, centre, width, height))
+
+    if save:
+        file_name = file_name if file_name else img_path
+        img1.save(file_name + "_1" + ".png")
+        img2.save(file_name + "_2" + ".png")
