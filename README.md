@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="utils/icon.png" width="450">
+<img src="utils/namazu_fixed.png" width="450">
 
 **Libray including many(not yet) utilities**
    
