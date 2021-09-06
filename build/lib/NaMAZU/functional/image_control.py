@@ -28,14 +28,14 @@ def img_to_npy(jpg_path: str, save: bool = False, file_name: str = None) -> np.n
     return img
 
 
-def npy_to_png(npy_path: str, save: bool = False, file_name: str = None) -> np.ndarray:
+def npy_to_png(npy_path: str, save: bool = False, file_name: str = None) -> Image:
     """Return a numpy array from a jpg image.
     Args:
         npy_path (str): The path to the npy image.
         save (bool): Whether to save the numpy array to a file. Default is False.
         file_name (str): The name of the file without .png to save to . Defaults to the npy_path with the extension replaced by .jpg.
     Returns:
-        numpy.ndarray: Numpy array of the image
+        Image: PIL Image object
     """
     img = np.load(npy_path)
     img = Image.fromarray(img)
@@ -45,7 +45,7 @@ def npy_to_png(npy_path: str, save: bool = False, file_name: str = None) -> np.n
             file_name = npy_path.replace(".npy", ".png")
         img.save(file_name + ".png")
 
-    return img
+    return img  # type: ignore
 
 
 def split_image(
