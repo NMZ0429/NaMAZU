@@ -1,5 +1,5 @@
 .. NaMAZU documentation master file, created by
-   sphinx-quickstart on Wed Sep  8 00:47:00 2021.
+   sphinx-quickstart on Wed Sep  8 01:08:23 2021.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
