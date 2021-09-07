@@ -1,0 +1,460 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>NaMAZU.functional package &mdash; NaMAZU 0.0.8 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> NaMAZU
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">NaMAZU.functional package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-NaMAZU.functional.file_control">NaMAZU.functional.file_control module</a></li>
+<li><a class="reference internal" href="#module-NaMAZU.functional.image_control">NaMAZU.functional.image_control module</a></li>
+<li><a class="reference internal" href="#module-NaMAZU.functional">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">NaMAZU</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>NaMAZU.functional package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/NaMAZU.functional.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="namazu-functional-package">
+<h1>NaMAZU.functional package<a class="headerlink" href="#namazu-functional-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-NaMAZU.functional.file_control">
+<span id="namazu-functional-file-control-module"></span><h2>NaMAZU.functional.file_control module<a class="headerlink" href="#module-NaMAZU.functional.file_control" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="NaMAZU.functional.file_control.collect_file_pathes_by_ext">
+<span class="sig-prename descclassname"><span class="pre">NaMAZU.functional.file_control.</span></span><span class="sig-name descname"><span class="pre">collect_file_pathes_by_ext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ext_list</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib.Path</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#NaMAZU.functional.file_control.collect_file_pathes_by_ext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the list of Path objects of the files in the target_dir that have the specified extensions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target_dir</strong> (<em>str</em>) – Directory to search for files.</p></li>
+<li><p><strong>ext_list</strong> (<em>List</em><em>[</em><em>srt</em><em>]</em>) – List of file extensions to search for.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of lists of Path objects. The first list contains the files having the first extension
+in the ext_list. The second list contains the files having the second extension in the ext_list and so on.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[List[Path]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="NaMAZU.functional.file_control.zip_files">
+<span class="sig-prename descclassname"><span class="pre">NaMAZU.functional.file_control.</span></span><span class="sig-name descname"><span class="pre">zip_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zip_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ext_list</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#NaMAZU.functional.file_control.zip_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Zip the files in the target_dir that have the specified extensions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target_dir</strong> (<em>str</em>) – Directory to search for files.</p></li>
+<li><p><strong>zip_name</strong> (<em>str</em>) – Name of the zip file to create.</p></li>
+<li><p><strong>ext_list</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of file extensions to search for.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-NaMAZU.functional.image_control">
+<span id="namazu-functional-image-control-module"></span><h2>NaMAZU.functional.image_control module<a class="headerlink" href="#module-NaMAZU.functional.image_control" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="NaMAZU.functional.image_control.apply_to_all">
+<span class="sig-prename descclassname"><span class="pre">NaMAZU.functional.image_control.</span></span><span class="sig-name descname"><span class="pre">apply_to_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imgs_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#NaMAZU.functional.image_control.apply_to_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply function to all images in imgs_dir and save to out_dir.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>function</strong> (<em>function</em>) – Function to apply to images.</p></li>
+<li><p><strong>imgs_dir</strong> (<em>str</em>) – Path to directory containing images.</p></li>
+<li><p><strong>out_dir</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to directory to save images. Use imgs_dir_output if None. Defaults to None.</p></li>
+<li><p><strong>**kwargs</strong> – Keyword arguments to pass to function.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="NaMAZU.functional.image_control.img_to_npy">
+<span class="sig-prename descclassname"><span class="pre">NaMAZU.functional.image_control.</span></span><span class="sig-name descname"><span class="pre">img_to_npy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jpg_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#NaMAZU.functional.image_control.img_to_npy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a numpy array from a jpg image.
+:param img_path: The path to the img image.
+:type img_path: str
+:param save: Whether to save the numpy array to a file. Default is False.
+:type save: bool
+:param file_name: The name of the file to save to. Defaults to the jpg_path with the extension replaced by .npy.
+:type file_name: str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Numpy array of the image</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="NaMAZU.functional.image_control.npy_to_png">
+<span class="sig-prename descclassname"><span class="pre">NaMAZU.functional.image_control.</span></span><span class="sig-name descname"><span class="pre">npy_to_png</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">npy_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">&lt;module</span> <span class="pre">‘PIL.Image’</span> <span class="pre">from</span> <span class="pre">‘/Users/gen/opt/anaconda3/envs/work/lib/python3.9/site-packages/PIL/Image.py’&gt;</span></span></span><a class="headerlink" href="#NaMAZU.functional.image_control.npy_to_png" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a numpy array from a jpg image.
+:param npy_path: The path to the npy image.
+:type npy_path: str
+:param save: Whether to save the numpy array to a file. Default is False.
+:type save: bool
+:param file_name: The name of the file without .png to save to . Defaults to the npy_path with the extension replaced by .jpg.
+:type file_name: str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>PIL Image object</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Image</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="NaMAZU.functional.image_control.split_image">
+<span class="sig-prename descclassname"><span class="pre">NaMAZU.functional.image_control.</span></span><span class="sig-name descname"><span class="pre">split_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#NaMAZU.functional.image_control.split_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Split image by vertical centre line if direction is 0 otherwise by horizontal line.
+If save is True, resultant image is saved as file_name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>img_path</strong> (<em>str</em>) – path to original</p></li>
+<li><p><strong>direction</strong> (<em>int</em><em>, </em><em>optional</em>) – 1 to split image along horizontal centre. Defaults to 0.</p></li>
+<li><p><strong>save</strong> (<em>bool</em><em>, </em><em>optional</em>) – Save resultant images. Defaults to False.</p></li>
+<li><p><strong>file_name</strong> (<em>str</em><em>, </em><em>optional</em>) – Output name. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Tuple of numpy arrays.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Tuple[np.ndarray, np.ndarray]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-NaMAZU.functional">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-NaMAZU.functional" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="NaMAZU.functional.apply_to_all">
+<span class="sig-prename descclassname"><span class="pre">NaMAZU.functional.</span></span><span class="sig-name descname"><span class="pre">apply_to_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imgs_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#NaMAZU.functional.apply_to_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply function to all images in imgs_dir and save to out_dir.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>function</strong> (<em>function</em>) – Function to apply to images.</p></li>
+<li><p><strong>imgs_dir</strong> (<em>str</em>) – Path to directory containing images.</p></li>
+<li><p><strong>out_dir</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to directory to save images. Use imgs_dir_output if None. Defaults to None.</p></li>
+<li><p><strong>**kwargs</strong> – Keyword arguments to pass to function.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="NaMAZU.functional.collect_file_pathes_by_ext">
+<span class="sig-prename descclassname"><span class="pre">NaMAZU.functional.</span></span><span class="sig-name descname"><span class="pre">collect_file_pathes_by_ext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ext_list</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib.Path</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#NaMAZU.functional.collect_file_pathes_by_ext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the list of Path objects of the files in the target_dir that have the specified extensions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target_dir</strong> (<em>str</em>) – Directory to search for files.</p></li>
+<li><p><strong>ext_list</strong> (<em>List</em><em>[</em><em>srt</em><em>]</em>) – List of file extensions to search for.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of lists of Path objects. The first list contains the files having the first extension
+in the ext_list. The second list contains the files having the second extension in the ext_list and so on.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[List[Path]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="NaMAZU.functional.img_to_npy">
+<span class="sig-prename descclassname"><span class="pre">NaMAZU.functional.</span></span><span class="sig-name descname"><span class="pre">img_to_npy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jpg_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#NaMAZU.functional.img_to_npy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a numpy array from a jpg image.
+:param img_path: The path to the img image.
+:type img_path: str
+:param save: Whether to save the numpy array to a file. Default is False.
+:type save: bool
+:param file_name: The name of the file to save to. Defaults to the jpg_path with the extension replaced by .npy.
+:type file_name: str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Numpy array of the image</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="NaMAZU.functional.npy_to_png">
+<span class="sig-prename descclassname"><span class="pre">NaMAZU.functional.</span></span><span class="sig-name descname"><span class="pre">npy_to_png</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">npy_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">&lt;module</span> <span class="pre">‘PIL.Image’</span> <span class="pre">from</span> <span class="pre">‘/Users/gen/opt/anaconda3/envs/work/lib/python3.9/site-packages/PIL/Image.py’&gt;</span></span></span><a class="headerlink" href="#NaMAZU.functional.npy_to_png" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a numpy array from a jpg image.
+:param npy_path: The path to the npy image.
+:type npy_path: str
+:param save: Whether to save the numpy array to a file. Default is False.
+:type save: bool
+:param file_name: The name of the file without .png to save to . Defaults to the npy_path with the extension replaced by .jpg.
+:type file_name: str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>PIL Image object</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Image</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="NaMAZU.functional.split_image">
+<span class="sig-prename descclassname"><span class="pre">NaMAZU.functional.</span></span><span class="sig-name descname"><span class="pre">split_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#NaMAZU.functional.split_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Split image by vertical centre line if direction is 0 otherwise by horizontal line.
+If save is True, resultant image is saved as file_name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>img_path</strong> (<em>str</em>) – path to original</p></li>
+<li><p><strong>direction</strong> (<em>int</em><em>, </em><em>optional</em>) – 1 to split image along horizontal centre. Defaults to 0.</p></li>
+<li><p><strong>save</strong> (<em>bool</em><em>, </em><em>optional</em>) – Save resultant images. Defaults to False.</p></li>
+<li><p><strong>file_name</strong> (<em>str</em><em>, </em><em>optional</em>) – Output name. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Tuple of numpy arrays.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Tuple[np.ndarray, np.ndarray]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="NaMAZU.functional.zip_files">
+<span class="sig-prename descclassname"><span class="pre">NaMAZU.functional.</span></span><span class="sig-name descname"><span class="pre">zip_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zip_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ext_list</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#NaMAZU.functional.zip_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Zip the files in the target_dir that have the specified extensions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target_dir</strong> (<em>str</em>) – Directory to search for files.</p></li>
+<li><p><strong>zip_name</strong> (<em>str</em>) – Name of the zip file to create.</p></li>
+<li><p><strong>ext_list</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of file extensions to search for.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Gen.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
