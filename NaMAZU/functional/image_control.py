@@ -141,8 +141,8 @@ def save_all_frames(
     Returns:
         int: 1 if success, 0 otherwise.
     """
-    if "{}" not in dir_path:
-        print(f"{dir_path} must contain {{}} for naming format. Using Default naming.")
+    if "{}" not in naming:
+        print(f"{naming} must contain {{}} for naming format. Using Default naming.")
         naming = "{}"
 
     cap = cv2.VideoCapture(video_path)
