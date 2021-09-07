@@ -110,3 +110,15 @@ def apply_to_all(func: Callable, imgs_dir: str, out_dir: str = None, **kwargs) -
 
     for x in tqdm(inputs):
         out = func(x, save=True, file_name=join(out_dir, x.split("/")[-1]), **kwargs)
+
+
+def change_frame_rates_in(mp4_dir: str, fps: int) -> None:
+    """Change frame rate of all mp4 files in mp4_dir.
+
+    Args:
+        mp4_dir (str): Path to directory containing mp4 files.
+        fps (int): New frame rate.
+    """
+    import subprocess
+
+    subprocess.call("./fps_change.sh {} {}".format(mp4_dir, fps), shell=True)

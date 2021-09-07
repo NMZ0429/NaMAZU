@@ -8,5 +8,6 @@ __all__ = [
     "apply_to_all",
     "collect_file_pathes_by_ext",
     "zip_files",
+    "change_frame_rates_in",
 ]
 
