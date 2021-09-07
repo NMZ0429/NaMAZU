@@ -108,8 +108,11 @@ def apply_to_all(func: Callable, imgs_dir: str, out_dir: str = None, **kwargs) -
     if not out.exists():
         out.mkdir(parents=True, exist_ok=True)
 
-    print(f"Applying function to all images in {imgs_dir} and saving to {out_dir}")
+    print(
+        f"Applying function\n  -{func}\nto all images in\n  -{imgs_dir}\nand saving to\n  -{out_dir}"
+    )
 
+    # TODO: Test other functions
     for x in tqdm(inputs):
         out = func(x, save=True, file_name=join(out_dir, x.split("/")[-1]), **kwargs)
 
