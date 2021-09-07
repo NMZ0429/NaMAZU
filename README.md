@@ -27,7 +27,8 @@
 * img_to_npy
 * split_image
 * apply_to_all
-* change_frame_rates_in 
+* change_frame_rates_in
+* save_all_frames
 
 ### file_control
 
@@ -44,3 +45,10 @@
 
 1. composer. auto compose functions into one sequential operation.
 2. st_integration. Usuful snipets and fast deoployment of LitModule to streamlit.
+
+### Internal
+
+```shell
+sphinx-apidoc -f -o ./docs_src ./NaMAZU
+sphinx-build ./docs_src ./docs
+```

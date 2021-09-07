@@ -1,8 +1,10 @@
-from typing import Tuple, Callable
-import numpy as np
-from PIL import Image
 from os.path import join
 from pathlib import Path
+from typing import Callable, Tuple
+
+import cv2
+import numpy as np
+from PIL import Image
 from tqdm import tqdm
 
 
@@ -122,3 +124,43 @@ def change_frame_rates_in(mp4_dir: str, fps: int) -> None:
     import subprocess
 
     subprocess.call("./fps_change.sh {} {}".format(mp4_dir, fps), shell=True)
+
+
+def save_all_frames(
+    video_path: str, dir_path: str, naming: str = "{}", ext: str = "png"
+) -> int:
+    """Save all frames from video_path to dir_path in a naming format with a given extension.
+    Naming format must contains {} which will be replaced by the frame number.
+
+    Args:
+        video_path (str): Path to video file.
+        dir_path (str): Path to directory to save frames.
+        naming (str, optional): Naming rule of frames that must contains "{}". Defaults to "{}".
+        ext (str, optional): Image format of frames. Defaults to "png".
+
+    Returns:
+        int: 1 if success, 0 otherwise.
+    """
+    if "{}" not in dir_path:
+        print(f"{dir_path} must contain {{}} for naming format. Using Default naming.")
+        naming = "{}"
+
+    cap = cv2.VideoCapture(video_path)
+    if not cap.isOpened():
+        return 0
+
+    out_dir = Path(dir_path)
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    nb_frames = len(str(int(cap.get(cv2.CAP_PROP_FRAME_COUNT))))
+    n = 0
+
+    while True:
+        ret, frame = cap.read()
+        if ret:
+            file_idx: str = str(n).zfill(nb_frames)
+            file_name = out_dir / (naming.format(file_idx) + "." + ext)
+            cv2.imwrite(str(file_name), frame)
+            n += 1
+        else:
+            return 1
