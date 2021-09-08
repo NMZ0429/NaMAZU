@@ -4,8 +4,15 @@ from typing import Callable, Tuple
 
 import cv2
 import numpy as np
-from PIL import Image
+from PIL import Image as PILImage
+from PIL.Image import Image
+from PIL.PngImagePlugin import PngImageFile
 from tqdm import tqdm
+
+
+#################
+# Image Process #
+#################
 
 
 def img_to_npy(jpg_path: str, save: bool = False, file_name: str = None) -> np.ndarray:
@@ -17,7 +24,7 @@ def img_to_npy(jpg_path: str, save: bool = False, file_name: str = None) -> np.n
     Returns:
         numpy.ndarray: Numpy array of the image
     """
-    img = Image.open(jpg_path)
+    img = PILImage(jpg_path)
     img = np.asanyarray(img)
 
     ext = "." + jpg_path.split(".")[-1]
@@ -40,14 +47,14 @@ def npy_to_png(npy_path: str, save: bool = False, file_name: str = None) -> Imag
         Image: PIL Image object
     """
     img = np.load(npy_path)
-    img = Image.fromarray(img)
+    img = PILImage.fromarray(img)
 
     if save:
         if file_name is None:
             file_name = npy_path.replace(".npy", ".png")
         img.save(file_name + ".png")
 
-    return img  # type: ignore
+    return img
 
 
 def split_image(
@@ -65,7 +72,7 @@ def split_image(
     Returns:
         Tuple[np.ndarray, np.ndarray]: Tuple of numpy arrays.
     """
-    img = Image.open(img_path)
+    img = PILImage(img_path)
     width, height = img.size
 
     if direction == 0:
@@ -83,6 +90,34 @@ def split_image(
         img2.save(file_name + "_2" + ".png")
 
     return np.asanyarray(img1), np.asanyarray(img2)
+
+
+def compose_two_png(
+    back_png_path: str,
+    front_png_path: str,
+    position: Tuple[int, int],
+    save: bool = False,
+) -> Image:
+    """Overray second png to first png with given position. Save output png to save_path if save is True.
+
+    Args:
+        back_png_path (str): Path to background png.
+        front_png_path (str): Path to foreground png.
+        position (Tuple[int, int]): Position of overlay.
+        save (bool, optional): Whether to save output. Defaults to False.
+
+    Returns:
+        Image: PIL Image object
+    """
+    back = PILImage(back_png_path)
+    front = PILImage(front_png_path)
+
+    back.paste(front, position, front)
+
+    if save:
+        back.save(back_png_path.replace(".png", "_compose.png"))
+
+    return back
 
 
 def apply_to_all(func: Callable, imgs_dir: str, out_dir: str = None, **kwargs) -> None:
@@ -115,6 +150,11 @@ def apply_to_all(func: Callable, imgs_dir: str, out_dir: str = None, **kwargs) -
     # TODO: Test other functions
     for x in tqdm(inputs):
         out = func(x, save=True, file_name=join(out_dir, x.split("/")[-1]), **kwargs)
+
+
+#################
+# Video Process #
+#################
 
 
 def change_frame_rates_in(mp4_dir: str, fps: int) -> None:
