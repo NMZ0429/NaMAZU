@@ -97,6 +97,7 @@ def compose_two_png(
     front_png_path: str,
     position: Tuple[int, int],
     save: bool = False,
+    out_name: str = None,
 ) -> Image:
     """Overray second png to first png with given position. Save output png to save_path if save is True.
 
@@ -105,6 +106,7 @@ def compose_two_png(
         front_png_path (str): Path to foreground png.
         position (Tuple[int, int]): Position of overlay.
         save (bool, optional): Whether to save output. Defaults to False.
+        out_name (str, optional): Name of output file. Defaults to None.
 
     Returns:
         Image: PIL Image object
@@ -115,7 +117,9 @@ def compose_two_png(
     back.paste(front, position, front)
 
     if save:
-        back.save(back_png_path.replace(".png", "_compose.png"))
+        if not out_name:
+            out_name = front_png_path.replace(".png", "_compose.png")
+        back.save(out_name)
 
     return back
 

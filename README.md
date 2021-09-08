@@ -26,6 +26,7 @@
 * npy_to_img
 * img_to_npy
 * split_image
+* compose_two_png
 * apply_to_all
 * change_frame_rates_in
 * save_all_frames

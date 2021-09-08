@@ -10,5 +10,6 @@ __all__ = [
     "zip_files",
     "change_frame_rates_in",
     "save_all_frames",
+    "compose_two_png",
 ]
 
