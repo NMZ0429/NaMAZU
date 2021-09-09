@@ -12,5 +12,7 @@ NaMAZU/functional/image_control.py
 NaMAZU/lightning_wingman/__init__.py
 NaMAZU/lightning_wingman/inference_helper.py
 NaMAZU/lightning_wingman/instance.py
+NaMAZU/lightning_wingman/lit_u2net.py
+NaMAZU/lightning_wingman/u2net.py
 NaMAZU/st_integration/__init__.py
 NaMAZU/st_integration/st_utils.py

@@ -2,6 +2,7 @@ from .image_control import *
 from .file_control import *
 
 __all__ = [
+    "rename_file",
     "img_to_npy",
     "npy_to_png",
     "split_image",
@@ -10,5 +11,6 @@ __all__ = [
     "zip_files",
     "change_frame_rates_in",
     "save_all_frames",
+    "compose_two_png",
 ]
 

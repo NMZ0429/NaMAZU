@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: NaMAZU
-Version: 0.0.11
+Version: 0.0.12
 Summary: NaMAZU: Pretty Usefull Library
 Home-page: https://github.com/NMZ0429/NaMAZU
 Author: NaMAZU Team
@@ -37,12 +37,14 @@ Description: <div align="center">
         * npy_to_img
         * img_to_npy
         * split_image
+        * compose_two_png
         * apply_to_all
         * change_frame_rates_in
         * save_all_frames
         
         ### file_control
         
+        * rename_file
         * collect_file_pathes_by_ext
         * zip_files
         
