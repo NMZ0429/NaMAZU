@@ -3,6 +3,17 @@ from pathlib import Path
 from typing import List, Dict
 
 
+def rename_file(file_path: str, new_name: str) -> None:
+    """Rename a file.
+
+    Args:
+        file_path (str): Path of the file to rename.
+        new_name (str): New name of the file.
+    """
+    file = Path(file_path)
+    file.rename(file.parent / new_name)
+
+
 def collect_file_pathes_by_ext(
     target_dir: str, ext_list: List[str]
 ) -> Dict[str, List[Path]]:

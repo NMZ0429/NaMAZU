@@ -33,6 +33,7 @@
 
 ### file_control
 
+* rename_file
 * collect_file_pathes_by_ext
 * zip_files
 
