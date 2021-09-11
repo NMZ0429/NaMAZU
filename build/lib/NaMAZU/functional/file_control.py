@@ -2,6 +2,12 @@ import zipfile
 from pathlib import Path
 from typing import List, Dict
 
+__all__ = ["rename_file", "collect_file_pathes_by_ext", "zip_files"]
+
+#################
+# File Process #
+#################
+
 
 def rename_file(file_path: str, new_name: str) -> None:
     """Rename a file.

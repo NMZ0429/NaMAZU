@@ -6,8 +6,18 @@ import cv2
 import numpy as np
 from PIL import Image as PILImage
 from PIL.Image import Image
-from PIL.PngImagePlugin import PngImageFile
 from tqdm import tqdm
+
+
+all_funcs = [
+    "img_to_npy",
+    "npy_to_png",
+    "split_image",
+    "compose_two_png",
+    "apply_to_all",
+    "change_frame_rates_in",
+    "save_all_frames",
+]
 
 
 #################

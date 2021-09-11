@@ -5,6 +5,8 @@ from pytorch_lightning import LightningModule
 
 from .instance import Query, Result
 
+__all__ = ["PredictionAssistant"]
+
 
 class PredictionAssistant(ABC):
     def __init__(self, models: Dict[str, Tuple[LightningModule, str]], *args, **kwargs):

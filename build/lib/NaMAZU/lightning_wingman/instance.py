@@ -3,6 +3,9 @@ from dataclasses import dataclass
 from abc import ABC, abstractmethod
 
 
+__all__ = ["Result", "Query"]
+
+
 @dataclass
 class Query:
     __query: Dict[str, Any]
