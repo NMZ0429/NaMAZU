@@ -55,6 +55,7 @@ class YourLitModule(pl.LightningModule):
 ### Deep Learning
 
 * LitU2Net: LightningModule U2Net. Trainable and ready for prediction.
+* AniNet: LightningModule image classifier pretrained for japanese animations.
 * PredictionAssistant: Coming soon.
 
 * * *
@@ -94,6 +95,8 @@ F.change_frame_rates_in("./test_data.mp4",fps=5)
 1. st_integration. Usuful snipets and fast deoployment of LitModule to streamlit.
 
 ## **TODO**
+
+Debug AniNet
 
 1. Video Recognition Model
 2. Feature Learning
