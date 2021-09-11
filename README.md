@@ -44,7 +44,8 @@
 ![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white)
 ![PL](https://img.shields.io/badge/-PyTorch%20Lightning-792EE5.svg?logo=PyTorch%20Lightning&style=for-the-badge)
 
-* PyTorchKNN: Available with euqlidean, manhattan, cosine and mahalanobis distance. Calculation on GPU.
+* KNN: Available with euqlidean, manhattan, cosine and mahalanobis distance. Calculation on GPU.
+* NBC: GPU enabled naive bayes classifier. Can be wrapped by lightning.
 * PredictionAssistant
 
 ## Coming

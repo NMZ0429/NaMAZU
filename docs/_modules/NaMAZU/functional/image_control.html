@@ -46,7 +46,7 @@
   
   
   
-    <title>NaMAZU.functional.image_control &#8212; NaMAZU 0.0.9 documentation</title>
+    <title>NaMAZU.functional.image_control &#8212; NaMAZU 0.0.14 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/material.css" />
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
@@ -78,7 +78,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../../../index.html" title="NaMAZU 0.0.9 documentation"
+        <a href="../../../index.html" title="NaMAZU 0.0.14 documentation"
            class="md-header-nav__button md-logo">
           
             &nbsp;
@@ -164,7 +164,7 @@
   <nav class="md-tabs" data-md-component="tabs">
     <div class="md-tabs__inner md-grid">
       <ul class="md-tabs__list">
-          <li class="md-tabs__item"><a href="../../../index.html" class="md-tabs__link">NaMAZU 0.0.9 documentation</a></li>
+          <li class="md-tabs__item"><a href="../../../index.html" class="md-tabs__link">NaMAZU 0.0.14 documentation</a></li>
           <li class="md-tabs__item"><a href="../../index.html" class="md-tabs__link">Module code</a></li>
       </ul>
     </div>
@@ -177,13 +177,13 @@
               <div class="md-sidebar__inner">
                 <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../../../index.html" title="NaMAZU 0.0.9 documentation" class="md-nav__button md-logo">
+    <a href="../../../index.html" title="NaMAZU 0.0.14 documentation" class="md-nav__button md-logo">
       
         <img src="../../../_static/" alt=" logo" width="48" height="48">
       
     </a>
     <a href="../../../index.html"
-       title="NaMAZU 0.0.9 documentation">NaMAZU</a>
+       title="NaMAZU 0.0.14 documentation">NaMAZU</a>
   </label>
     <div class="md-nav__source">
       <a href="https://github.com/NMZ0429/NaMAZU" title="Go to repository" class="md-source" data-md-source="github">
@@ -232,8 +232,25 @@
 
 <span class="kn">import</span> <span class="nn">cv2</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span> <span class="k">as</span> <span class="n">PILImage</span>
+<span class="kn">from</span> <span class="nn">PIL.Image</span> <span class="kn">import</span> <span class="n">Image</span>
 <span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+
+
+<span class="n">all_funcs</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"img_to_npy"</span><span class="p">,</span>
+    <span class="s2">"npy_to_png"</span><span class="p">,</span>
+    <span class="s2">"split_image"</span><span class="p">,</span>
+    <span class="s2">"compose_two_png"</span><span class="p">,</span>
+    <span class="s2">"apply_to_all"</span><span class="p">,</span>
+    <span class="s2">"change_frame_rates_in"</span><span class="p">,</span>
+    <span class="s2">"save_all_frames"</span><span class="p">,</span>
+<span class="p">]</span>
+
+
+<span class="c1">#################</span>
+<span class="c1"># Image Process #</span>
+<span class="c1">#################</span>
 
 
 <div class="viewcode-block" id="img_to_npy"><a class="viewcode-back" href="../../../NaMAZU.functional.html#NaMAZU.functional.image_control.img_to_npy">[docs]</a><span class="k">def</span> <span class="nf">img_to_npy</span><span class="p">(</span><span class="n">jpg_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">save</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">file_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
@@ -245,7 +262,7 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        numpy.ndarray: Numpy array of the image</span>
 <span class="sd">    """</span>
-    <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">jpg_path</span><span class="p">)</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">PILImage</span><span class="p">(</span><span class="n">jpg_path</span><span class="p">)</span>
     <span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asanyarray</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 
     <span class="n">ext</span> <span class="o">=</span> <span class="s2">"."</span> <span class="o">+</span> <span class="n">jpg_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"."</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
@@ -268,14 +285,14 @@
 <span class="sd">        Image: PIL Image object</span>
 <span class="sd">    """</span>
     <span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">npy_path</span><span class="p">)</span>
-    <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">PILImage</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">save</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">file_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">file_name</span> <span class="o">=</span> <span class="n">npy_path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">".npy"</span><span class="p">,</span> <span class="s2">".png"</span><span class="p">)</span>
         <span class="n">img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">file_name</span> <span class="o">+</span> <span class="s2">".png"</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">img</span>  <span class="c1"># type: ignore</span></div>
+    <span class="k">return</span> <span class="n">img</span></div>
 
 
 <div class="viewcode-block" id="split_image"><a class="viewcode-back" href="../../../NaMAZU.functional.html#NaMAZU.functional.image_control.split_image">[docs]</a><span class="k">def</span> <span class="nf">split_image</span><span class="p">(</span>
@@ -293,7 +310,7 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        Tuple[np.ndarray, np.ndarray]: Tuple of numpy arrays.</span>
 <span class="sd">    """</span>
-    <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">PILImage</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span>
     <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">size</span>
 
     <span class="k">if</span> <span class="n">direction</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -311,6 +328,38 @@
         <span class="n">img2</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">file_name</span> <span class="o">+</span> <span class="s2">"_2"</span> <span class="o">+</span> <span class="s2">".png"</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asanyarray</span><span class="p">(</span><span class="n">img1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">asanyarray</span><span class="p">(</span><span class="n">img2</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="compose_two_png"><a class="viewcode-back" href="../../../NaMAZU.functional.html#NaMAZU.functional.image_control.compose_two_png">[docs]</a><span class="k">def</span> <span class="nf">compose_two_png</span><span class="p">(</span>
+    <span class="n">back_png_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">front_png_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">position</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span>
+    <span class="n">save</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">out_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Image</span><span class="p">:</span>
+    <span class="sd">"""Overray second png to first png with given position. Save output png to save_path if save is True.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        back_png_path (str): Path to background png.</span>
+<span class="sd">        front_png_path (str): Path to foreground png.</span>
+<span class="sd">        position (Tuple[int, int]): Position of overlay.</span>
+<span class="sd">        save (bool, optional): Whether to save output. Defaults to False.</span>
+<span class="sd">        out_name (str, optional): Name of output file. Defaults to None.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Image: PIL Image object</span>
+<span class="sd">    """</span>
+    <span class="n">back</span> <span class="o">=</span> <span class="n">PILImage</span><span class="p">(</span><span class="n">back_png_path</span><span class="p">)</span>
+    <span class="n">front</span> <span class="o">=</span> <span class="n">PILImage</span><span class="p">(</span><span class="n">front_png_path</span><span class="p">)</span>
+
+    <span class="n">back</span><span class="o">.</span><span class="n">paste</span><span class="p">(</span><span class="n">front</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="n">front</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">save</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">out_name</span><span class="p">:</span>
+            <span class="n">out_name</span> <span class="o">=</span> <span class="n">front_png_path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">".png"</span><span class="p">,</span> <span class="s2">"_compose.png"</span><span class="p">)</span>
+        <span class="n">back</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">out_name</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">back</span></div>
 
 
 <div class="viewcode-block" id="apply_to_all"><a class="viewcode-back" href="../../../NaMAZU.functional.html#NaMAZU.functional.image_control.apply_to_all">[docs]</a><span class="k">def</span> <span class="nf">apply_to_all</span><span class="p">(</span><span class="n">func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">imgs_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -336,10 +385,18 @@
     <span class="k">if</span> <span class="ow">not</span> <span class="n">out</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
         <span class="n">out</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Applying function to all images in </span><span class="si">{</span><span class="n">imgs_dir</span><span class="si">}</span><span class="s2"> and saving to </span><span class="si">{</span><span class="n">out_dir</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">"Applying function</span><span class="se">\n</span><span class="s2">  -</span><span class="si">{</span><span class="n">func</span><span class="si">}</span><span class="se">\n</span><span class="s2">to all images in</span><span class="se">\n</span><span class="s2">  -</span><span class="si">{</span><span class="n">imgs_dir</span><span class="si">}</span><span class="se">\n</span><span class="s2">and saving to</span><span class="se">\n</span><span class="s2">  -</span><span class="si">{</span><span class="n">out_dir</span><span class="si">}</span><span class="s2">"</span>
+    <span class="p">)</span>
 
+    <span class="c1"># TODO: Test other functions</span>
     <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">inputs</span><span class="p">):</span>
         <span class="n">out</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">file_name</span><span class="o">=</span><span class="n">join</span><span class="p">(</span><span class="n">out_dir</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"/"</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<span class="c1">#################</span>
+<span class="c1"># Video Process #</span>
+<span class="c1">#################</span>
 
 
 <div class="viewcode-block" id="change_frame_rates_in"><a class="viewcode-back" href="../../../NaMAZU.functional.html#NaMAZU.functional.image_control.change_frame_rates_in">[docs]</a><span class="k">def</span> <span class="nf">change_frame_rates_in</span><span class="p">(</span><span class="n">mp4_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">fps</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -369,8 +426,8 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        int: 1 if success, 0 otherwise.</span>
 <span class="sd">    """</span>
-    <span class="k">if</span> <span class="s2">"</span><span class="si">{}</span><span class="s2">"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dir_path</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">dir_path</span><span class="si">}</span><span class="s2"> must contain </span><span class="se">{{}}</span><span class="s2"> for naming format. Using Default naming."</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s2">"</span><span class="si">{}</span><span class="s2">"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">naming</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">naming</span><span class="si">}</span><span class="s2"> must contain </span><span class="se">{{}}</span><span class="s2"> for naming format. Using Default naming."</span><span class="p">)</span>
         <span class="n">naming</span> <span class="o">=</span> <span class="s2">"</span><span class="si">{}</span><span class="s2">"</span>
 
     <span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="n">video_path</span><span class="p">)</span>

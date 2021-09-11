@@ -46,7 +46,7 @@
   
   
   
-    <title>NaMAZU.lightning_wingman package &#8212; NaMAZU 0.0.9 documentation</title>
+    <title>NaMAZU.lightning_wingman package &#8212; NaMAZU 0.0.14 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/material.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
@@ -78,7 +78,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="index.html" title="NaMAZU 0.0.9 documentation"
+        <a href="index.html" title="NaMAZU 0.0.14 documentation"
            class="md-header-nav__button md-logo">
           
             &nbsp;
@@ -164,7 +164,7 @@
   <nav class="md-tabs" data-md-component="tabs">
     <div class="md-tabs__inner md-grid">
       <ul class="md-tabs__list">
-          <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">NaMAZU 0.0.9 documentation</a></li>
+          <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">NaMAZU 0.0.14 documentation</a></li>
       </ul>
     </div>
   </nav>
@@ -176,13 +176,13 @@
               <div class="md-sidebar__inner">
                 <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="index.html" title="NaMAZU 0.0.9 documentation" class="md-nav__button md-logo">
+    <a href="index.html" title="NaMAZU 0.0.14 documentation" class="md-nav__button md-logo">
       
         <img src="_static/" alt=" logo" width="48" height="48">
       
     </a>
     <a href="index.html"
-       title="NaMAZU 0.0.9 documentation">NaMAZU</a>
+       title="NaMAZU 0.0.14 documentation">NaMAZU</a>
   </label>
     <div class="md-nav__source">
       <a href="https://github.com/NMZ0429/NaMAZU" title="Go to repository" class="md-source" data-md-source="github">
@@ -219,6 +219,14 @@
         <li class="md-nav__item"><a href="#module-NaMAZU.lightning_wingman.inference_helper" class="md-nav__link">NaMAZU.lightning_wingman.inference_helper module</a>
         </li>
         <li class="md-nav__item"><a href="#module-NaMAZU.lightning_wingman.instance" class="md-nav__link">NaMAZU.lightning_wingman.instance module</a>
+        </li>
+        <li class="md-nav__item"><a href="#module-NaMAZU.lightning_wingman.lit_u2net" class="md-nav__link">NaMAZU.lightning_wingman.lit_u2net module</a>
+        </li>
+        <li class="md-nav__item"><a href="#module-NaMAZU.lightning_wingman.torch_knn" class="md-nav__link">NaMAZU.lightning_wingman.torch_knn module</a>
+        </li>
+        <li class="md-nav__item"><a href="#module-NaMAZU.lightning_wingman.torch_nbc" class="md-nav__link">NaMAZU.lightning_wingman.torch_nbc module</a>
+        </li>
+        <li class="md-nav__item"><a href="#module-NaMAZU.lightning_wingman.u2net" class="md-nav__link">NaMAZU.lightning_wingman.u2net module</a>
         </li>
         <li class="md-nav__item"><a href="#module-NaMAZU.lightning_wingman" class="md-nav__link">Module contents</a>
         </li></ul>
@@ -269,7 +277,613 @@
 </dd></dl>
 
 
+<span id="namazu-lightning-wingman-lit-u2net-module"></span><h2 id="module-NaMAZU.lightning_wingman.lit_u2net">NaMAZU.lightning_wingman.lit_u2net module<a class="headerlink" href="#module-NaMAZU.lightning_wingman.lit_u2net" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.lit_u2net.LitU2Net">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">NaMAZU.lightning_wingman.lit_u2net.</span></span><span class="sig-name descname"><span class="pre">LitU2Net</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ckpt_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">in_chans</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_chans</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pretrained_weight</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NaMAZU/lightning_wingman/lit_u2net.html#LitU2Net"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.lightning_wingman.lit_u2net.LitU2Net" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pytorch_lightning.core.lightning.LightningModule</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.lit_u2net.LitU2Net.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NaMAZU/lightning_wingman/lit_u2net.html#LitU2Net.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.lightning_wingman.lit_u2net.LitU2Net.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as <code class="xref py py-meth docutils literal notranslate"><span class="pre">torch.nn.Module.forward()</span></code>, however in Lightning you want this to define
+the operations you want to use for prediction (i.e.: on a server or as a feature extractor).</p>
+<p>Normally you’d call <code class="docutils literal notranslate"><span class="pre">self()</span></code> from your <code class="xref py py-meth docutils literal notranslate"><span class="pre">training_step()</span></code> method.
+This makes it easy to write a complex system for training with the outputs
+you’d want in a prediction setting.</p>
+<p>You may also find the <code class="xref py py-func docutils literal notranslate"><span class="pre">auto_move_data()</span></code> decorator useful
+when using the module outside Lightning in a production setting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>*args</strong> – Whatever you decide to pass into the forward method.</p></li>
+<li><p><strong>**kwargs</strong> – Keyword arguments are also possible.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Predicted output</p>
+</dd>
+</dl>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># example if we were using this model as a feature extractor</span>
+<span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">feature_maps</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">convnet</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">feature_maps</span>
+
+<span class="k">def</span> <span class="nf">training_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">,</span> <span class="n">batch_idx</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">batch</span>
+    <span class="n">feature_maps</span> <span class="o">=</span> <span class="bp">self</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">logits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">classifier</span><span class="p">(</span><span class="n">feature_maps</span><span class="p">)</span>
+
+    <span class="c1"># ...</span>
+    <span class="k">return</span> <span class="n">loss</span>
+
+<span class="c1"># splitting it this way allows model to be used a feature extractor</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">MyModelAbove</span><span class="p">()</span>
+
+<span class="n">inputs</span> <span class="o">=</span> <span class="n">server</span><span class="o">.</span><span class="n">get_request</span><span class="p">()</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+<span class="n">server</span><span class="o">.</span><span class="n">write_results</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+
+<span class="c1"># -------------</span>
+<span class="c1"># This is in stark contrast to torch.nn.Module where normally you would have this:</span>
+<span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">batch</span>
+    <span class="n">feature_maps</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">convnet</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">logits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">classifier</span><span class="p">(</span><span class="n">feature_maps</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">logits</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.lit_u2net.LitU2Net.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#NaMAZU.lightning_wingman.lit_u2net.LitU2Net.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
+
+
+<span id="namazu-lightning-wingman-torch-knn-module"></span><h2 id="module-NaMAZU.lightning_wingman.torch_knn">NaMAZU.lightning_wingman.torch_knn module<a class="headerlink" href="#module-NaMAZU.lightning_wingman.torch_knn" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.torch_knn.KNN">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">NaMAZU.lightning_wingman.torch_knn.</span></span><span class="sig-name descname"><span class="pre">KNN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training_data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">torch.Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance_measure</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'euclidean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training_labels</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NaMAZU/lightning_wingman/torch_knn.html#KNN"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.lightning_wingman.torch_knn.KNN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.torch_knn.KNN.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">torch.Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">torch.Tensor</span></span></span><a class="reference internal" href="_modules/NaMAZU/lightning_wingman/torch_knn.html#KNN.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.lightning_wingman.torch_knn.KNN.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the indices of the k nearest neighbors of x.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>Tensor</em>) – input point.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>N by K tensor of k indices of the k nearest neighbors of x.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.torch_knn.KNN.get_k_nearest_labels">
+<span class="sig-name descname"><span class="pre">get_k_nearest_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">torch.Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">torch.Tensor</span></span></span><a class="reference internal" href="_modules/NaMAZU/lightning_wingman/torch_knn.html#KNN.get_k_nearest_labels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.lightning_wingman.torch_knn.KNN.get_k_nearest_labels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the k nearest labels of x.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>Tensor</em>) – input point.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>1d tensor of k nearest labels of x.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.torch_knn.KNN.get_k_nearest_neighbors">
+<span class="sig-name descname"><span class="pre">get_k_nearest_neighbors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">torch.Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">torch.Tensor</span></span></span><a class="reference internal" href="_modules/NaMAZU/lightning_wingman/torch_knn.html#KNN.get_k_nearest_neighbors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.lightning_wingman.torch_knn.KNN.get_k_nearest_neighbors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the k nearest neighbors of x.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>Tensor</em>) – input point.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>1d tensor of k nearest neighbors of x.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.torch_knn.KNN.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#NaMAZU.lightning_wingman.torch_knn.KNN.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
+
+
+<span id="namazu-lightning-wingman-torch-nbc-module"></span><h2 id="module-NaMAZU.lightning_wingman.torch_nbc">NaMAZU.lightning_wingman.torch_nbc module<a class="headerlink" href="#module-NaMAZU.lightning_wingman.torch_nbc" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.torch_nbc.NBC">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">NaMAZU.lightning_wingman.torch_nbc.</span></span><span class="sig-name descname"><span class="pre">NBC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training_data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training_labels</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_categorical</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NaMAZU/lightning_wingman/torch_nbc.html#NBC"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.lightning_wingman.torch_nbc.NBC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<p>Naive Bayes Classifier.</p>
+<p>Initializer takes optional training data for auto training.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.torch_nbc.NBC.offset">
+<span class="sig-name descname"><span class="pre">offset</span></span><a class="headerlink" href="#NaMAZU.lightning_wingman.torch_nbc.NBC.offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>An integer to increment the conditional probabilities
+in order to smooth probabilities to avoid that a posterior
+probability be 0.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.torch_nbc.NBC.is_categorical">
+<span class="sig-name descname"><span class="pre">is_categorical</span></span><a class="headerlink" href="#NaMAZU.lightning_wingman.torch_nbc.NBC.is_categorical" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of boolean for indicating if a feature is categorical or numerical.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>List[bool]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.torch_nbc.NBC.nb_features">
+<span class="sig-name descname"><span class="pre">nb_features</span></span><a class="headerlink" href="#NaMAZU.lightning_wingman.torch_nbc.NBC.nb_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>An integer for the numbers of feature of the data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.torch_nbc.NBC.nb_class">
+<span class="sig-name descname"><span class="pre">nb_class</span></span><a class="headerlink" href="#NaMAZU.lightning_wingman.torch_nbc.NBC.nb_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>An integer for the number of classes in the labels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.torch_nbc.NBC.class_probs">
+<span class="sig-name descname"><span class="pre">class_probs</span></span><a class="headerlink" href="#NaMAZU.lightning_wingman.torch_nbc.NBC.class_probs" title="Permalink to this definition">¶</a></dt>
+<dd><p>A torch tensor for the proportion of each class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.torch_nbc.NBC.cond_probs">
+<span class="sig-name descname"><span class="pre">cond_probs</span></span><a class="headerlink" href="#NaMAZU.lightning_wingman.torch_nbc.NBC.cond_probs" title="Permalink to this definition">¶</a></dt>
+<dd><p>A torch tensor for the conditional probability of
+having a given value on a certain feature in the population
+of each class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.torch_nbc.NBC.pi">
+<span class="sig-name descname"><span class="pre">pi</span></span><a class="headerlink" href="#NaMAZU.lightning_wingman.torch_nbc.NBC.pi" title="Permalink to this definition">¶</a></dt>
+<dd><p>A torch tensor for the value of pi.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.torch_nbc.NBC.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">torch.Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">torch.Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_categorical</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NaMAZU/lightning_wingman/torch_nbc.html#NBC.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.lightning_wingman.torch_nbc.NBC.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fits the model given data and labels as input</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>Tensor</em>) – A torch tensor containing a batch of data.</p></li>
+<li><p><strong>y</strong> (<em>Tensor</em>) – A torch tensor containing a batch of labels.</p></li>
+<li><p><strong>is_categorical</strong> (<em>Tensor</em>) – A list of boolean for indicating if a feature is categorical or numerical.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>0 if the model is fitted</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the number of features is different from the number of features in X.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.torch_nbc.NBC.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NaMAZU/lightning_wingman/torch_nbc.html#NBC.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.lightning_wingman.torch_nbc.NBC.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predicts labels given an input</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> – A torch tensor containing a batch of data.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.torch_nbc.NBC.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#NaMAZU.lightning_wingman.torch_nbc.NBC.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
+
+
+<span id="namazu-lightning-wingman-u2net-module"></span><h2 id="module-NaMAZU.lightning_wingman.u2net">NaMAZU.lightning_wingman.u2net module<a class="headerlink" href="#module-NaMAZU.lightning_wingman.u2net" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.u2net.REBNCONV">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">NaMAZU.lightning_wingman.u2net.</span></span><span class="sig-name descname"><span class="pre">REBNCONV</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_ch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_ch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dirate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NaMAZU/lightning_wingman/u2net.html#REBNCONV"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.lightning_wingman.u2net.REBNCONV" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.u2net.REBNCONV.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NaMAZU/lightning_wingman/u2net.html#REBNCONV.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.lightning_wingman.u2net.REBNCONV.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.u2net.REBNCONV.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#NaMAZU.lightning_wingman.u2net.REBNCONV.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.u2net.RSU4">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">NaMAZU.lightning_wingman.u2net.</span></span><span class="sig-name descname"><span class="pre">RSU4</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_ch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mid_ch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_ch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NaMAZU/lightning_wingman/u2net.html#RSU4"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.lightning_wingman.u2net.RSU4" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.u2net.RSU4.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NaMAZU/lightning_wingman/u2net.html#RSU4.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.lightning_wingman.u2net.RSU4.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.u2net.RSU4.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#NaMAZU.lightning_wingman.u2net.RSU4.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.u2net.RSU4F">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">NaMAZU.lightning_wingman.u2net.</span></span><span class="sig-name descname"><span class="pre">RSU4F</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_ch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mid_ch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_ch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NaMAZU/lightning_wingman/u2net.html#RSU4F"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.lightning_wingman.u2net.RSU4F" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.u2net.RSU4F.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NaMAZU/lightning_wingman/u2net.html#RSU4F.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.lightning_wingman.u2net.RSU4F.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.u2net.RSU4F.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#NaMAZU.lightning_wingman.u2net.RSU4F.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.u2net.RSU5">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">NaMAZU.lightning_wingman.u2net.</span></span><span class="sig-name descname"><span class="pre">RSU5</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_ch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mid_ch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_ch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NaMAZU/lightning_wingman/u2net.html#RSU5"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.lightning_wingman.u2net.RSU5" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.u2net.RSU5.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NaMAZU/lightning_wingman/u2net.html#RSU5.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.lightning_wingman.u2net.RSU5.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.u2net.RSU5.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#NaMAZU.lightning_wingman.u2net.RSU5.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.u2net.RSU6">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">NaMAZU.lightning_wingman.u2net.</span></span><span class="sig-name descname"><span class="pre">RSU6</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_ch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mid_ch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_ch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NaMAZU/lightning_wingman/u2net.html#RSU6"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.lightning_wingman.u2net.RSU6" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.u2net.RSU6.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NaMAZU/lightning_wingman/u2net.html#RSU6.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.lightning_wingman.u2net.RSU6.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.u2net.RSU6.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#NaMAZU.lightning_wingman.u2net.RSU6.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.u2net.RSU7">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">NaMAZU.lightning_wingman.u2net.</span></span><span class="sig-name descname"><span class="pre">RSU7</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_ch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mid_ch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_ch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NaMAZU/lightning_wingman/u2net.html#RSU7"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.lightning_wingman.u2net.RSU7" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.u2net.RSU7.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NaMAZU/lightning_wingman/u2net.html#RSU7.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.lightning_wingman.u2net.RSU7.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.u2net.RSU7.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#NaMAZU.lightning_wingman.u2net.RSU7.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.u2net.U2NET">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">NaMAZU.lightning_wingman.u2net.</span></span><span class="sig-name descname"><span class="pre">U2NET</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_ch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_ch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NaMAZU/lightning_wingman/u2net.html#U2NET"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.lightning_wingman.u2net.U2NET" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.u2net.U2NET.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NaMAZU/lightning_wingman/u2net.html#U2NET.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.lightning_wingman.u2net.U2NET.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.u2net.U2NET.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#NaMAZU.lightning_wingman.u2net.U2NET.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.u2net.U2NETP">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">NaMAZU.lightning_wingman.u2net.</span></span><span class="sig-name descname"><span class="pre">U2NETP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_ch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_ch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NaMAZU/lightning_wingman/u2net.html#U2NETP"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.lightning_wingman.u2net.U2NETP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.u2net.U2NETP.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NaMAZU/lightning_wingman/u2net.html#U2NETP.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.lightning_wingman.u2net.U2NETP.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.u2net.U2NETP.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#NaMAZU.lightning_wingman.u2net.U2NETP.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
+
+
 <span id="module-contents"></span><h2 id="module-NaMAZU.lightning_wingman">Module contents<a class="headerlink" href="#module-NaMAZU.lightning_wingman" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.KNN">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">NaMAZU.lightning_wingman.</span></span><span class="sig-name descname"><span class="pre">KNN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training_data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">torch.Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance_measure</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'euclidean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training_labels</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NaMAZU/lightning_wingman/torch_knn.html#KNN"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.lightning_wingman.KNN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.KNN.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">torch.Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">torch.Tensor</span></span></span><a class="reference internal" href="_modules/NaMAZU/lightning_wingman/torch_knn.html#KNN.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.lightning_wingman.KNN.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the indices of the k nearest neighbors of x.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>Tensor</em>) – input point.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>N by K tensor of k indices of the k nearest neighbors of x.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.KNN.get_k_nearest_labels">
+<span class="sig-name descname"><span class="pre">get_k_nearest_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">torch.Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">torch.Tensor</span></span></span><a class="reference internal" href="_modules/NaMAZU/lightning_wingman/torch_knn.html#KNN.get_k_nearest_labels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.lightning_wingman.KNN.get_k_nearest_labels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the k nearest labels of x.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>Tensor</em>) – input point.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>1d tensor of k nearest labels of x.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.KNN.get_k_nearest_neighbors">
+<span class="sig-name descname"><span class="pre">get_k_nearest_neighbors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">torch.Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">torch.Tensor</span></span></span><a class="reference internal" href="_modules/NaMAZU/lightning_wingman/torch_knn.html#KNN.get_k_nearest_neighbors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.lightning_wingman.KNN.get_k_nearest_neighbors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the k nearest neighbors of x.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>Tensor</em>) – input point.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>1d tensor of k nearest neighbors of x.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.KNN.num_classes">
+<span class="sig-name descname"><span class="pre">num_classes</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#NaMAZU.lightning_wingman.KNN.num_classes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.KNN.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#NaMAZU.lightning_wingman.KNN.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.NBC">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">NaMAZU.lightning_wingman.</span></span><span class="sig-name descname"><span class="pre">NBC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training_data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training_labels</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_categorical</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NaMAZU/lightning_wingman/torch_nbc.html#NBC"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.lightning_wingman.NBC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<p>Naive Bayes Classifier.</p>
+<p>Initializer takes optional training data for auto training.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.NBC.offset">
+<span class="sig-name descname"><span class="pre">offset</span></span><a class="headerlink" href="#NaMAZU.lightning_wingman.NBC.offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>An integer to increment the conditional probabilities
+in order to smooth probabilities to avoid that a posterior
+probability be 0.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.NBC.is_categorical">
+<span class="sig-name descname"><span class="pre">is_categorical</span></span><a class="headerlink" href="#NaMAZU.lightning_wingman.NBC.is_categorical" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of boolean for indicating if a feature is categorical or numerical.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>List[bool]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.NBC.nb_features">
+<span class="sig-name descname"><span class="pre">nb_features</span></span><a class="headerlink" href="#NaMAZU.lightning_wingman.NBC.nb_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>An integer for the numbers of feature of the data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.NBC.nb_class">
+<span class="sig-name descname"><span class="pre">nb_class</span></span><a class="headerlink" href="#NaMAZU.lightning_wingman.NBC.nb_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>An integer for the number of classes in the labels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.NBC.class_probs">
+<span class="sig-name descname"><span class="pre">class_probs</span></span><a class="headerlink" href="#NaMAZU.lightning_wingman.NBC.class_probs" title="Permalink to this definition">¶</a></dt>
+<dd><p>A torch tensor for the proportion of each class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.NBC.cond_probs">
+<span class="sig-name descname"><span class="pre">cond_probs</span></span><a class="headerlink" href="#NaMAZU.lightning_wingman.NBC.cond_probs" title="Permalink to this definition">¶</a></dt>
+<dd><p>A torch tensor for the conditional probability of
+having a given value on a certain feature in the population
+of each class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.NBC.pi">
+<span class="sig-name descname"><span class="pre">pi</span></span><a class="headerlink" href="#NaMAZU.lightning_wingman.NBC.pi" title="Permalink to this definition">¶</a></dt>
+<dd><p>A torch tensor for the value of pi.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.NBC.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">torch.Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">torch.Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_categorical</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NaMAZU/lightning_wingman/torch_nbc.html#NBC.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.lightning_wingman.NBC.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fits the model given data and labels as input</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>Tensor</em>) – A torch tensor containing a batch of data.</p></li>
+<li><p><strong>y</strong> (<em>Tensor</em>) – A torch tensor containing a batch of labels.</p></li>
+<li><p><strong>is_categorical</strong> (<em>Tensor</em>) – A list of boolean for indicating if a feature is categorical or numerical.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>0 if the model is fitted</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the number of features is different from the number of features in X.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.NBC.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NaMAZU/lightning_wingman/torch_nbc.html#NBC.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.lightning_wingman.NBC.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predicts labels given an input</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> – A torch tensor containing a batch of data.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">offset</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.NBC.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#NaMAZU.lightning_wingman.NBC.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.PredictionAssistant">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">NaMAZU.lightning_wingman.</span></span><span class="sig-name descname"><span class="pre">PredictionAssistant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">models</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">pytorch_lightning.core.lightning.LightningModule</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NaMAZU/lightning_wingman/inference_helper.html#PredictionAssistant"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.lightning_wingman.PredictionAssistant" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="NaMAZU.lightning_wingman.PredictionAssistant.predict">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#NaMAZU.lightning_wingman.instance.Query" title="NaMAZU.lightning_wingman.instance.Query"><span class="pre">NaMAZU.lightning_wingman.instance.Query</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="#NaMAZU.lightning_wingman.instance.Result" title="NaMAZU.lightning_wingman.instance.Result"><span class="pre">NaMAZU.lightning_wingman.instance.Result</span></a></span></span><a class="reference internal" href="_modules/NaMAZU/lightning_wingman/inference_helper.html#PredictionAssistant.predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.lightning_wingman.PredictionAssistant.predict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
 
 
 

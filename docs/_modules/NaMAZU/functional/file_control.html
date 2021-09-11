@@ -46,7 +46,7 @@
   
   
   
-    <title>NaMAZU.functional.file_control &#8212; NaMAZU 0.0.9 documentation</title>
+    <title>NaMAZU.functional.file_control &#8212; NaMAZU 0.0.14 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/material.css" />
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
@@ -78,7 +78,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../../../index.html" title="NaMAZU 0.0.9 documentation"
+        <a href="../../../index.html" title="NaMAZU 0.0.14 documentation"
            class="md-header-nav__button md-logo">
           
             &nbsp;
@@ -164,7 +164,7 @@
   <nav class="md-tabs" data-md-component="tabs">
     <div class="md-tabs__inner md-grid">
       <ul class="md-tabs__list">
-          <li class="md-tabs__item"><a href="../../../index.html" class="md-tabs__link">NaMAZU 0.0.9 documentation</a></li>
+          <li class="md-tabs__item"><a href="../../../index.html" class="md-tabs__link">NaMAZU 0.0.14 documentation</a></li>
           <li class="md-tabs__item"><a href="../../index.html" class="md-tabs__link">Module code</a></li>
       </ul>
     </div>
@@ -177,13 +177,13 @@
               <div class="md-sidebar__inner">
                 <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../../../index.html" title="NaMAZU 0.0.9 documentation" class="md-nav__button md-logo">
+    <a href="../../../index.html" title="NaMAZU 0.0.14 documentation" class="md-nav__button md-logo">
       
         <img src="../../../_static/" alt=" logo" width="48" height="48">
       
     </a>
     <a href="../../../index.html"
-       title="NaMAZU 0.0.9 documentation">NaMAZU</a>
+       title="NaMAZU 0.0.14 documentation">NaMAZU</a>
   </label>
     <div class="md-nav__source">
       <a href="https://github.com/NMZ0429/NaMAZU" title="Go to repository" class="md-source" data-md-source="github">
@@ -229,6 +229,23 @@
 <span></span><span class="kn">import</span> <span class="nn">zipfile</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"rename_file"</span><span class="p">,</span> <span class="s2">"collect_file_pathes_by_ext"</span><span class="p">,</span> <span class="s2">"zip_files"</span><span class="p">]</span>
+
+<span class="c1">#################</span>
+<span class="c1"># File Process #</span>
+<span class="c1">#################</span>
+
+
+<div class="viewcode-block" id="rename_file"><a class="viewcode-back" href="../../../NaMAZU.functional.html#NaMAZU.functional.file_control.rename_file">[docs]</a><span class="k">def</span> <span class="nf">rename_file</span><span class="p">(</span><span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">new_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">"""Rename a file.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        file_path (str): Path of the file to rename.</span>
+<span class="sd">        new_name (str): New name of the file.</span>
+<span class="sd">    """</span>
+    <span class="n">file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+    <span class="n">file</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="n">new_name</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="collect_file_pathes_by_ext"><a class="viewcode-back" href="../../../NaMAZU.functional.html#NaMAZU.functional.file_control.collect_file_pathes_by_ext">[docs]</a><span class="k">def</span> <span class="nf">collect_file_pathes_by_ext</span><span class="p">(</span>

@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: NaMAZU
-Version: 0.0.14
+Version: 0.0.15
 Summary: NaMAZU: Pretty Usefull Library
 Home-page: https://github.com/NMZ0429/NaMAZU
 Author: NaMAZU Team
@@ -55,7 +55,8 @@ Description: <div align="center">
         ![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white)
         ![PL](https://img.shields.io/badge/-PyTorch%20Lightning-792EE5.svg?logo=PyTorch%20Lightning&style=for-the-badge)
         
-        * PyTorchKNN: Available with euqlidean, manhattan, cosine and mahalanobis distance. Calculation on GPU.
+        * KNN: Available with euqlidean, manhattan, cosine and mahalanobis distance. Calculation on GPU.
+        * NBC: GPU enabled naive bayes classifier. Can be wrapped by lightning.
         * PredictionAssistant
         
         ## Coming
