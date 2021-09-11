@@ -1,5 +1,4 @@
 import torch
-from torch.nn.functional import cosine_similarity
 from torch import Tensor
 
 __all__ = ["KNN"]
@@ -10,7 +9,7 @@ class KNN(torch.nn.Module):
         self,
         n_neighbors: int,
         training_data: Tensor,
-        ditance_measure: str = "euclidean",
+        distance_measure: str = "euclidean",
         training_labels: Tensor = None,
     ):
         """KNN implementation using PyTorch.
@@ -29,22 +28,12 @@ class KNN(torch.nn.Module):
         self.training_data = training_data
         self.training_labels = training_labels
         self.num_classes: int = 0
-        self.distance_measure = ditance_measure
+        self.distance_measure = distance_measure
 
         if self.training_labels:
             self.num_classes = int(self.training_labels.max().item() + 1)
 
-        if self.distance_measure == "euclidean":
-            self.calc_distasnce = self._calculate_euclidean
-        elif self.distance_measure == "manhattan":
-            self.calc_distasnce = self._calculate_manhattan
-        elif self.distance_measure == "cosine":
-            self.calc_distasnce = self._calculate_cosine
-        elif self.distance_measure == "mahalanobis":
-            self._setup_mahalanobis()
-            self.calc_distasnce = self._calculate_mahalanobis
-        else:
-            raise ValueError(f"{self.distance_measure} is not a valid distance measure")
+        self.__choose_distance_measure()
 
     def forward(self, x: Tensor) -> Tensor:
         """Return the indices of the k nearest neighbors of x.
@@ -53,11 +42,11 @@ class KNN(torch.nn.Module):
             x (Tensor): input point.
 
         Returns:
-            Tensor: 1d tensor of k indices of the k nearest neighbors of x.
+            Tensor: N by K tensor of k indices of the k nearest neighbors of x.
         """
         x = self._validate_input(x)
         distances = self.calc_distasnce(x)
-        _, indices = distances.topk(self.k, dim=1)
+        _, indices = distances.topk(self.k, dim=1, largest=False, sorted=True)
         return indices
 
     def get_k_nearest_neighbors(self, x: Tensor) -> Tensor:
@@ -86,14 +75,18 @@ class KNN(torch.nn.Module):
         indices = self.forward(x)
         return self.training_labels[indices]
 
+    ####################
+    # Helper functions #
+    ####################
+
     def _calculate_euclidean(self, x: Tensor) -> Tensor:
-        return torch.sqrt(torch.sum(torch.pow(x - self.training_data, 2), dim=1))
+        return torch.cdist(x, self.training_data, 2)
 
     def _calculate_manhattan(self, x: Tensor) -> Tensor:
-        return torch.linalg.norm(x - self.training_data, 1)
+        return torch.cdist(x, self.training_data, 1)
 
     def _calculate_cosine(self, x: Tensor) -> Tensor:
-        return cosine_similarity(x, self.training_data)
+        return self._sim_matrix(x, self.training_data)
 
     def _validate_input(self, x: Tensor) -> Tensor:
         if x.dim() == 1:
@@ -182,3 +175,27 @@ class KNN(torch.nn.Module):
         delta = x - v
         m = torch.dot(delta, torch.matmul(torch.inverse(cov), delta))
         return torch.sqrt(m)
+
+    def _sim_matrix(self, a, b, eps=1e-8):
+        """
+        added eps for numerical stability
+        """
+        b = self.training_data if b is None else b
+        a_n, b_n = a.norm(dim=1)[:, None], b.norm(dim=1)[:, None]
+        a_norm = a / torch.clamp(a_n, min=eps)
+        b_norm = b / torch.clamp(b_n, min=eps)
+        sim_mt = torch.mm(a_norm, b_norm.transpose(0, 1))
+        return sim_mt
+
+    def __choose_distance_measure(self) -> None:
+        if self.distance_measure == "euclidean":
+            self.calc_distasnce = self._calculate_euclidean
+        elif self.distance_measure == "manhattan":
+            self.calc_distasnce = self._calculate_manhattan
+        elif self.distance_measure == "cosine":
+            self.calc_distasnce = self._calculate_cosine
+        elif self.distance_measure == "mahalanobis":
+            self._setup_mahalanobis()
+            self.calc_distasnce = self._calculate_mahalanobis
+        else:
+            raise ValueError(f"{self.distance_measure} is not a valid distance measure")

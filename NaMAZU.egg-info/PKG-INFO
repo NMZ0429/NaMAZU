@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: NaMAZU
-Version: 0.0.13
+Version: 0.0.14
 Summary: NaMAZU: Pretty Usefull Library
 Home-page: https://github.com/NMZ0429/NaMAZU
 Author: NaMAZU Team
@@ -55,7 +55,7 @@ Description: <div align="center">
         ![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white)
         ![PL](https://img.shields.io/badge/-PyTorch%20Lightning-792EE5.svg?logo=PyTorch%20Lightning&style=for-the-badge)
         
-        * KNN PyTorch
+        * PyTorchKNN: Available with euqlidean, manhattan, cosine and mahalanobis distance. Calculation on GPU.
         * PredictionAssistant
         
         ## Coming
@@ -63,6 +63,10 @@ Description: <div align="center">
         1. composer. auto compose functions into one sequential operation.
         2. st_integration. Usuful snipets and fast deoployment of LitModule to streamlit.
         3. U2Net fully trianable and ready to use.
+        
+        ## TODO
+        
+        1. Add batch processing to knn
         
         ### Internal
         
