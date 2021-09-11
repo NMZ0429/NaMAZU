@@ -57,6 +57,8 @@ class YourLitModule(pl.LightningModule):
 * LitU2Net: LightningModule U2Net. Trainable and ready for prediction.
 * PredictionAssistant: Coming soon.
 
+* * *
+
 ## Functional API
 
 ![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white)

@@ -1,6 +1,13 @@
+from __future__ import division, print_function
+
+import random
+
+import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+from skimage import color, io, transform
+from torch.utils.data import Dataset
 
 
 class REBNCONV(nn.Module):
@@ -539,15 +546,6 @@ class U2NETP(nn.Module):
             F.sigmoid(d6),
         )
 
-
-# data loader
-from __future__ import print_function, division
-import torch
-from skimage import io, transform, color
-import numpy as np
-import random
-
-from torch.utils.data import Dataset
 
 # ==========================dataset load==========================
 class RescaleT(object):

@@ -7,7 +7,7 @@ from pytorch_lightning import LightningModule
 from torch import Tensor
 from torchvision import transforms
 
-import u2net
+import NaMAZU.lightning_wingman.u2net as u2net
 
 
 __all__ = ["LitU2Net"]

@@ -1,3 +1,4 @@
+from typing import Union
 import torch
 from torch import Tensor
 
@@ -8,7 +9,7 @@ class KNN(torch.nn.Module):
     def __init__(
         self,
         n_neighbors: int,
-        training_data: Tensor,
+        training_data: Tensor = torch.tensor([]),
         distance_measure: str = "euclidean",
         training_labels: Tensor = None,
     ):
@@ -16,7 +17,7 @@ class KNN(torch.nn.Module):
 
         Args:
             k (int): N umber of nearest neighbors to return.
-            training_data (Tensor): N by M tensor of training data.
+            training_data (Tensor, optional): N by M tensor of training data. Defaults to None.
             ditance_measure (str, optional): The choice of distance to use. Defaults to "euclidean".
             training_labels (Tensor, optional): N by 1 tensor of training labels. Defaults to None.
 
@@ -35,6 +36,14 @@ class KNN(torch.nn.Module):
 
         self.__choose_distance_measure()
 
+    def fit(self, training_data: Tensor) -> None:
+        """Train KNN.
+
+        Args:
+            training_data (Tensor): Training data.
+        """
+        self.training_data = training_data
+
     def forward(self, x: Tensor) -> Tensor:
         """Return the indices of the k nearest neighbors of x.
 
@@ -43,7 +52,13 @@ class KNN(torch.nn.Module):
 
         Returns:
             Tensor: N by K tensor of k indices of the k nearest neighbors of x.
+        Raises:
+            ValueError: Raise if the model has not been fit.
         """
+        if not self.training_data:
+            raise ValueError(
+                "Model hasn't been fitted yet. Use self.fit(training_data)."
+            )
         x = self._validate_input(x)
         distances = self.calc_distasnce(x)
         _, indices = distances.topk(self.k, dim=1, largest=False, sorted=True)
