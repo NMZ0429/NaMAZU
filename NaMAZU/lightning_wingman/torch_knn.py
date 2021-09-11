@@ -57,7 +57,7 @@ class KNN(torch.nn.Module):
         """
         x = self._validate_input(x)
         distances = self.calc_distasnce(x)
-        _, indices = distances.topk(self.k, dim=1)
+        _, indices = distances.topk(self.k, dim=0, largest=False, sorted=True)
         return indices
 
     def get_k_nearest_neighbors(self, x: Tensor) -> Tensor:

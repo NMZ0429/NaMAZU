@@ -53,6 +53,10 @@
 2. st_integration. Usuful snipets and fast deoployment of LitModule to streamlit.
 3. U2Net fully trianable and ready to use.
 
+## TODO
+
+1. Add batch processing to knn
+
 ### Internal
 
 ```shell
