@@ -3,6 +3,8 @@ import torch
 from torch import Tensor
 import math
 
+__all__ = ["NBC"]
+
 
 class NBC(torch.nn.Module):
     """Naive Bayes Classifier.
