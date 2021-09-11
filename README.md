@@ -44,7 +44,7 @@
 ![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white)
 ![PL](https://img.shields.io/badge/-PyTorch%20Lightning-792EE5.svg?logo=PyTorch%20Lightning&style=for-the-badge)
 
-* KNN PyTorch
+* PyTorchKNN: Available with euqlidean, manhattan, cosine and mahalanobis distance. Calculation on GPU.
 * PredictionAssistant
 
 ## Coming
