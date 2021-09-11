@@ -46,9 +46,15 @@ class YourLitModule(pl.LightningModule):
         probability = self.estimator(y)
 ```
 
-* KNN: Available with euqlidean, manhattan, cosine and mahalanobis distance. Calculation on GPU.
-* NBC: GPU enabled naive bayes classifier. Can be wrapped by lightning.
-* GMM: Gaussian Mixture Model. Of course GPU enabled.
+### Statistical Model
+
+* KNN: Available with euqlidean, manhattan, cosine and mahalanobis distance.
+* NBC: GPU enabled naive bayes classifier.
+* GMM: Gaussian Mixture probabability estimator. Of course GPU enabled.
+
+### Deep Learning
+
+* LitU2Net: LightningModule U2Net. Trainable and ready for prediction.
 * PredictionAssistant: Coming soon.
 
 ## Functional API
@@ -84,7 +90,6 @@ F.change_frame_rates_in("./test_data.mp4",fps=5)
 ## Coming
 
 1. st_integration. Usuful snipets and fast deoployment of LitModule to streamlit.
-2. U2Net fully trianable and ready to use.
 
 ## **TODO**
 
