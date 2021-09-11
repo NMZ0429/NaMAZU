@@ -1,4 +1,5 @@
 from .inference_helper import *
+from .torch_knn import *
 
-__all__ = ["InferenceAssistant"]
+__all__ = ["PredictionAssistant", "KNN"]
 
