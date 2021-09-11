@@ -17,6 +17,17 @@
 
 # NaMAZU
 
+
+## Lightning API
+
+![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white)
+![PL](https://img.shields.io/badge/-PyTorch%20Lightning-792EE5.svg?logo=PyTorch%20Lightning&style=for-the-badge)
+
+* KNN: Available with euqlidean, manhattan, cosine and mahalanobis distance. Calculation on GPU.
+* NBC: GPU enabled naive bayes classifier. Can be wrapped by lightning.
+* GMM: Gaussian Mixture Model. Of course GPU enabled.
+* PredictionAssistant
+
 ## Functional API
 
 ![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white)
@@ -39,24 +50,11 @@
 * collect_file_pathes_by_ext
 * zip_files
 
-## Lightning API
-
-![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white)
-![PL](https://img.shields.io/badge/-PyTorch%20Lightning-792EE5.svg?logo=PyTorch%20Lightning&style=for-the-badge)
-
-* KNN: Available with euqlidean, manhattan, cosine and mahalanobis distance. Calculation on GPU.
-* NBC: GPU enabled naive bayes classifier. Can be wrapped by lightning.
-* PredictionAssistant
-
 ## Coming
 
 1. composer. auto compose functions into one sequential operation.
 2. st_integration. Usuful snipets and fast deoployment of LitModule to streamlit.
 3. U2Net fully trianable and ready to use.
-
-## TODO
-
-1. Add batch processing to knn
 
 ### Internal
 
