@@ -92,7 +92,7 @@ F.change_frame_rates_in("./test_data.mp4",fps=5)
 
 ## Coming
 
-1. st_integration. Usuful snipets and fast deoployment of LitModule to streamlit.
+1. st_integration. Usuful snipets and fast deoployment of LitModule to streamlit. (clf_template)
 
 ## **TODO**
 
