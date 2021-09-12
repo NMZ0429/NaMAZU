@@ -1,4 +1,5 @@
 from os.path import sep
+from typing import List, Tuple
 
 import numpy as np
 import torch
@@ -7,7 +8,7 @@ from pytorch_lightning import LightningModule
 from torch import Tensor
 from torchvision import transforms
 
-from .u2net import U2NET, RescaleT, ToTensorLab
+from .u2net import U2NET, U2NETP, RescaleT, ToTensorLab
 
 
 __all__ = ["LitU2Net"]
@@ -16,26 +17,23 @@ __all__ = ["LitU2Net"]
 class LitU2Net(LightningModule):
     def __init__(
         self,
-        ckpt_path: str,
         in_chans: int = 3,
         out_chans: int = 1,
-        pretrained_weight: str = None,
+        is_light_weight: bool = False,
         train_model: bool = False,
         *args,
         **kwargs
     ):
         super().__init__(*args, **kwargs)
         self.save_hyperparameters()
-        self.model = U2NET(in_ch=in_chans, out_ch=out_chans)
-        if self.hparams.pretrained_weight:  # type: ignore
-            self.model.load_state_dict(torch.load(ckpt_path))
-        self.model.eval()
+        self.__load_model()
 
         if not train_model:
             self.model.train()
             self.bce_loss = torch.nn.BCELoss(size_average=True)
 
-    def forward(self, x):
+    def forward(self, x: Tensor) -> Tuple[Tensor, ...]:
+        x = x.to(self.device)
         return self.model(x)
 
     def configure_optimizers(self):
@@ -88,13 +86,7 @@ class LitU2Net(LightningModule):
 
         return loss0, loss
 
-    def predict(
-        self,
-        x_path: str,
-        save: bool = False,
-        image_path: str = "",
-        save_path: str = "",
-    ):
+    def predict(self, x_path: str, save: bool = False, save_path: str = "",) -> Tensor:
         x = Image.open(x_path)
         x = transforms.ToTensor()(x).unsqueeze_(0)
         x = torch.tensor(x)
@@ -103,7 +95,9 @@ class LitU2Net(LightningModule):
         pred = d1[:, 0, :, :]
         pred = self.__normPRED(pred)
         if save:
-            self.__save_output(image_path, pred, save_path)
+            self.__save_output(x_path, pred, save_path)
+
+        return pred
 
     def __normPRED(self, d):
         ma = torch.max(d)
@@ -139,3 +133,27 @@ class LitU2Net(LightningModule):
         trans = transforms.Compose([RescaleT(320), ToTensorLab(flag=0)])
 
         return trans(x)
+
+    def __load_model(self) -> None:
+        """Download checkpoint file and load the model.
+        """
+
+        if self.hparams.is_light_weight:  # type: ignore
+            self.model = U2NETP(
+                in_chans=self.hparams.in_chans, out_chans=self.hparams.out_chans  # type: ignore
+            )
+            st_dict = torch.hub.load_state_dict_from_url(
+                "https://github.com/NMZ0429/NaMAZU/releases/download/Checkpoint/u2netp.pth",
+                map_location=self.device,
+            )
+
+        else:
+            self.model = U2NET(
+                in_ch=self.hparams.in_chans, out_ch=self.hparams.out_chans  # type: ignore
+            )
+            st_dict = torch.hub.load_state_dict_from_url(
+                "https://github.com/NMZ0429/NaMAZU/releases/download/Checkpoint/u2net.pth",
+                map_location=self.device,
+            )
+        self.model.load_state_dict(state_dict=st_dict)
+        self.model.eval()
