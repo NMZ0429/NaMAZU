@@ -22,7 +22,8 @@ class AniNet(LightningModule):
         self.__set_preprocess()
         self.__load_label()
 
-    def forward(self, x):
+    def forward(self, x: Tensor) -> Tensor:
+        x = x.to(self.device)
         return self.model(x)
 
     def predict(self, image_path: Union[str, List[str]]) -> torch.Tensor:
@@ -54,17 +55,19 @@ class AniNet(LightningModule):
                 txt += (
                     "* "
                     + self.label[i]
-                    + ": {:.4f} \n".format(probs[i].cpu().numpy())
+                    + ": {:.4f} \n".format(prob[i].cpu().numpy())
                     + "\n"
                 )
 
-            return results
+            results.append(txt)
 
-        def run_batch_prediction(self, image_dir: str):
-            img_files = sorted(glob(image_dir + "/*"))
-            prediction = self.predict(img_files)
-            probs = self.predict_probs(prediction)
-            results = self.calc_result(probs)
+        return results
+
+    def run_batch_prediction(self, image_dir: str):
+        img_files = sorted(glob(image_dir + "/*"))
+        prediction = self.predict(img_files)
+        probs = self.predict_probs(prediction)
+        results = self.calc_result(probs)
 
         return results
 
