@@ -18,7 +18,7 @@ class AniNet(LightningModule):
     def __init__(self, choice: str = "50") -> None:
         super().__init__()
         models = {"18": aninet18, "34": aninet34, "50": aninet50}
-        self.model = models[choice]()
+        self.model = models[choice]().eval()
         self.__set_preprocess()
         self.__load_label()
 
@@ -87,12 +87,12 @@ class AniNet(LightningModule):
         self, image_path: Union[str, List[str]]
     ) -> Union[PILImage, List[PILImage]]:
         if type(image_path) == str:
-            img = Image.open(image_path)  # type: ignore
+            img = Image.open(image_path).convert("RGB")  # type: ignore
             return img
         elif type(image_path) == list:
             img_batch = []
             for i_path in image_path:
-                img = Image.open(i_path)
+                img = Image.open(i_path).convert("RGB")
                 img_batch.append(img)
             return img_batch
         else:
