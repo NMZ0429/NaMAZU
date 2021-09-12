@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: NaMAZU
-Version: 0.0.17
+Version: 0.0.29
 Summary: NaMAZU: Pretty Usefull Library
 Home-page: https://github.com/NMZ0429/NaMAZU
 Author: NaMAZU Team
@@ -33,7 +33,7 @@ Description: <div align="center">
         ![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white)
         ![PL](https://img.shields.io/badge/-PyTorch%20Lightning-792EE5.svg?logo=PyTorch%20Lightning&style=for-the-badge)
         
-        They are all written in PyTorch and following best practice to be used with pytorch lightning. They are all GPU enabled controlled by Lightning API.
+        They are all written in PyTorch following best practice to be used with pytorch lightning. They are all GPU enabled controlled by Lightning API. You will never need to call `to("cuda")` to use the model on any device even with multi-GPU training!
         
         ```python
         import pytorch_lightning as pl
@@ -66,7 +66,10 @@ Description: <div align="center">
         ### Deep Learning
         
         * LitU2Net: LightningModule U2Net. Trainable and ready for prediction.
+        * AniNet: LightningModule image classifier pretrained for japanese animations.
         * PredictionAssistant: Coming soon.
+        
+        * * *
         
         ## Functional API
         
@@ -100,9 +103,11 @@ Description: <div align="center">
         
         ## Coming
         
-        1. st_integration. Usuful snipets and fast deoployment of LitModule to streamlit.
+        1. st_integration. Usuful snipets and fast deoployment of LitModule to streamlit. (clf_template)
         
         ## **TODO**
+        
+        Debug AniNet
         
         1. Video Recognition Model
         2. Feature Learning

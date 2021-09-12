@@ -10,12 +10,16 @@ NaMAZU/functional/__init__.py
 NaMAZU/functional/file_control.py
 NaMAZU/functional/image_control.py
 NaMAZU/lightning_wingman/__init__.py
+NaMAZU/lightning_wingman/ani_label.py
+NaMAZU/lightning_wingman/aninet.py
 NaMAZU/lightning_wingman/inference_helper.py
 NaMAZU/lightning_wingman/instance.py
+NaMAZU/lightning_wingman/lit_aninet.py
 NaMAZU/lightning_wingman/lit_u2net.py
 NaMAZU/lightning_wingman/torch_gmm.py
 NaMAZU/lightning_wingman/torch_knn.py
 NaMAZU/lightning_wingman/torch_nbc.py
 NaMAZU/lightning_wingman/u2net.py
 NaMAZU/st_integration/__init__.py
+NaMAZU/st_integration/clf_template.py
 NaMAZU/st_integration/st_utils.py
