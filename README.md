@@ -42,8 +42,8 @@ class YourLitModule(pl.LightningModule):
     def training_step(self, batch):
         x, t = batch
         y = self.encoder(x)
-        neighbors = self.head_classifier(y)
-        probability = self.estimator(y)
+        y_hat = self.head_classifier(y)
+        probability = self.estimator.predict_proba(y)
 ```
 
 ### Statistical Model
