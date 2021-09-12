@@ -94,11 +94,7 @@ F.change_frame_rates_in("./test_data.mp4",fps=5)
 
 1. st_integration. Usuful snipets and fast deoployment of LitModule to streamlit. (clf_template)
 
-## **TODO**
-
-Debug AniNet
-
-1. Video Recognition Model
-2. Feature Learning
-3. Few-shot Learning
-4. Audio-Visual Multimodal
+2. Video Recognition Model
+3. Feature Learning
+4. Few-shot Learning
+5. Audio-Visual Multimodal
