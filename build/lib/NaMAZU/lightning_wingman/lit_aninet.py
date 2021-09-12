@@ -29,7 +29,7 @@ class AniNet(LightningModule):
         batch = self._load_img(image_path)
         # img = Image.open(image_path)
         with torch.no_grad():
-            if type(batch) == PILImage:
+            if type(batch) != list:
                 batch = self.preprocess(batch).unsqueeze(0)  # type: ignore
             else:
                 batch = [self.preprocess(img) for img in batch]  # type: ignore
