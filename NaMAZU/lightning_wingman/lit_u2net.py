@@ -7,7 +7,7 @@ from pytorch_lightning import LightningModule
 from torch import Tensor
 from torchvision import transforms
 
-import NaMAZU.lightning_wingman.u2net as u2net
+from .u2net import U2NET, RescaleT, ToTensorLab
 
 
 __all__ = ["LitU2Net"]
@@ -26,7 +26,7 @@ class LitU2Net(LightningModule):
     ):
         super().__init__(*args, **kwargs)
         self.save_hyperparameters()
-        self.model = u2net.U2NET(in_ch=in_chans, out_ch=out_chans)
+        self.model = U2NET(in_ch=in_chans, out_ch=out_chans)
         if self.hparams.pretrained_weight:  # type: ignore
             self.model.load_state_dict(torch.load(ckpt_path))
         self.model.eval()
@@ -136,6 +136,6 @@ class LitU2Net(LightningModule):
         imo.save(d_dir + imidx + ".png")
 
     def __input_preprocess(self, x: Tensor):
-        trans = transforms.Compose([u2net.RescaleT(320), u2net.ToTensorLab(flag=0)])
+        trans = transforms.Compose([RescaleT(320), ToTensorLab(flag=0)])
 
         return trans(x)

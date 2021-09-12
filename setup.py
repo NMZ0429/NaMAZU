@@ -12,7 +12,7 @@ DOWNLOAD_URL = "https://github.com/NMZ0429/NaMAZU"
 VERSION = NaMAZU.__version__
 PYTHON_REQUIRES = ">=3.6.0"
 
-INSTALL_REQUIRES = ["numpy", "pillow"]
+INSTALL_REQUIRES = ["numpy", "pillow", "pytorch_lightning"]
 
 PACKAGES = setuptools.find_packages()
 
