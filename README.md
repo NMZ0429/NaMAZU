@@ -26,7 +26,7 @@ They are all written in PyTorch following best practice to be used with pytorch 
 
 ```python
 import pytorch_lightning as pl
-from NaMAZU import KNN
+from NaMAZU import KNN, GMM
 
 class YourLitModule(pl.LightningModule):
     def __init__(self,*args, **kwargs):
