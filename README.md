@@ -93,9 +93,8 @@ F.change_frame_rates_in("./test_data.mp4",fps=5)
 
 ## Coming
 
-1. st_integration. Usuful snipets and fast deoployment of LitModule to streamlit. (clf_template)
-
-2. Video Recognition Model
-3. Feature Learning
-4. Few-shot Learning
-5. Audio-Visual Multimodal
+- [ ] 1. st_integration. Usuful snipets and fast deoployment of LitModule to streamlit. (clf_template)
+- [ ] 2. Video Recognition Model
+- [ ] 3. Feature Learning
+- [ ] 4. Few-shot Learning
+- [ ] 5. Audio-Visual Multimodal
