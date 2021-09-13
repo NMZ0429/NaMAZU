@@ -1,6 +1,6 @@
 from os.path import join
 from pathlib import Path
-from typing import Callable, Tuple
+from typing import Callable, Tuple, Union
 
 import cv2
 import numpy as np
@@ -65,6 +65,28 @@ def npy_to_png(npy_path: str, save: bool = False, file_name: str = None) -> Imag
         img.save(file_name + ".png")
 
     return img
+
+
+def apply_mask_to(target_img: Union[Image, str], mask_img: Union[Image, str]) -> Image:
+    """Apply mask to target image.
+
+    Args:
+        target_img (Union[Image, str]): PIL Image or path to image to apply mask to.
+        mask_img (Union[Image, str]): PIL Image or path to mask image.
+
+    Returns:
+        Image: PIL Image object with applied mask.
+    """
+    if isinstance(target_img, str):
+        target_img = PILImage.open(target_img)
+    if isinstance(mask_img, str):
+        mask_img = PILImage.open(mask_img)
+
+    mask = mask_img.convert("L")
+    target_img_cp = target_img.copy()
+    target_img_cp.putalpha(mask)
+
+    return target_img_cp
 
 
 def split_image(

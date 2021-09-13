@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: NaMAZU
-Version: 0.0.29
+Version: 0.0.31
 Summary: NaMAZU: Pretty Usefull Library
 Home-page: https://github.com/NMZ0429/NaMAZU
 Author: NaMAZU Team
@@ -37,7 +37,7 @@ Description: <div align="center">
         
         ```python
         import pytorch_lightning as pl
-        from NaMAZU import KNN
+        from NaMAZU import KNN, GMM
         
         class YourLitModule(pl.LightningModule):
             def __init__(self,*args, **kwargs):
@@ -53,8 +53,8 @@ Description: <div align="center">
             def training_step(self, batch):
                 x, t = batch
                 y = self.encoder(x)
-                neighbors = self.head_classifier(y)
-                probability = self.estimator(y)
+                y_hat = self.head_classifier(y)
+                probability = self.estimator.predict_proba(y)
         ```
         
         ### Statistical Model
@@ -91,6 +91,7 @@ Description: <div align="center">
         * img_to_npy
         * split_image
         * compose_two_png
+        * apply_mask_to
         * apply_to_all
         * change_frame_rates_in
         * save_all_frames
@@ -105,14 +106,14 @@ Description: <div align="center">
         
         1. st_integration. Usuful snipets and fast deoployment of LitModule to streamlit. (clf_template)
         
-        ## **TODO**
+        2. Video Recognition Model
+        3. Feature Learning
+        4. Few-shot Learning
+        5. Audio-Visual Multimodal
         
-        Debug AniNet
+        # TODO
         
-        1. Video Recognition Model
-        2. Feature Learning
-        3. Few-shot Learning
-        4. Audio-Visual Multimodal
+        Test U2Net
         
 Platform: UNKNOWN
 Requires-Python: >=3.6.0

@@ -1,4 +1,4 @@
-__version__ = "0.0.29"
+__version__ = "0.0.31"
 
 import NaMAZU.lightning_wingman
 import NaMAZU.functional

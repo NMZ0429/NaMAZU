@@ -173,11 +173,3 @@ class LitU2Net(LightningModule):
             )
         self.model.load_state_dict(state_dict=st_dict)
         self.model.eval()
-
-    def debug_method(self):
-        # pred = torch.load("boat_pred.pth")
-        inp = torch.load("boat_input.pth")
-        d1 = self.forward(inp)[0]
-        pred = d1[:, 0, :, :]
-        pred = self.__normPRED(pred)
-        self.__save_output("boat.jpg", pred, "debug-")
