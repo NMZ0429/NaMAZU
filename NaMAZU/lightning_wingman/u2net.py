@@ -553,8 +553,8 @@ class RescaleT(object):
         assert isinstance(output_size, (int, tuple))
         self.output_size = output_size
 
-    def __call__(self, sample):
-        imidx, image, label = sample["imidx"], sample["image"], sample["label"]
+    def __call__(self, image: np.ndarray):
+        # imidx, image, label = sample["imidx"], sample["image"], sample["label"]
 
         h, w = image.shape[:2]
 
@@ -575,15 +575,17 @@ class RescaleT(object):
         img = transform.resize(
             image, (self.output_size, self.output_size), mode="constant"
         )
-        lbl = transform.resize(
+        """lbl = transform.resize(
             label,
             (self.output_size, self.output_size),
             mode="constant",
             order=0,
             preserve_range=True,
-        )
+        )"""
 
-        return {"imidx": imidx, "image": img, "label": lbl}
+        # return {"imidx": imidx, "image": img, "label": lbl}
+
+        return img
 
 
 class Rescale(object):
@@ -692,17 +694,17 @@ class ToTensorLab(object):
     def __init__(self, flag=0):
         self.flag = flag
 
-    def __call__(self, sample):
+    def __call__(self, image: np.ndarray):
 
-        imidx, image, label = sample["imidx"], sample["image"], sample["label"]
+        # imidx, image, label = sample["imidx"], sample["image"], sample["label"]
 
-        tmpLbl = np.zeros(label.shape)
+        """tmpLbl = np.zeros(label.shape)
 
         if np.max(label) < 1e-6:
             label = label
         else:
             label = label / np.max(label)
-
+        """
         # change the color space
         if self.flag == 2:  # with rgb and Lab colors
             tmpImg = np.zeros((image.shape[0], image.shape[1], 6))
@@ -802,18 +804,19 @@ class ToTensorLab(object):
                 tmpImg[:, :, 1] = (image[:, :, 1] - 0.456) / 0.224
                 tmpImg[:, :, 2] = (image[:, :, 2] - 0.406) / 0.225
 
-        tmpLbl[:, :, 0] = label[:, :, 0]
+        # tmpLbl[:, :, 0] = label[:, :, 0]
 
         # change the r,g,b to b,r,g from [0,255] to [0,1]
         # transforms.Normalize(mean = (0.485, 0.456, 0.406), std = (0.229, 0.224, 0.225))
         tmpImg = tmpImg.transpose((2, 0, 1))
-        tmpLbl = label.transpose((2, 0, 1))
+        # tmpLbl = label.transpose((2, 0, 1))
 
-        return {
+        """return {
             "imidx": torch.from_numpy(imidx),
             "image": torch.from_numpy(tmpImg),
             "label": torch.from_numpy(tmpLbl),
-        }
+        }"""
+        return torch.from_numpy(tmpImg)
 
 
 class SalObjDataset(Dataset):
