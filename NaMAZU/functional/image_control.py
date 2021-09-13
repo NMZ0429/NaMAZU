@@ -9,9 +9,10 @@ from PIL.Image import Image
 from tqdm import tqdm
 
 
-all_funcs = [
+__all__ = [
     "img_to_npy",
     "npy_to_png",
+    "apply_mask_to",
     "split_image",
     "compose_two_png",
     "apply_to_all",
