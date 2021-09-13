@@ -91,7 +91,7 @@ F.change_frame_rates_in("./test_data.mp4",fps=5)
 * collect_file_pathes_by_ext
 * zip_files
 
-## Coming
+## :rocket: Coming
 
 - [ ] 1. st_integration. Usuful snipets and fast deoployment of LitModule to streamlit. (clf_template)
 - [ ] 2. Video Recognition Model
