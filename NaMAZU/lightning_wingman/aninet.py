@@ -112,7 +112,6 @@ def aninet18(pretrained=True, progress=True, top_n=100, **kwargs):
                 if torch.cuda.is_available()
                 else torch.device("cpu"),
             )
-            # state = torch.load('weights/resnet18.pth')
             model.load_state_dict(state)
         else:
             raise ValueError(
@@ -143,7 +142,6 @@ def aninet34(pretrained=True, progress=True, top_n=500, **kwargs):
                 if torch.cuda.is_available()
                 else torch.device("cpu"),
             )
-            # state = torch.load('weights/resnet34.pth')
             model.load_state_dict(state)
         else:
             raise ValueError(
@@ -173,7 +171,6 @@ def aninet50(pretrained=True, progress=True, top_n=6000, **kwargs):
                 if torch.cuda.is_available()
                 else torch.device("cpu"),
             )
-            # state = torch.load('weights/resnet50.pth')
             model.load_state_dict(state)
         else:
             raise ValueError(
