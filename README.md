@@ -65,6 +65,7 @@ class YourLitModule(pl.LightningModule):
 ![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white)
 ![FFmpeg](https://img.shields.io/badge/FFmpeg-007808.svg?style=for-the-badge&logo=FFmpeg&logoColor=white)
 ![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8.svg?style=for-the-badge&logo=OpenCV&logoColor=white)
+![SKlearn](https://img.shields.io/badge/Scikit_learn-F7931E.svg?style=for-the-badge&logo=scikit-learn&logoColor=white)
 
 You can use below functions via
 
