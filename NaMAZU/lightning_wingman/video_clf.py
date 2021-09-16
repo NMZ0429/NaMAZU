@@ -4,6 +4,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 from timm.models import create_model
 
+__all__ = ["CNNClassifier", "CNNLSTM"]
+
 
 class FeatureExtractor(nn.Module):
     """CNN module for feature extraction. The last layer is a linear layer with latent_dim output channels

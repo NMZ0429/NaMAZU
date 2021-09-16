@@ -8,6 +8,8 @@ from torch.optim.lr_scheduler import StepLR
 
 from video_clf import CNNLSTM, CNNClassifier
 
+__all__ = ["LitVideoClf"]
+
 
 class LitVideoClf(LightningModule):
     def __init__(self, use_lstm: bool, model_config: dict, *args, **kwargs):
