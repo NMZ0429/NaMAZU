@@ -83,7 +83,7 @@ class CNNLSTM(nn.Module):
         self,
         num_classes: int,
         latent_dim: int = 512,
-        backbone: str = "resnet152d",
+        cnn: str = "resnet152d",
         lstm_layers: int = 1,
         hidden_dim: int = 1024,
         bidirectional: bool = True,
@@ -101,7 +101,7 @@ class CNNLSTM(nn.Module):
             attention (bool, optional): Whether to self attention before classification layer. Defaults to True.
         """
         super().__init__()
-        self.encoder = FeatureExtractor(latent_dim, cnn=backbone)
+        self.encoder = FeatureExtractor(latent_dim, cnn=cnn)
         self.lstm = LSTM(latent_dim, lstm_layers, hidden_dim, bidirectional)
         self.output_layers = nn.Sequential(
             nn.Linear(2 * hidden_dim if bidirectional else hidden_dim, hidden_dim),

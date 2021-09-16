@@ -12,9 +12,17 @@ __all__ = ["LitVideoClf"]
 
 
 class LitVideoClf(LightningModule):
-    def __init__(self, use_lstm: bool, model_config: dict, *args, **kwargs):
+    def __init__(self, use_lstm: bool, model_config: dict, *args, **kwargs) -> None:
+        """Lighting module for video classification.
+
+        Args:
+            use_lstm (bool): whether to use CNNLSTM or single frame CNN
+            model_config (dict): Dictionary with model configuration for CNNLSTM or CNNClassifier
+        """
         super().__init__(*args, **kwargs)
         self.save_hyperparameters()
+
+        self.__check_model_config(model_config)
 
         if use_lstm:
             self.model = CNNLSTM(**model_config)
@@ -55,3 +63,34 @@ class LitVideoClf(LightningModule):
         self.log("acc/test", accuracy)
 
         return loss
+
+    def __check_model_config(self, config_dict: dict) -> bool:
+        """Return true if config_dict contains keys which are
+        num_classes, latent_dim, cnn for CNNClassifier. If
+        self.hparams.use_lstm is true, dict also needs to have
+        lstm_layers, hidden_dim, bidirectional and attention.
+        Return false if keys are missing.
+        
+        Args:
+            config_dict (dict): Dictionary with model configuration
+        """
+        if not config_dict:
+            raise ValueError("config_dict is empty")
+
+        if not config_dict.get("num_classes"):
+            raise ValueError("config_dict must contain num_classes for CNNClassifier")
+        if not config_dict.get("latent_dim"):
+            raise ValueError("config_dict must contain latent_dim for CNNClassifier")
+        if not config_dict.get("cnn"):
+            raise ValueError("config_dict must contain cnn for CNNClassifier")
+        if not self.hparams.use_lstm:  # type: ignore
+            if not config_dict.get("lstm_layers"):
+                raise ValueError("config_dict must contain lstm_layers for CNNLSTM")
+            if not config_dict.get("hidden_dim"):
+                raise ValueError("config_dict must contain hidden_dim for CNNLSTM")
+            if not config_dict.get("bidirectional"):
+                raise ValueError("config_dict must contain bidirectional for CNNLSTM")
+            if not config_dict.get("attention"):
+                raise ValueError("config_dict must contain attention for CNNLSTM")
+
+        return True
