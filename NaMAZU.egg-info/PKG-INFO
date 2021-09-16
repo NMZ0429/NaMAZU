@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: NaMAZU
-Version: 0.0.32
+Version: 0.0.33
 Summary: NaMAZU: Pretty Usefull Library
 Home-page: https://github.com/NMZ0429/NaMAZU
 Author: NaMAZU Team
@@ -65,8 +65,11 @@ Description: <div align="center">
         
         ### Deep Learning
         
+        They are all ready-to-train models with MNIST, ImageNet, UCF101 etc... using [LightingDataModule](https://pytorch-lightning.readthedocs.io/en/latest/extensions/datamodules.html).
+        
         * LitU2Net: LightningModule U2Net. Trainable and ready for prediction.
         * AniNet: LightningModule image classifier pretrained for japanese animations.
+        * LitVideoClf: LightningModule video classfier using either single frame CNN or CNNLSTM.
         * PredictionAssistant: Coming soon.
         
         * * *
@@ -109,7 +112,8 @@ Description: <div align="center">
         ## :rocket: Coming
         
         * [ ] 1. st_integration. Usuful snipets and fast deoployment of LitModule to streamlit. (clf_template)
-        * [ ] 2. Video Recognition Model
+        * [ ] 2. InferenceHelper
+        * [x] 2. Video Recognition Model
         * [ ] 3. Feature Learning
         * [ ] 4. Few-shot Learning
         * [ ] 5. Audio-Visual Multimodal
