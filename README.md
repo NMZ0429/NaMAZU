@@ -54,8 +54,11 @@ class YourLitModule(pl.LightningModule):
 
 ### Deep Learning
 
+They are all ready-to-train models with MNIST, ImageNet, UCF101 etc... using [LightingDataModule](https://pytorch-lightning.readthedocs.io/en/latest/extensions/datamodules.html).
+
 * LitU2Net: LightningModule U2Net. Trainable and ready for prediction.
 * AniNet: LightningModule image classifier pretrained for japanese animations.
+* LitVideoClf: LightningModule video classfier using either single frame CNN or CNNLSTM.
 * PredictionAssistant: Coming soon.
 
 * * *
@@ -99,7 +102,8 @@ F.change_frame_rates_in("./test_data.mp4",fps=5)
 ## :rocket: Coming
 
 * [ ] 1. st_integration. Usuful snipets and fast deoployment of LitModule to streamlit. (clf_template)
-* [ ] 2. Video Recognition Model
+* [ ] 2. InferenceHelper
+* [x] 2. Video Recognition Model
 * [ ] 3. Feature Learning
 * [ ] 4. Few-shot Learning
 * [ ] 5. Audio-Visual Multimodal
