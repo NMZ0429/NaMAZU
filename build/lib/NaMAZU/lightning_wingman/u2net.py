@@ -640,8 +640,8 @@ class RandomCrop(object):
         h, w = image.shape[:2]
         new_h, new_w = self.output_size
 
-        top = np.random.randint(0, h - new_h)
-        left = np.random.randint(0, w - new_w)
+        top = np.random.randint(0, h - new_h)  # type: ignore
+        left = np.random.randint(0, w - new_w)  # type: ignore
 
         image = image[top : top + new_h, left : left + new_w]
         label = label[top : top + new_h, left : left + new_w]

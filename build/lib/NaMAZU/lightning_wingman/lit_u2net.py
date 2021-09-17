@@ -1,6 +1,6 @@
 from os.path import sep
 from pathlib import Path
-from typing import List, Tuple
+from typing import List, Tuple, Literal
 
 import cv2
 import numpy as np
@@ -16,16 +16,16 @@ from .u2net import U2NET, U2NETP, RescaleT, ToTensorLab
 
 __all__ = ["LitU2Net"]
 
-# TODO: implement U2NETP
+
 class LitU2Net(LightningModule):
     def __init__(
         self,
         in_chans: int = 3,
         out_chans: int = 1,
-        is_light_weight: bool = False,
+        model_type: Literal["basic", "mobile", "human", "portrait"] = "basic",
         train_model: bool = False,
         *args,
-        **kwargs
+        **kwargs,
     ):
         super().__init__(*args, **kwargs)
         self.save_hyperparameters()
@@ -153,23 +153,25 @@ class LitU2Net(LightningModule):
     def __load_model(self) -> None:
         """Download checkpoint file and load the model.
         """
+        url_dict = {
+            "mobile": "https://github.com/NMZ0429/NaMAZU/releases/download/Checkpoint/mobile.pth",
+            "basic": "https://github.com/NMZ0429/NaMAZU/releases/download/Checkpoint/basic.pth",
+            "human": "https://github.com/NMZ0429/NaMAZU/releases/download/Checkpoint/human_seg.pth",
+            "portrait": "https://github.com/NMZ0429/NaMAZU/releases/download/Checkpoint/portrait.pth",
+        }
 
-        if self.hparams.is_light_weight:  # type: ignore
+        if not self.model_type in url_dict:
+            raise ValueError(f"model_type {self.hparams.model_type} is not supported")  # type: ignore
+
+        url = url_dict[self.hparams.model_type]  # type: ignore
+        if self.hparams.model_type == "mobile":  # type: ignore
             self.model = U2NETP(
                 in_chans=self.hparams.in_chans, out_chans=self.hparams.out_chans  # type: ignore
             )
-            st_dict = torch.hub.load_state_dict_from_url(
-                "https://github.com/NMZ0429/NaMAZU/releases/download/Checkpoint/u2netp.pth",
-                map_location=self.device,
-            )
-
         else:
             self.model = U2NET(
-                in_ch=self.hparams.in_chans, out_ch=self.hparams.out_chans  # type: ignore
+                in_chans=self.hparams.in_chans, out_chans=self.hparams.out_chans  # type: ignore
             )
-            st_dict = torch.hub.load_state_dict_from_url(
-                "https://github.com/NMZ0429/NaMAZU/releases/download/Checkpoint/u2net.pth",
-                map_location=self.device,
-            )
+        st_dict = torch.hub.load_state_dict_from_url(url, map_location=self.device,)
         self.model.load_state_dict(state_dict=st_dict)
         self.model.eval()
