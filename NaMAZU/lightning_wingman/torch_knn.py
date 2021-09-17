@@ -31,7 +31,7 @@ class KNN(torch.nn.Module):
         self.num_classes: int = 0
         self.distance_measure = distance_measure
 
-        if self.training_labels:
+        if self.training_labels is not None:
             self.num_classes = int(self.training_labels.max().item() + 1)
 
         self.__choose_distance_measure()
@@ -55,7 +55,7 @@ class KNN(torch.nn.Module):
         Raises:
             ValueError: Raise if the model has not been fit.
         """
-        if not self.training_data:
+        if self.training_data is None:
             raise ValueError(
                 "Model hasn't been fitted yet. Use self.fit(training_data)."
             )
