@@ -107,3 +107,5 @@ F.change_frame_rates_in("./test_data.mp4",fps=5)
 * [ ] 3. Feature Learning
 * [ ] 4. Few-shot Learning
 * [ ] 5. Audio-Visual Multimodal
+* [ ] 6. BBox template finding
+* [ ] 7. CACNet
