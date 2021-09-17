@@ -1,4 +1,4 @@
-from typing import Tuple
+from typing import Tuple, Union
 import torch
 import numpy as np
 
@@ -10,38 +10,18 @@ __all__ = ["GMM"]
 
 
 class GMM(torch.nn.Module):
-    """
-    Fits a mixture of k=1,..,K Gaussians to the input data (K is supplied via n_components).
-    Input tensors are expected to be flat with dimensions (n: number of samples, d: number of features).
-    The model then extends them to (n, 1, d).
-    The model parametrization (mu, sigma) is stored as (1, k, d),
-    probabilities are shaped (n, k, 1) if they relate to an individual sample,
-    or (1, k, 1) if they assign membership probabilities to one of the mixture components.
-    """
+    """PyTorch implementation of Gauusian Mixture Model with pytorch lightning support.
 
-    """
-    Initializes the model and brings all tensors into their required shape.
-    The class expects data to be fed as a flat tensor in (n, d).
-    The class owns:
-        x:               torch.Tensor (n, 1, d)
-        mu:              torch.Tensor (1, k, d)
-        var:             torch.Tensor (1, k, d) or (1, k, d, d)
-        pi:              torch.Tensor (1, k, 1)
-        covariance_type: str
-        eps:             float
-        init_params:     str
-        log_likelihood:  float
-        n_components:    int
-        n_features:      int
-    args:
-        n_components:    int
-        n_features:      int
-    options:
-        mu_init:         torch.Tensor (1, k, d)
-        var_init:        torch.Tensor (1, k, d) or (1, k, d, d)
-        covariance_type: str
-        eps:             float
-        init_params:     str
+    Attributes:
+        var (Tensor): Variance of the Gaussian distribution.
+        mu (Tensor): Mean of the Gaussian distribution.
+        pi (Tensor): Weight of the Gaussian distribution.
+        covariance_type (str): Type of covariance, one of ["diag", "full"].
+        eps (float): Precision.
+        init_params (str): Method to init params, one of ["random","kmeans"].
+        log_likelihood (float): Log-likelihood of the data.
+        n_components (int): Number of mixture components.
+        n_features (int): Number of features per sample.
     """
 
     def __init__(
@@ -53,7 +33,7 @@ class GMM(torch.nn.Module):
         init_params: str = "kmeans",
         mu_init: Tensor = None,
         var_init: Tensor = None,
-    ):
+    ) -> None:
         """Initialize GMM  
 
         Args:
@@ -82,9 +62,9 @@ class GMM(torch.nn.Module):
         assert self.covariance_type in ["full", "diag"]
         assert self.init_params in ["kmeans", "random"]
 
-        self._init_params()
+        self.__init_params()
 
-    def _init_params(self):
+    def __init_params(self):
         """Initializes the model parameters using the given initialization method.
         """
         if self.mu_init is not None:
@@ -93,9 +73,9 @@ class GMM(torch.nn.Module):
                 % (self.n_components, self.n_features)
             )
             # (1, k, d)
-            self.mu = torch.nn.Parameter(self.mu_init, requires_grad=False)
+            self.mu = torch.nn.Parameter(self.mu_init, requires_grad=False)  # type: ignore
         else:
-            self.mu = torch.nn.Parameter(
+            self.mu = torch.nn.Parameter(  # type: ignore
                 torch.randn(1, self.n_components, self.n_features), requires_grad=False
             )
 
@@ -110,9 +90,9 @@ class GMM(torch.nn.Module):
                     "Input var_init does not have required tensor dimensions (1, %i, %i)"
                     % (self.n_components, self.n_features)
                 )
-                self.var = torch.nn.Parameter(self.var_init, requires_grad=False)
+                self.var = torch.nn.Parameter(self.var_init, requires_grad=False)  # type: ignore
             else:
-                self.var = torch.nn.Parameter(
+                self.var = torch.nn.Parameter(  # type: ignore
                     torch.ones(1, self.n_components, self.n_features),
                     requires_grad=False,
                 )
@@ -128,9 +108,9 @@ class GMM(torch.nn.Module):
                     "Input var_init does not have required tensor dimensions (1, %i, %i, %i)"
                     % (self.n_components, self.n_features, self.n_features)
                 )
-                self.var = torch.nn.Parameter(self.var_init, requires_grad=False,)
+                self.var = torch.nn.Parameter(self.var_init, requires_grad=False,)  # type: ignore
             else:
-                self.var = torch.nn.Parameter(
+                self.var = torch.nn.Parameter(  # type: ignore
                     torch.eye(self.n_features, dtype=torch.float64)
                     .reshape(1, 1, self.n_features, self.n_features)
                     .repeat(1, self.n_components, 1, 1),
@@ -138,7 +118,7 @@ class GMM(torch.nn.Module):
                 )
 
         # (1, k, 1)
-        self.pi = torch.nn.Parameter(
+        self.pi = torch.nn.Parameter(  # type: ignore
             torch.Tensor(1, self.n_components, 1), requires_grad=False
         ).fill_(1.0 / self.n_components)
 
@@ -151,13 +131,14 @@ class GMM(torch.nn.Module):
 
         return x
 
-    def bic(self, x):
-        """
-        Bayesian information criterion for a batch of samples.
-        args:
-            x:      torch.Tensor (n, d) or (n, 1, d)
-        returns:
-            bic:    float
+    def bic(self, x: Tensor) -> float:
+        """Bayesian information criterion for a batch of samples.
+
+        Args:
+            x (Tensor): Samples of shape (n, d) or (n, 1, d).
+        
+        Returns:
+            float: BIC score.
         """
         x = self.__check_size(x)
         n = x.shape[0]
@@ -176,18 +157,25 @@ class GMM(torch.nn.Module):
 
         return bic
 
-    def fit(self, x: Tensor, delta=1e-3, n_iter=100, warm_start=False) -> None:
-        """
-        Fits model to the data.
-        args:
-            x:          torch.Tensor (n, d) or (n, k, d)
-        options:
-            delta:      float
-            n_iter:     int
-            warm_start: bool
+    def fit(
+        self, x: Tensor, delta: float = 1e-3, n_iter: int = 100, warm_start=False
+    ) -> None:
+        """Fits a mixture of k=1,..,K Gaussians to the input data (K is supplied via n_components).
+
+        Input tensors are expected to be flat with dimensions (n: number of samples, d: number of features).
+        The model then extends them to (n, 1, d).
+        The model parametrization (mu, sigma) is stored as (1, k, d),
+        probabilities are shaped (n, k, 1) if they relate to an individual sample,
+        or (1, k, 1) if they assign membership probabilities to one of the mixture components.
+
+        Args:
+            x (Tensor): A tensor of shape (n, d) or (n, 1, d).
+            delta (float, optional): Delta param for EM algorithm. Defaults to 1e-3.
+            n_iter (int, optional): Number of iteration to fit. Defaults to 100.
+            warm_start (bool, optional): True to prevent initializing parameters. Defaults to False.
         """
         if not warm_start and self.params_fitted:
-            self._init_params()
+            self.__init_params()
 
         x = self.__check_size(x)
 
@@ -230,22 +218,23 @@ class GMM(torch.nn.Module):
 
             if j <= delta:
                 # When score decreases, revert to old parameters
-                self.__update_mu(mu_old)
-                self.__update_var(var_old)
+                self.__update_mu(mu_old)  # type: ignore
+                self.__update_var(var_old)  # type: ignore
 
         self.params_fitted = True
 
-    def forward(self, x, probs=False):
-        """
-        Assigns input data to one of the mixture components by evaluating the likelihood under each.
-        If probs=True returns normalized probabilities of class membership.
-        args:
-            x:          torch.Tensor (n, d) or (n, 1, d)
-            probs:      bool
-        returns:
-            p_k:        torch.Tensor (n, k)
-            (or)
-            y:          torch.LongTensor (n)
+    def forward(self, x, probs=False) -> Tensor:
+        """Predict assignment of x to mixture components by calculating the
+        likelihood that each component is responsible for each point in x.
+        If prob is True, returns normalized probability of each class for each point.
+
+        Args:
+            x (Tensor): A tensor of shape (n, d) or (n, 1, d).
+            probs (bool, optional): True to get normalized probabilities for each class. 
+                                    Defaults to False.
+
+        Returns:
+            Tensor: A tensor of shape (n) if probs is False, else (n, k) 
         """
         x = self.__check_size(x)
 
@@ -259,36 +248,35 @@ class GMM(torch.nn.Module):
                 torch.max(weighted_log_prob, 1)[1].type(torch.LongTensor)  # type: ignore
             )
 
-    def predict_proba(self, x):
+    def predict_proba(self, x: Tensor) -> Tensor:
         """
         Returns normalized probabilities of class membership.
-        args:
-            x:          torch.Tensor (n, d) or (n, 1, d)
-        returns:
-            y:          torch.LongTensor (n)
+        Args:
+            x (Tensor): A tensor of shape (n, d) or (n, 1, d).
+        Returns:
+            Tensor: A tensor of shape (n)
         """
         return self(x, probs=True)
 
-    def score_samples(self, x):
-        """
-        Computes log-likelihood of samples under the current model.
-        args:
-            x:          torch.Tensor (n, d) or (n, 1, d)
-        returns:
-            score:      torch.LongTensor (n)
+    def score_samples(self, x: Tensor) -> Tensor:
+        """Return log-likelihood of data under the model with current params.
+        Args:
+            x (Tensor): A tensor of shape (n, d) or (n, 1, d).
+        Returns:
+            Tensor: A tensor of shape (n).
         """
         x = self.__check_size(x)
-
         score = self.__score(x, sum_data=False)
+
         return score
 
-    def _estimate_log_prob(self, x):
+    def _estimate_log_prob(self, x: Tensor) -> Tensor:
         """
-        Returns a tensor with dimensions (n, k, 1), which indicates the log-likelihood that samples belong to the k-th Gaussian.
-        args:
-            x:            torch.Tensor (n, d) or (n, 1, d)
-        returns:
-            log_prob:     torch.Tensor (n, k, 1)
+        Return (n, k, 1) tensor of the log-likelihood for each k-th component.
+        Args:
+            x (Tensor): A tensor of shape (n, d) or (n, 1, d).
+        Returns:
+            Tensor: A tensor of shape (n, k, 1)
         """
         x = self.__check_size(x)
 
@@ -325,11 +313,17 @@ class GMM(torch.nn.Module):
 
             return -0.5 * (self.n_features * np.log(2.0 * pi) + log_p) + log_det
 
-    def _calculate_log_det(self, var):
-        """
-        Calculate log determinant in log space, to prevent overflow errors.
-        args:
-            var:            torch.Tensor (1, k, d, d)
+        else:
+            raise ValueError("Invalid covariance type.")
+
+    def _calculate_log_det(self, var: Tensor) -> Tensor:
+        """Calculate the log determinant of a matrix to prevent overflow.
+
+        Args:
+            var (Tensor): A tensor of shape (1, k, d, d).
+
+        Returns:
+            Tensor: A tensor of shape (1, k, 1).
         """
         log_det = torch.empty(size=(self.n_components,)).to(var.device)
 
@@ -339,16 +333,18 @@ class GMM(torch.nn.Module):
 
         return log_det.unsqueeze(-1)
 
-    def _e_step(self, x):
-        """
-        Computes log-responses that indicate the (logarithmic) posterior belief (sometimes called responsibilities) that a data point was generated by one of the k mixture components.
+    def _e_step(self, x: Tensor) -> Tuple[Tensor, Tensor]:
+        """E-step of the EM algorithm.
+
         Also returns the mean of the mean of the logarithms of the probabilities (as is done in sklearn).
         This is the so-called expectation step of the EM-algorithm.
-        args:
-            x:              torch.Tensor (n, d) or (n, 1, d)
-        returns:
-            log_prob_norm:  torch.Tensor (1)
-            log_resp:       torch.Tensor (n, k, 1)
+
+        Args:
+            x (Tensor): A tensor of shape (n, d) or (n, 1, d).
+
+        Returns:
+            log_prob_norm (Tensor):  torch.Tensor (1)
+            log_resp (Tensor):       torch.Tensor (n, k, 1)
         """
         x = self.__check_size(x)
 
@@ -360,15 +356,18 @@ class GMM(torch.nn.Module):
         return torch.mean(log_prob_norm), log_resp
 
     def _m_step(self, x: Tensor, log_resp: Tensor) -> Tuple[Tensor, Tensor, Tensor]:
-        """
+        """M-step of the EM algorithm.
+
         From the log-probabilities, computes new parameters pi, mu, var (that maximize the log-likelihood). This is the maximization step of the EM-algorithm.
-        args:
-            x:          torch.Tensor (n, d) or (n, 1, d)
-            log_resp:   torch.Tensor (n, k, 1)
-        returns:
-            pi:         torch.Tensor (1, k, 1)
-            mu:         torch.Tensor (1, k, d)
-            var:        torch.Tensor (1, k, d)
+        
+        Args:
+            x (Tensor): A tensor of shape (n, d) or (n, 1, d).
+            log_resp (Tensor): A tensor of shape (n, k, 1).
+        
+        Returns:
+            pi (Tensor): A tensor of shape (1, k, 1).
+            mu (Tensor): A tensor of shape (1, k, d).
+            var (Tensor): A tensor of shape (1, k, d, d).
         """
         x = self.__check_size(x)
 
@@ -401,11 +400,13 @@ class GMM(torch.nn.Module):
 
         return pi, mu, var
 
-    def __em(self, x):
-        """
+    def __em(self, x: Tensor) -> None:
+        """Single iteration of the EM algorithm.
+
         Performs one iteration of the expectation-maximization algorithm by calling the respective subroutines.
-        args:
-            x:          torch.Tensor (n, 1, d)
+        
+        Args:
+            x (Tensor): A tensor of shape (n, 1, d).
         """
         _, log_resp = self._e_step(x)
         pi, mu, var = self._m_step(x, log_resp)
@@ -414,17 +415,18 @@ class GMM(torch.nn.Module):
         self.__update_mu(mu)
         self.__update_var(var)
 
-    def __score(self, x, sum_data=True):
-        """
-        Computes the log-likelihood of the data under the model.
-        args:
-            x:                  torch.Tensor (n, 1, d)
-            sum_data:           bool
-        returns:
-            score:              torch.Tensor (1)
-            (or)
-            per_sample_score:   torch.Tensor (n)
+    def __score(self, x: Tensor, sum_data: bool = True) -> Tensor:
+        """Computes the log-likelihood of the data under the model.
 
+        Return summed log-likelihood if sum_data is True, otherwise 
+        returns the log-likelihood for each data point.
+
+        Args:
+            x (Tensor): A tensor of shape (n, 1, d).
+            sum_data (bool): If True, sum the log-likelihood over the data points.
+
+        Returns:
+            Tensor: Summed log_likelihood if sum_data is True, otherwise log_likelihood for each data point.
         """
         weighted_log_prob = self._estimate_log_prob(x) + torch.log(self.pi)
         per_sample_score = torch.logsumexp(weighted_log_prob, dim=1)
@@ -434,11 +436,11 @@ class GMM(torch.nn.Module):
         else:
             return torch.squeeze(per_sample_score)
 
-    def __update_mu(self, mu):
-        """
-        Updates mean to the provided value.
-        args:
-            mu:         torch.FloatTensor
+    def __update_mu(self, mu: Union[Tensor, torch.FloatTensor]) -> None:
+        """Updates mean to the provided value.
+
+        Args:
+            mu (torch.FloatTensor): A tensor of shape (1, k, d).
         """
         assert mu.size() in [
             (self.n_components, self.n_features),
@@ -453,11 +455,10 @@ class GMM(torch.nn.Module):
         elif mu.size() == (1, self.n_components, self.n_features):
             self.mu.data = mu
 
-    def __update_var(self, var):
-        """
-        Updates variance to the provided value.
+    def __update_var(self, var: Union[Tensor, torch.FloatTensor]) -> None:
+        """Updates variance to the provided value.
         args:
-            var:        torch.FloatTensor
+            var (torch.FloatTensor): A tensor of shape (1, k, d, d).
         """
         if self.covariance_type == "full":
             assert var.size() in [
@@ -499,11 +500,11 @@ class GMM(torch.nn.Module):
             elif var.size() == (1, self.n_components, self.n_features):
                 self.var.data = var
 
-    def __update_pi(self, pi):
-        """
-        Updates pi to the provided value.
-        args:
-            pi:         torch.FloatTensor
+    def __update_pi(self, pi: Union[Tensor, torch.FloatTensor]) -> None:
+        """Updates pi to the provided value.
+        
+        Args:
+            pi (torch.FloatTensor): A tensor of shape (1, k).
         """
         assert pi.size() in [(1, self.n_components, 1)], (
             "Input pi does not have required tensor dimensions (%i, %i, %i)"
@@ -512,14 +513,21 @@ class GMM(torch.nn.Module):
 
         self.pi.data = pi
 
-    def get_kmeans_mu(self, x, n_centers, init_times=50, min_delta=1e-3):
-        """
-        Find an initial value for the mean. Requires a threshold min_delta for the k-means algorithm to stop iterating.
+    def get_kmeans_mu(
+        self, x, n_centers, init_times: int = 50, min_delta: float = 1e-3
+    ) -> Tensor:
+        """Find an initial value for the mean. 
+        
+        Requires a threshold min_delta for the k-means algorithm to stop iterating.
         The algorithm is repeated init_times often, after which the best centerpoint is returned.
-        args:
-            x:            torch.FloatTensor (n, d) or (n, 1, d)
-            init_times:   init
-            min_delta:    int
+
+        Args:
+            x (Tensor): A tensor of shape of (n, d) or (n, 1, d).
+            init_times (int): Number of times to run the k-means algorithm.
+            min_delta (float): Minimum change in the loss function to stop the k-means algorithm.
+        
+        Returns:
+            Tensor: A tensor of shape (1, k, d).
         """
         if len(x.size()) == 3:
             x = x.squeeze(1)
@@ -566,13 +574,19 @@ class GMM(torch.nn.Module):
 
         return center.unsqueeze(0) * (x_max - x_min) + x_min
 
-    def __calculate_matmul_n_times(self, n_components, mat_a, mat_b):
-        """
-        Calculate matrix product of two matrics with mat_a[0] >= mat_b[0].
+    def __calculate_matmul_n_times(
+        self, n_components: int, mat_a: Tensor, mat_b: Tensor
+    ) -> Tensor:
+        """Calculate matrix product of two matrics with mat_a[0] >= mat_b[0].
+
         Bypasses torch.matmul to reduce memory footprint.
-        args:
-            mat_a:      torch.Tensor (n, k, 1, d)
-            mat_b:      torch.Tensor (1, k, d, d)
+
+        Args:
+            mat_a (Tensor): A tensor of shape (n, k, 1, d).
+            mat_b (Tensor): A tensor of shape (1, k, d, d).
+
+        Returns:
+            Tensor: A tensor of shape (n, k, 1, d).
         """
         res = torch.zeros(mat_a.shape).double().to(mat_a.device)
 
@@ -584,13 +598,16 @@ class GMM(torch.nn.Module):
         return res
 
     def __calculate_matmul(self, mat_a, mat_b):
-        """
-        Calculate matrix product of two matrics with mat_a[0] >= mat_b[0].
+        """Calculate matrix product of two matrics with mat_a[0] >= mat_b[0].
+
         Bypasses torch.matmul to reduce memory footprint.
-        args:
-            mat_a:      torch.Tensor (n, k, 1, d)
-            mat_b:      torch.Tensor (n, k, d, 1)
+
+        Args:
+            mat_a (Tensor): A tensor of shape (n, k, 1, d).
+            mat_b (Tensor): A tensor of shape (n, k, d, 1).
+
+        Returns:
+            Tensor: A tensor of shape (n, k, 1).
         """
         assert mat_a.shape[-2] == 1 and mat_b.shape[-1] == 1
         return torch.sum(mat_a.squeeze(-2) * mat_b.squeeze(-1), dim=2, keepdim=True)
-
