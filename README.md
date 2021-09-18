@@ -48,9 +48,9 @@ class YourLitModule(pl.LightningModule):
 
 ### Statistical Model
 
-* KNN: Available with euqlidean, manhattan, cosine and mahalanobis distance.
-* NBC: GPU enabled naive bayes classifier.
-* GMM: Gaussian Mixture probabability estimator. Of course GPU enabled.
+* **KNN**: Available with euqlidean, manhattan, cosine and mahalanobis distance.
+* **NBC**: GPU enabled naive bayes classifier.
+* **GMM**: Gaussian Mixture probabability estimator. Of course GPU enabled.
 
 ### Deep Learning
 
@@ -58,19 +58,19 @@ They are all ready-to-train models with MNIST, ImageNet, UCF101 etc... using [Li
 
 Some models come with their pretrained-weight available by auto-downloading.
 
-* LitU2Net: LightningModule U2Net. Trainable and ready for prediction.
-* AniNet: LightningModule image classifier pretrained for japanese animations.
-* LitVideoClf: LightningModule video classfier using either single frame CNN or CNNLSTM.
-* PredictionAssistant: Coming soon.
+* **LitU2Net**: LightningModule U2Net. Trainable and ready for prediction.
+* **AniNet**: LightningModule image classifier pretrained for japanese animations.
+* **LitVideoClf**: LightningModule video classfier using either single frame CNN or CNNLSTM.
+* **PredictionAssistant**: Coming soon.
 
 * * *
 
 ## Functional API
 
 ![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white)
+![SKlearn](https://img.shields.io/badge/Scikit_learn-F7931E.svg?style=for-the-badge&logo=scikit-learn&logoColor=white)
 ![FFmpeg](https://img.shields.io/badge/FFmpeg-007808.svg?style=for-the-badge&logo=FFmpeg&logoColor=white)
 ![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8.svg?style=for-the-badge&logo=OpenCV&logoColor=white)
-![SKlearn](https://img.shields.io/badge/Scikit_learn-F7931E.svg?style=for-the-badge&logo=scikit-learn&logoColor=white)
 
 You can use below functions via
 
@@ -100,6 +100,18 @@ F.change_frame_rates_in("./test_data.mp4",fps=5)
 ### data_science
 
 * train_linear_regressor
+
+* * *
+
+## Streamlit Integration
+
+![Plotly](https://img.shields.io/badge/Plotly-3F4F75.svg?style=for-the-badge&logo=plotly&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B.svg?style=for-the-badge&logo=Streamlit&logoColor=white)
+
+### st_utils
+
+* hide_default_header_and_footer
+* plot_plotly_supervised
 
 ## :rocket: Coming
 

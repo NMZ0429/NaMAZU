@@ -1,109 +1,77 @@
-from pandas import read_csv
-import streamlit as st
+from re import I, sub
+from NaMAZU.lightning_wingman import KNN
 import torch
-from PIL import Image
-from torchvision import transforms
-
-from resnet_anime import resnet50
+import pandas as pd
+import streamlit as st
+from st_utils import *
 
 st.set_page_config(page_title="Made by NMZ", layout="wide")
 
-
-@st.cache
-def load_resnet():
-    # use resnet50
-    model = resnet50()
-    if torch.cuda.is_available():
-        model.to("cuda")
-    model.eval()
-
-    return model
+hide_default_header_and_footer()
 
 
-@st.cache
-def preprocess(img):
-    preprocess = transforms.Compose(
-        [
-            transforms.Resize(360),
-            transforms.ToTensor(),
-            transforms.Normalize(
-                mean=[0.7137, 0.6628, 0.6519], std=[0.2970, 0.3017, 0.2979]
-            ),
-        ]
+def get_data(file):
+    if "1st_run" not in st.session_state:
+        st.session_state["1st_run"] = True
+
+    if st.session_state["1st_run"]:
+        if file:
+            df = pd.read_csv(file, sep="\t", index_col=0)  # type: ignore
+
+            place_holder = st.container()
+            data_pos = place_holder.empty()
+            data_pos.write(df)
+
+            add_y = st.button("Add target label")
+
+            if add_y:
+                df["y"] = [0 if x < 6 else 1 for x in df["quality"]]
+                data_pos.write(df)
+
+                del place_holder
+
+                st.markdown("---")
+                st.markdown("Train KNN")
+
+                x = df.drop(columns=["y"]).reset_index(drop=True).to_numpy()
+                y = df["y"].reset_index(drop=True).to_numpy()
+
+                x, y = (
+                    torch.tensor(x, dtype=torch.float),
+                    torch.tensor(y, dtype=torch.int),
+                )
+
+                st.session_state.x = x
+                st.session_state.y = y
+
+                st.session_state["1st_run"] = False
+
+                return x, y
+    else:
+        return st.session_state.x, st.session_state.y
+
+
+file = st.file_uploader("Upload your own file", type=["csv", "txt"])
+out = get_data(file)
+
+if out:
+    x, y = out
+    model = KNN(
+        n_neighbors=5, distance_measure="euclidean", training_data=x, training_labels=y,
     )
-    batch = preprocess(img).unsqueeze(0)
 
-    if torch.cuda.is_available():
-        batch = batch.to("cuda")
+    nb = model(x[:10])
 
-    return batch
+    # num_f = st.radio("Number of features", options=["2", "3",],)
+    # num_f = list(range(int(num_f)))
+    num_f = st.radio("Number of features", options=["2", "3",],)
+    num_f = list(range(int(num_f)))
 
-
-def predict_probs(batch, model):
-    with torch.no_grad():
-        output = model(batch)
-        probs = torch.sigmoid(output[0])
-
-    return probs
-
-
-@st.cache
-def get_label():
-    column_names = ["_", "en", "ja"]
-    df = read_csv("label_ja.csv", names=column_names)
-    # class_names = json.load(open("label_en.json", "r"))
-    class_names = df.ja.to_list()
-
-    return class_names
-
-
-class_names = get_label()
-
-
-@st.cache
-def calc_result(probs, thresh=0.3):
-    tmp = probs[probs > thresh]
-    inds = probs.argsort(descending=True)
-    # txt = "## Predictions with probabilities above " + str(thresh) + ":\n"
-    txt = ""
-    for i in inds[0 : len(tmp)]:
-        txt += (
-            "* " + class_names[i] + ": {:.4f} \n".format(probs[i].cpu().numpy()) + "\n"
-        )
-
-    return txt
-
-
-hide_streamlit_style = """
-            <style>
-            #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            </style>
-            """
-st.markdown(hide_streamlit_style, unsafe_allow_html=True)
-
-model = load_resnet()
-
-st.markdown(
-    "# 教師無し対照学習で汎用オタクCNNを構築する\n\n Image understanding with respect to a specific field (Anime) using Inception trained by SimCLR"
-)
-
-st.markdown("対照学習でアニメ関連の画像をひたすら学習させたらCNNがオタクっぽいことを学習できるか実験")
-
-c1, c2 = st.beta_columns(2)
-
-imgfile = c1.file_uploader(
-    "Upload Image: (must be at least 360^2)",
-    type=["png", "jpg"],
-    accept_multiple_files=False,
-)
-
-if imgfile:
-    image = Image.open(imgfile)
-    c1.image(image, caption="upload images", use_column_width=True)
-    x = preprocess(image)
-    out = predict_probs(batch=x, model=model)
-    result = calc_result(out)
-
-    c2.markdown("## 抽出した特徴...(信頼区間>0.3)")
-    c2.markdown(result)
+    p = plot_plotly_supervised(
+        x=x,
+        feature_indices=num_f,
+        x_label=y,
+        # class_names=["bad", "good"],
+        marker_size=1,
+    )
+    st.plotly_chart(p)
