@@ -2,7 +2,7 @@
 
 <img src="utils/namazu_fixed.png" width="450">
 
-**Libray including many utilities for all machine learner**
+**Best pet for ML**
 
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pytorch-lightning)](https://pypi.org/project/pytorch-lightning/)
 [![PyPI version](https://badge.fury.io/py/NaMAZU.svg)](https://badge.fury.io/py/NaMAZU)
