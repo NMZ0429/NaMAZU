@@ -1,11 +1,16 @@
 import zipfile
 from pathlib import Path
-from typing import List, Dict
+from typing import List, Dict, Literal
 
-__all__ = ["rename_file", "collect_file_pathes_by_ext", "zip_files"]
+__all__ = [
+    "rename_file",
+    "collect_file_pathes_by_ext",
+    "zip_files",
+    "export_list_str_as",
+]
 
 #################
-# File Process #
+# Path Process  #
 #################
 
 
@@ -60,3 +65,38 @@ def zip_files(target_dir: str, zip_name: str, ext_list: List[str]) -> None:
         for file in target.glob(f"**/*.{ext}"):
             zip_file.write(file, file.name)
     zip_file.close()
+
+
+##################
+# Object Process #
+##################
+
+
+def export_list_str_as(
+    extension: Literal["csv", "json", "txt"], list_str: List[str], out_name: str = ""
+) -> None:
+    """Export a list of strings to a file of given extension. The file name is out_name if given.
+
+    Args:
+        extension (Literal["csv", "json", "txt"]): Extension of the file to create.
+        list_str (List[str]): List of strings to export.
+        out_name (str): Name of the file to create. Default is "".
+    """
+    if out_name == "":
+        out_name = "list_str"
+
+    if extension == "csv":
+        with open(f"{out_name}.csv", "w") as f:
+            for item in list_str:
+                f.write(f"{item}\n")
+    elif extension == "json":
+        with open(f"{out_name}.json", "w") as f:
+            f.write(f"{list_str}")
+    elif extension == "txt":
+        with open(f"{out_name}.txt", "w") as f:
+            for item in list_str:
+                f.write(f"{item}\n")
+    else:
+        raise ValueError(
+            f"Invalid extension.{extension}. One of ['csv', 'json', 'txt'] is expected."
+        )
