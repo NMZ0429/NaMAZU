@@ -2,7 +2,7 @@
 
 <img src="utils/namazu_fixed.png" width="450">
 
-**Libray including many(not yet) utilities**
+**Libray including many utilities for all machine learner**
 
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pytorch-lightning)](https://pypi.org/project/pytorch-lightning/)
 [![PyPI version](https://badge.fury.io/py/NaMAZU.svg)](https://badge.fury.io/py/NaMAZU)
@@ -16,6 +16,14 @@
 </div>
 
 # NaMAZU
+
+## Installation
+
+Version in pip server might be older than this repo.
+
+"""zsh
+pip install NaMAZU
+"""
 
 ## Lightning API
 
@@ -96,6 +104,7 @@ F.change_frame_rates_in("./test_data.mp4",fps=5)
 * rename_file
 * collect_file_pathes_by_ext
 * zip_files
+* export_list_str_as
 
 ### data_science
 
@@ -112,6 +121,38 @@ F.change_frame_rates_in("./test_data.mp4",fps=5)
 
 * hide_default_header_and_footer
 * plot_plotly_supervised
+
+* * *
+
+### Dear my fellow
+
+Do the following to set up.
+
+```python
+import urllib
+import torch
+from NaMAZU.lightning_wingman import KNN
+
+
+data = "anime_knn.pth"
+urllib.urlretrieve("https://github.com/NMZ0429/NaMAZU/releases/download/Checkpoint/anime_knn.pth", data)
+anime_db = torch.load(data)
+
+titles = "anime_knn.pth"
+urllib.urlretrieve("https://github.com/NMZ0429/NaMAZU/releases/download/Checkpoint/anime_title_list.txt", titles)
+anime_titles = [line.rstrip() for line in open(titles)]
+
+model = KNN(n_neighbors=11, training_data=anie_db)
+```
+
+To use,
+
+```python
+your_choice_idx = 100 # i.g
+
+prediction = model(anime_titles[your_choice_idx])
+print([anime_titles[i]] for i in prediction[0])
+```
 
 ## :rocket: Coming
 
