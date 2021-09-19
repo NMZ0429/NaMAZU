@@ -141,7 +141,7 @@ data = "anime_knn.pth"
 urllib.urlretrieve("https://github.com/NMZ0429/NaMAZU/releases/download/Checkpoint/anime_knn.pth", data)
 anime_db = torch.load(data)
 
-titles = "anime_knn.pth"
+titles = "title_list.txt"
 urllib.urlretrieve("https://github.com/NMZ0429/NaMAZU/releases/download/Checkpoint/anime_title_list.txt", titles)
 anime_titles = [line.rstrip() for line in open(titles)]
 
