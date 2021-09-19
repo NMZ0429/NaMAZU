@@ -15,5 +15,6 @@ __all__ = [
     "apply_to_all",
     "change_frame_rates_in",
     "save_all_frames",
+    "export_list_str_as",
 ]
 
