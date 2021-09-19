@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: NaMAZU
-Version: 0.0.40
+Version: 0.0.41
 Summary: NaMAZU: Pretty Usefull Library
 Home-page: https://github.com/NMZ0429/NaMAZU
 Author: NaMAZU Team
@@ -10,7 +10,19 @@ Maintainer-email: bunbun@icloud.com
 License: MIT
 Download-URL: https://github.com/NMZ0429/NaMAZU
 Platform: UNKNOWN
-Requires-Python: >=3.6.0
+Classifier: Environment :: Console
+Classifier: Natural Language :: English
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: Topic :: Scientific/Engineering :: Image Recognition
+Classifier: Topic :: Scientific/Engineering :: Information Analysis
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Python: >=3.8.0
 Description-Content-Type: text/markdown
 License-File: LICENSE
 
@@ -18,7 +30,7 @@ License-File: LICENSE
 
 <img src="utils/namazu_fixed.png" width="450">
 
-**Libray including many utilities for all machine learner**
+**Best pet for ML**
 
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pytorch-lightning)](https://pypi.org/project/pytorch-lightning/)
 [![PyPI version](https://badge.fury.io/py/NaMAZU.svg)](https://badge.fury.io/py/NaMAZU)
@@ -37,9 +49,9 @@ License-File: LICENSE
 
 Version in pip server might be older than this repo.
 
-"""zsh
+```zsh
 pip install NaMAZU
-"""
+```
 
 ## Lightning API
 
