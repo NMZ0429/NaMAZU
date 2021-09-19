@@ -10,7 +10,7 @@ URL = "https://github.com/NMZ0429/NaMAZU"
 LICENSE = "MIT"
 DOWNLOAD_URL = "https://github.com/NMZ0429/NaMAZU"
 VERSION = NaMAZU.__version__
-PYTHON_REQUIRES = ">=3.6.0"
+PYTHON_REQUIRES = ">=3.8.0"
 
 INSTALL_REQUIRES = ["numpy", "pillow", "pytorch_lightning"]
 
