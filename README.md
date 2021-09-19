@@ -2,14 +2,17 @@
 
 <img src="utils/namazu_fixed.png" width="450">
 
-**Best pet for ML**
+**Many utilities for ML**
 
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pytorch-lightning)](https://pypi.org/project/pytorch-lightning/)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/NaMAZU)](https://pypi.org/project/NaMAZU/)
 [![PyPI version](https://badge.fury.io/py/NaMAZU.svg)](https://badge.fury.io/py/NaMAZU)
+[![PyPI Status](https://pepy.tech/badge/NaMAZU)](https://pepy.tech/project/NaMAZU)
+[![license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/NMZ0429/NaMAZU/blob/main/LICENSE)
 ![pl](https://img.shields.io/badge/PyTorch%20Lightning-1.3-792EE5.svg?logo=PyTorch%20Lightning&style=popout)
 ![st](https://img.shields.io/badge/Streamlit-0.88-FF4B4B.svg?logo=Streamlit&style=popout)
 ![numpy](https://img.shields.io/badge/NumPy-1.21-013243.svg?logo=NumPy&style=popout)
 ![sklearn](https://img.shields.io/badge/Scikit_learn-0.23-F7931E.svg?logo=scikit-learn&style=popout)
+
 
 * * *
 
