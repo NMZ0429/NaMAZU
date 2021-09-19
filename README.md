@@ -21,9 +21,9 @@
 
 Version in pip server might be older than this repo.
 
-"""zsh
+```zsh
 pip install NaMAZU
-"""
+```
 
 ## Lightning API
 
