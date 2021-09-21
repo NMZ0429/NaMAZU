@@ -12,7 +12,16 @@ DOWNLOAD_URL = "https://github.com/NMZ0429/NaMAZU"
 VERSION = NaMAZU.__version__
 PYTHON_REQUIRES = ">=3.8.0"
 
-INSTALL_REQUIRES = ["numpy", "pillow", "pytorch_lightning"]
+INSTALL_REQUIRES = [
+    "scikit-image",
+    "torchvision",
+    "scikit-learn",
+    "timm",
+    "plotly",
+    "numpy",
+    "pillow",
+    "pytorch_lightning",
+]
 
 PACKAGES = setuptools.find_packages()
 CLASSIFIERS = [
