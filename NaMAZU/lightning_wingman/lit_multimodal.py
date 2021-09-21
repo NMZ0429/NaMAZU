@@ -39,14 +39,14 @@ class MultiModalNet(LightningModule):
                 f"The number of modalities in the batch must be {self.num_modalities} but {len(batch)} was given."
             )
 
-    def fusion_modalities(self, modalities):
+    def _by_modal_forward(self, modalities: List[Tensor]) -> Tensor:
         output_list = []
         if self.bypass_docking:
             output_list = modalities
         else:
             for i, modality in enumerate(modalities):
                 x = getattr(self, f"stream_{i}")(modality)
-                x = nn.functional.relu(x)
+                x = torch.nn.functional.relu(x)  # type: ignore
                 output_list.append(x)
 
         return torch.stack(
@@ -72,7 +72,7 @@ class MultiModalNet(LightningModule):
                 self.num_modalities, dtype=torch.float, device=self.device
             )
         else:
-            prior_modality_distribution
+            return prior_modality_distribution
 
     def _mulnom_sampling(
         self,
@@ -85,7 +85,7 @@ class MultiModalNet(LightningModule):
 
         modality_idx = torch.multinomial(
             weighted_prior,
-            num_samples=self.hparams.latend_dim,  # type : ignore
+            num_samples=self.hparams.latend_dim,  # type: ignore
             replacement=True,
         )
         chosen_modalities = torch.nn.functional.one_hot(  # type: ignore
