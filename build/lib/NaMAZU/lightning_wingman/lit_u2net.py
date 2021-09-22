@@ -1,6 +1,12 @@
 from os.path import sep
 from pathlib import Path
-from typing import List, Tuple, Literal
+from typing import List, Tuple
+
+try:
+    from typing import Literal
+except ImportError:
+    from typing_extensions import Literal
+
 
 import cv2
 import numpy as np

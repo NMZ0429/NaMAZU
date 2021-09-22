@@ -1,3 +1,11 @@
-numpy
 pillow
+opencv-python
+scikit-image
+scikit-learn
+numpy
+pandas
+timm
+torchvision
 pytorch_lightning
+plotly
+streamlit

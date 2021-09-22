@@ -1,9 +1,5 @@
-__version__ = "0.0.41"
+__version__ = "0.0.46"
 
 import NaMAZU.lightning_wingman
 import NaMAZU.functional
 import NaMAZU.st_integration
-
-# rm -rf build dist NaMAZU.egg-info
-# python setup.py bdist_wheel
-# twine upload dist/*

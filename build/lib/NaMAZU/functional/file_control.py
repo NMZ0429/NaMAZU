@@ -1,6 +1,12 @@
 import zipfile
 from pathlib import Path
-from typing import List, Dict, Literal
+from typing import List, Dict
+
+try:
+    from typing import Literal
+except ImportError:
+    from typing_extensions import Literal
+
 
 __all__ = [
     "rename_file",

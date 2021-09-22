@@ -10,17 +10,20 @@ URL = "https://github.com/NMZ0429/NaMAZU"
 LICENSE = "MIT"
 DOWNLOAD_URL = "https://github.com/NMZ0429/NaMAZU"
 VERSION = NaMAZU.__version__
-PYTHON_REQUIRES = ">=3.8.0"
+PYTHON_REQUIRES = ">=3.7.0"
 
 INSTALL_REQUIRES = [
-    "scikit-image",
-    "torchvision",
-    "scikit-learn",
-    "timm",
-    "plotly",
-    "numpy",
     "pillow",
+    "opencv-python",
+    "scikit-image",
+    "scikit-learn",
+    "numpy",
+    "pandas",
+    "timm",
+    "torchvision",
     "pytorch_lightning",
+    "plotly",
+    "streamlit",
 ]
 
 PACKAGES = setuptools.find_packages()

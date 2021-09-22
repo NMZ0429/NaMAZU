@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: NaMAZU
-Version: 0.0.41
+Version: 0.0.46
 Summary: NaMAZU: Pretty Usefull Library
 Home-page: https://github.com/NMZ0429/NaMAZU
 Author: NaMAZU Team
@@ -22,7 +22,7 @@ Classifier: Operating System :: OS Independent
 Classifier: Programming Language :: Python :: 3
 Classifier: Programming Language :: Python :: 3.8
 Classifier: Programming Language :: Python :: 3.9
-Requires-Python: >=3.8.0
+Requires-Python: >=3.7.0
 Description-Content-Type: text/markdown
 License-File: LICENSE
 
@@ -30,14 +30,17 @@ License-File: LICENSE
 
 <img src="utils/namazu_fixed.png" width="450">
 
-**Best pet for ML**
+**Many utilities for ML**
 
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pytorch-lightning)](https://pypi.org/project/pytorch-lightning/)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/NaMAZU)](https://pypi.org/project/NaMAZU/)
 [![PyPI version](https://badge.fury.io/py/NaMAZU.svg)](https://badge.fury.io/py/NaMAZU)
+[![PyPI Status](https://pepy.tech/badge/NaMAZU)](https://pepy.tech/project/NaMAZU)
+[![license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/NMZ0429/NaMAZU/blob/main/LICENSE)
 ![pl](https://img.shields.io/badge/PyTorch%20Lightning-1.3-792EE5.svg?logo=PyTorch%20Lightning&style=popout)
 ![st](https://img.shields.io/badge/Streamlit-0.88-FF4B4B.svg?logo=Streamlit&style=popout)
 ![numpy](https://img.shields.io/badge/NumPy-1.21-013243.svg?logo=NumPy&style=popout)
 ![sklearn](https://img.shields.io/badge/Scikit_learn-0.23-F7931E.svg?logo=scikit-learn&style=popout)
+
 
 * * *
 
@@ -166,7 +169,7 @@ data = "anime_knn.pth"
 urllib.urlretrieve("https://github.com/NMZ0429/NaMAZU/releases/download/Checkpoint/anime_knn.pth", data)
 anime_db = torch.load(data)
 
-titles = "anime_knn.pth"
+titles = "title_list.txt"
 urllib.urlretrieve("https://github.com/NMZ0429/NaMAZU/releases/download/Checkpoint/anime_title_list.txt", titles)
 anime_titles = [line.rstrip() for line in open(titles)]
 
@@ -185,7 +188,7 @@ print([anime_titles[i]] for i in prediction[0])
 ## :rocket: Coming
 
 * [ ] 1. st_integration. Usuful snipets and fast deoployment of LitModule to streamlit. (clf_template)
-* [ ] 2. InferenceHelper
+* [ ] 2. PredictionAssistant
 * [x] 2. Video Recognition Model
 * [ ] 3. Feature Learning
 * [ ] 4. Few-shot Learning
