@@ -112,7 +112,7 @@ F.change_frame_rates_in("./test_data.mp4",fps=5)
 
 * * *
 
-## Streamlit Integration
+## Visual Integration
 
 ![Plotly](https://img.shields.io/badge/Plotly-3F4F75.svg?style=for-the-badge&logo=plotly&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B.svg?style=for-the-badge&logo=Streamlit&logoColor=white)
