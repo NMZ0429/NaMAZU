@@ -160,13 +160,13 @@ class LitU2Net(LightningModule):
         """Download checkpoint file and load the model.
         """
         url_dict = {
-            "mobile": "https://github.com/NMZ0429/NaMAZU/releases/download/Checkpoint/mobile.pth",
             "basic": "https://github.com/NMZ0429/NaMAZU/releases/download/Checkpoint/basic.pth",
+            "mobile": "https://github.com/NMZ0429/NaMAZU/releases/download/Checkpoint/mobile.pth",
             "human": "https://github.com/NMZ0429/NaMAZU/releases/download/Checkpoint/human_seg.pth",
             "portrait": "https://github.com/NMZ0429/NaMAZU/releases/download/Checkpoint/portrait.pth",
         }
 
-        if not self.model_type in url_dict:
+        if not self.hparams.model_type in url_dict:  # type: ignore
             raise ValueError(f"model_type {self.hparams.model_type} is not supported")  # type: ignore
 
         url = url_dict[self.hparams.model_type]  # type: ignore
