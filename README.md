@@ -151,9 +151,9 @@ model = KNN(n_neighbors=11, training_data=anie_db)
 To use,
 
 ```python
-your_choice_idx = 100 # i.g
+your_choice_idx = 100 # Idx of chosen anime
 
-prediction = model(anime_titles[your_choice_idx])
+prediction = model(anime_db[your_choice_idx])
 print([anime_titles[i]] for i in prediction[0])
 ```
 
