@@ -106,6 +106,10 @@ F.change_frame_rates_in("./test_data.mp4",fps=5)
 * zip_files
 * export_list_str_as
 
+### text_control
+
+* search_word_from
+
 ### data_science
 
 * train_linear_regressor
