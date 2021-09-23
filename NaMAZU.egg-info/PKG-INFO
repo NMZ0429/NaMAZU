@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: NaMAZU
-Version: 0.0.48
+Version: 0.0.49
 Summary: NaMAZU: Pretty Usefull Library
 Home-page: https://github.com/NMZ0429/NaMAZU
 Author: NaMAZU Team
@@ -37,9 +37,6 @@ License-File: LICENSE
 [![PyPI Status](https://pepy.tech/badge/NaMAZU)](https://pepy.tech/project/NaMAZU)
 [![license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/NMZ0429/NaMAZU/blob/main/LICENSE)
 ![pl](https://img.shields.io/badge/PyTorch%20Lightning-1.3-792EE5.svg?logo=PyTorch%20Lightning&style=popout)
-![st](https://img.shields.io/badge/Streamlit-0.88-FF4B4B.svg?logo=Streamlit&style=popout)
-![numpy](https://img.shields.io/badge/NumPy-1.21-013243.svg?logo=NumPy&style=popout)
-![sklearn](https://img.shields.io/badge/Scikit_learn-0.23-F7931E.svg?logo=scikit-learn&style=popout)
 
 
 * * *
@@ -137,6 +134,10 @@ F.change_frame_rates_in("./test_data.mp4",fps=5)
 * zip_files
 * export_list_str_as
 
+### text_control
+
+* search_word_from
+
 ### data_science
 
 * train_linear_regressor
@@ -179,20 +180,19 @@ model = KNN(n_neighbors=11, training_data=anie_db)
 To use,
 
 ```python
-your_choice_idx = 100 # i.g
+your_choice_idx = 100 # Idx of chosen anime
 
-prediction = model(anime_titles[your_choice_idx])
+prediction = model(anime_db[your_choice_idx])
 print([anime_titles[i]] for i in prediction[0])
 ```
 
 ## :rocket: Coming
 
-* [ ] 1. st_integration. Usuful snipets and fast deoployment of LitModule to streamlit. (clf_template)
 * [ ] 2. PredictionAssistant
 * [x] 2. Video Recognition Model
 * [ ] 3. Feature Learning
 * [ ] 4. Few-shot Learning
-* [ ] 5. Audio-Visual Multimodal fusion
+* [x] 5. Audio-Visual Multimodal fusion
 * [ ] 6. BBox template finding
 * [ ] 7. CACNet
 

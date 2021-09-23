@@ -1,6 +1,7 @@
 from .image_control import *
 from .file_control import *
 from .data_science import *
+from .text_control import *
 
 __all__ = [
     "train_linear_regressor",
@@ -16,5 +17,6 @@ __all__ = [
     "change_frame_rates_in",
     "save_all_frames",
     "export_list_str_as",
+    "search_word_from",
 ]
 
