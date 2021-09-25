@@ -69,7 +69,7 @@ Some models come with their pretrained-weight available by auto-downloading.
 * **LitU2Net**: LightningModule U2Net. Trainable and ready for prediction.
 * **AniNet**: LightningModule image classifier pretrained for japanese animations.
 * **LitVideoClf**: LightningModule video classfier using either single frame CNN or CNNLSTM.
-* **PredictionAssistant**: Coming soon.
+* **MultiModalNet**: LightningModule for multi-modal learning which can learn any modality with high robustness. Can be combined with any backbone.
 
 * * *
 
