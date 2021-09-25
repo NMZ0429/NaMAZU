@@ -21,6 +21,7 @@ NaMAZU/lightning_wingman/lit_aninet.py
 NaMAZU/lightning_wingman/lit_multimodal.py
 NaMAZU/lightning_wingman/lit_u2net.py
 NaMAZU/lightning_wingman/lit_video_clf.py
+NaMAZU/lightning_wingman/multi_modal.py
 NaMAZU/lightning_wingman/torch_gmm.py
 NaMAZU/lightning_wingman/torch_knn.py
 NaMAZU/lightning_wingman/torch_nbc.py

@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: NaMAZU
-Version: 0.0.49
+Version: 0.0.50
 Summary: NaMAZU: Pretty Usefull Library
 Home-page: https://github.com/NMZ0429/NaMAZU
 Author: NaMAZU Team
@@ -97,7 +97,7 @@ Some models come with their pretrained-weight available by auto-downloading.
 * **LitU2Net**: LightningModule U2Net. Trainable and ready for prediction.
 * **AniNet**: LightningModule image classifier pretrained for japanese animations.
 * **LitVideoClf**: LightningModule video classfier using either single frame CNN or CNNLSTM.
-* **PredictionAssistant**: Coming soon.
+* **MultiModalNet**: LightningModule for multi-modal learning which can learn any modality with high robustness. Can be combined with any backbone.
 
 * * *
 
@@ -144,7 +144,7 @@ F.change_frame_rates_in("./test_data.mp4",fps=5)
 
 * * *
 
-## Streamlit Integration
+## Visual Integration
 
 ![Plotly](https://img.shields.io/badge/Plotly-3F4F75.svg?style=for-the-badge&logo=plotly&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B.svg?style=for-the-badge&logo=Streamlit&logoColor=white)
