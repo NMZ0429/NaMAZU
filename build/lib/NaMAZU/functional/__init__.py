@@ -18,5 +18,6 @@ __all__ = [
     "save_all_frames",
     "export_list_str_as",
     "search_word_from",
+    "collect_images",
 ]
 
