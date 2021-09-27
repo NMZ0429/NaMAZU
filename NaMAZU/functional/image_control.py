@@ -1,6 +1,6 @@
 from os.path import join
 from pathlib import Path
-from typing import Callable, Tuple, Union
+from typing import Callable, Tuple, Union, List
 
 import cv2
 import numpy as np
@@ -18,6 +18,7 @@ __all__ = [
     "apply_to_all",
     "change_frame_rates_in",
     "save_all_frames",
+    "collect_images",
 ]
 
 
@@ -244,3 +245,37 @@ def save_all_frames(
             n += 1
         else:
             return 1
+
+
+###################
+# Data Collection #
+###################
+
+
+def collect_images(
+    keywords: List[str],
+    max_num_images: int = 10,
+    out_dir: str = "collected_images",
+    num_threads: int = 4,
+) -> None:
+    """
+    Collect images from Bing image search.
+
+    Args:
+        keywords (List[str]): List of keywords to search.
+        max_num_images (int, optional): Maximum number of images to download.
+            Defaults to 10.
+        out_dir (str, optional): Output directory. Defaults to "collected_images".
+        num_threads (int, optional): Number of threads to use. Defaults to 4.
+    """
+    try:
+        from icrawler.builtin import BingImageCrawler
+    except ImportError:
+        raise ImportError(
+            "Please install icrawler to use the function 'collect_images()'"
+        )
+    crawler = BingImageCrawler(
+        downloader_threads=num_threads, storage={"root_dir": out_dir}
+    )
+    kwargs = " ".join(keywords)
+    crawler.crawl(keyword=kwargs, max_num=max_num_images)
