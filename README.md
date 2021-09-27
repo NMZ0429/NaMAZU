@@ -98,6 +98,7 @@ F.change_frame_rates_in("./test_data.mp4",fps=5)
 * apply_to_all
 * change_frame_rates_in
 * save_all_frames
+* collect_images (requires [icrawler](https://icrawler.readthedocs.io/en/latest/))
 
 ### file_control
 
