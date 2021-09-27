@@ -128,42 +128,12 @@ F.change_frame_rates_in("./test_data.mp4",fps=5)
 
 * * *
 
-### Dear my fellow
-
-Do the following to set up.
-
-```python
-import urllib
-import torch
-from NaMAZU.lightning_wingman import KNN
-
-
-data = "anime_knn.pth"
-urllib.urlretrieve("https://github.com/NMZ0429/NaMAZU/releases/download/Checkpoint/anime_knn.pth", data)
-anime_db = torch.load(data)
-
-titles = "title_list.txt"
-urllib.urlretrieve("https://github.com/NMZ0429/NaMAZU/releases/download/Checkpoint/anime_title_list.txt", titles)
-anime_titles = [line.rstrip() for line in open(titles)]
-
-model = KNN(n_neighbors=11, training_data=anie_db)
-```
-
-To use,
-
-```python
-your_choice_idx = 100 # Idx of chosen anime
-
-prediction = model(anime_db[your_choice_idx])
-print([anime_titles[i]] for i in prediction[0])
-```
-
 ## :rocket: Coming
 
 * [ ] 2. PredictionAssistant
 * [x] 2. Video Recognition Model
 * [ ] 3. Feature Learning
 * [ ] 4. Few-shot Learning
-* [x] 5. Audio-Visual Multimodal fusion
+* [ ] 5. Audio-Visual Multimodal fusion (finish docstrings)
 * [ ] 6. BBox template finding
 * [ ] 7. CACNet
