@@ -1,6 +1,6 @@
 from torch import Tensor
 import torch
-from typing import List, Optional, Union, Dict
+from typing import List, Union, Dict
 from torch.optim import Adam
 from torch.optim.lr_scheduler import StepLR
 from pytorch_lightning import LightningModule

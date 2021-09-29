@@ -2,6 +2,11 @@ from os.path import join
 from pathlib import Path
 from typing import Callable, Tuple, Union, List
 
+try:
+    from typing import Literal
+except ImportError:
+    from typing_extensions import Literal
+
 import cv2
 import numpy as np
 from PIL import Image as PILImage
@@ -257,6 +262,7 @@ def collect_images(
     max_num_images: int = 10,
     out_dir: str = "collected_images",
     num_threads: int = 4,
+    search_engine: Literal["google", "bing", "baidu"] = "bing",
 ) -> None:
     """
     Collect images from Bing image search.
@@ -267,14 +273,29 @@ def collect_images(
             Defaults to 10.
         out_dir (str, optional): Output directory. Defaults to "collected_images".
         num_threads (int, optional): Number of threads to use. Defaults to 4.
+        search_engine (Literal["google", "bing", "baidu"], optional): Search engine to use.
+
+    Examples:
+        >>> collect_images(["cat", "dog"], max_num_images=10, out_dir="collected_images")
+
+        >>> collect_images(["cat", "dog"], max_num_images=10, out_dir="collected_images", search_engine="google")
     """
     try:
-        from icrawler.builtin import BingImageCrawler
+        from icrawler.builtin import (
+            BingImageCrawler,
+            GoogleImageCrawler,
+            BaiduImageCrawler,
+        )
     except ImportError:
         raise ImportError(
             "Please install icrawler to use the function 'collect_images()'"
         )
-    crawler = BingImageCrawler(
+    engines = {
+        "google": GoogleImageCrawler,
+        "bing": BingImageCrawler,
+        "baidu": BaiduImageCrawler,
+    }
+    crawler = engines[search_engine](
         downloader_threads=num_threads, storage={"root_dir": out_dir}
     )
     kwargs = " ".join(keywords)

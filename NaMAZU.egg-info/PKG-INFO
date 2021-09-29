@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: NaMAZU
-Version: 0.0.51
+Version: 0.0.52
 Summary: NaMAZU: Pretty Usefull Library
 Home-page: https://github.com/NMZ0429/NaMAZU
 Author: NaMAZU Team
@@ -127,6 +127,7 @@ F.change_frame_rates_in("./test_data.mp4",fps=5)
 * apply_to_all
 * change_frame_rates_in
 * save_all_frames
+* collect_images (requires [icrawler](https://icrawler.readthedocs.io/en/latest/))
 
 ### file_control
 
