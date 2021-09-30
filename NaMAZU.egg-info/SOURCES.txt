@@ -8,6 +8,7 @@ NaMAZU.egg-info/dependency_links.txt
 NaMAZU.egg-info/requires.txt
 NaMAZU.egg-info/top_level.txt
 NaMAZU/functional/__init__.py
+NaMAZU/functional/coreml_control.py
 NaMAZU/functional/data_science.py
 NaMAZU/functional/file_control.py
 NaMAZU/functional/image_control.py

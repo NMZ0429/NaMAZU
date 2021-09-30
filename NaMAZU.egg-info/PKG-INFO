@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: NaMAZU
-Version: 0.0.52
+Version: 0.0.53
 Summary: NaMAZU: Pretty Usefull Library
 Home-page: https://github.com/NMZ0429/NaMAZU
 Author: NaMAZU Team
@@ -143,6 +143,10 @@ F.change_frame_rates_in("./test_data.mp4",fps=5)
 ### data_science
 
 * train_linear_regressor
+
+### coreml
+
+* drop_negative
 
 * * *
 
