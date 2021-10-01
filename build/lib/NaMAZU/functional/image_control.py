@@ -41,7 +41,7 @@ def img_to_npy(jpg_path: str, save: bool = False, file_name: str = None) -> np.n
     Returns:
         numpy.ndarray: Numpy array of the image
     """
-    img = PILImage(jpg_path)
+    img = PILImage.open(jpg_path)
     img = np.asanyarray(img)
 
     ext = "." + jpg_path.split(".")[-1]
@@ -111,7 +111,7 @@ def split_image(
     Returns:
         Tuple[np.ndarray, np.ndarray]: Tuple of numpy arrays.
     """
-    img = PILImage(img_path)
+    img = PILImage.open(img_path)
     width, height = img.size
 
     if direction == 0:
@@ -150,8 +150,8 @@ def compose_two_png(
     Returns:
         Image: PIL Image object
     """
-    back = PILImage(back_png_path)
-    front = PILImage(front_png_path)
+    back = PILImage.open(back_png_path)
+    front = PILImage.open(front_png_path)
 
     back.paste(front, position, front)
 
