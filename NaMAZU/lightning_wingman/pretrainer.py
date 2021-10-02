@@ -102,11 +102,11 @@ def print_training_summary(dataset_dict: Dict[str, List[str]], model) -> None:
 
 def self_supervised_training(
     model_choice: str,
-    num_threads: int,
     image_dirs: List[str],
     batch_size: int,
-    save_dir: str = "",
+    num_threads: int = 6,
     num_iterations: int = 10000,
+    save_dir: str = "",
     device: str = "cuda",
     simsiam: bool = False,
 ) -> torch.nn.Module:  # type: ignore
@@ -118,10 +118,10 @@ def self_supervised_training(
 
     Args:
         model_choice (str): Model to train currently VGG, ResNet and DenseNet are supported.
-        num_iterations (int): Number of epochs. Default is 10000.
-        num_threads (int): Number of cpu threads to use.
         image_dirs (List[str]): List of pathes of datasets.
         batch_size (int): Batch size.
+        num_threads (int): Number of cpu threads to use.
+        num_iterations (int): Number of epochs. Default is 10000.
         save_dir (str, optional): Trained model is saved to the directory if given otherwise returned. Defaults to "".
         device (str, optional): Device to use. Defaults to "cuda".
         simsiam (bool, optional): If True, use SimSiam. Defaults to False.
