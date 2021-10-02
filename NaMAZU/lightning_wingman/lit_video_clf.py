@@ -83,7 +83,7 @@ class LitVideoClf(LightningModule):
             raise ValueError("config_dict must contain latent_dim for CNNClassifier")
         if not config_dict.get("cnn"):
             raise ValueError("config_dict must contain cnn for CNNClassifier")
-        if not self.hparams.use_lstm:  # type: ignore
+        if self.hparams.use_lstm:  # type: ignore
             if not config_dict.get("lstm_layers"):
                 raise ValueError("config_dict must contain lstm_layers for CNNLSTM")
             if not config_dict.get("hidden_dim"):

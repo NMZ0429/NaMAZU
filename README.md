@@ -2,7 +2,7 @@
 
 <img src="utils/namazu_fixed.png" width="450">
 
-**Many utilities for ML**
+### Many utilities for ML
 
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/NaMAZU)](https://pypi.org/project/NaMAZU/)
 [![PyPI version](https://badge.fury.io/py/NaMAZU.svg)](https://badge.fury.io/py/NaMAZU)
@@ -30,11 +30,50 @@ pip install NaMAZU
 ![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white)
 ![PL](https://img.shields.io/badge/-PyTorch%20Lightning-792EE5.svg?logo=PyTorch%20Lightning&style=for-the-badge)
 
+### Deep Learning Models
+
+Collection of SOTA or robust baseline models for multiple tasks fully written in pytorch lightning! They are all ready-to-train models with MNIST, ImageNet, UCF101 etc... using [LightingDataModule](https://pytorch-lightning.readthedocs.io/en/latest/extensions/datamodules.html).
+
+Some models come with their pretrained-weight available by auto-downloading.
+
+```python
+import pytorch_lightning as pl
+from NaMAZU.lightningwingman import LitVideoClf
+
+config = {"num_classes": 10, "cnn": "resnet152d", "latent_dim":512}
+model = LitVideoClf(use_lstm=False, model_config=config)
+
+... 
+# use bolts to get datamodule and pass model and datamodule to pl.trainer!
+```
+
+* **LitU2Net**: LightningModule U2Net. Trainable and ready for prediction.
+* **AniNet**: LightningModule image classifier pretrained for japanese animations.
+* **LitVideoClf**: LightningModule video classfier using either single frame CNN or CNNLSTM.
+* **MultiModalNet**: LightningModule for multi-modal learning which can learn any modality with high robustness. Can be combined with any backbone.
+
+### Training Interface
+
+Before starting your fine-tuning training, try this trianign API that produces better initial weight by running a self-supervised learning to your training dataset. Only images are used and no annotation nor data cleaning is required.
+
+```python
+from NaMAZU.lightingwingman import self_supervised_learning
+
+dir_images = "dataset/something"
+dir_images2 = "dataset/something2"
+
+self_supervised_training("resnet50", [dir_images, dir_images2], batch_size=64, save_dir="pretrained_models/")
+```
+
+* pretrainer: Simple interface that you can obtain self-supervised CNN with just one line of code! (requires [byol-pytorch](https://github.com/lucidrains/byol-pytorch))
+
+### Statistical Models
+
 They are all written in PyTorch following best practice to be used with pytorch lightning. They are all GPU enabled controlled by Lightning API. You will never need to call `to("cuda")` to use the model on any device even with multi-GPU training!
 
 ```python
 import pytorch_lightning as pl
-from NaMAZU import KNN, GMM
+from NaMAZU.lightningwingman import KNN, GMM
 
 class YourLitModule(pl.LightningModule):
     def __init__(self,*args, **kwargs):
@@ -54,22 +93,9 @@ class YourLitModule(pl.LightningModule):
         probability = self.estimator.predict_proba(y)
 ```
 
-### Statistical Model
-
 * **KNN**: Available with euqlidean, manhattan, cosine and mahalanobis distance.
 * **NBC**: GPU enabled naive bayes classifier.
 * **GMM**: Gaussian Mixture probabability estimator. Of course GPU enabled.
-
-### Deep Learning
-
-They are all ready-to-train models with MNIST, ImageNet, UCF101 etc... using [LightingDataModule](https://pytorch-lightning.readthedocs.io/en/latest/extensions/datamodules.html).
-
-Some models come with their pretrained-weight available by auto-downloading.
-
-* **LitU2Net**: LightningModule U2Net. Trainable and ready for prediction.
-* **AniNet**: LightningModule image classifier pretrained for japanese animations.
-* **LitVideoClf**: LightningModule video classfier using either single frame CNN or CNNLSTM.
-* **MultiModalNet**: LightningModule for multi-modal learning which can learn any modality with high robustness. Can be combined with any backbone.
 
 * * *
 
@@ -137,7 +163,7 @@ F.change_frame_rates_in("./test_data.mp4",fps=5)
 
 * [ ] 2. PredictionAssistant
 * [x] 2. Video Recognition Model
-* [ ] 3. Feature Learning
+* [x] 3. Feature Learning
 * [ ] 4. Few-shot Learning
 * [ ] 5. Audio-Visual Multimodal fusion (finish docstrings)
 * [ ] 6. BBox template finding
