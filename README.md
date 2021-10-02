@@ -30,7 +30,7 @@ pip install NaMAZU
 ![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white)
 ![PL](https://img.shields.io/badge/-PyTorch%20Lightning-792EE5.svg?logo=PyTorch%20Lightning&style=for-the-badge)
 
-### Deep Learning
+### Deep Learning Models
 
 Collection of SOTA or robust baseline models for multiple tasks fully written in pytorch lightning! They are all ready-to-train models with MNIST, ImageNet, UCF101 etc... using [LightingDataModule](https://pytorch-lightning.readthedocs.io/en/latest/extensions/datamodules.html).
 
@@ -52,7 +52,7 @@ model = LitVideoClf(use_lstm=False, model_config=config)
 * **LitVideoClf**: LightningModule video classfier using either single frame CNN or CNNLSTM.
 * **MultiModalNet**: LightningModule for multi-modal learning which can learn any modality with high robustness. Can be combined with any backbone.
 
-### Training API
+### Training Interface
 
 Before starting your fine-tuning training, try this trianign API that produces better initial weight by running a self-supervised learning to your training dataset. Only images are used and no annotation nor data cleaning is required.
 
@@ -67,7 +67,7 @@ self_supervised_training("resnet50", [dir_images, dir_images2], batch_size=64, s
 
 * pretrainer: Simple interface that you can obtain self-supervised CNN with just one line of code! (requires [byol-pytorch](https://github.com/lucidrains/byol-pytorch))
 
-### Statistical Model
+### Statistical Models
 
 They are all written in PyTorch following best practice to be used with pytorch lightning. They are all GPU enabled controlled by Lightning API. You will never need to call `to("cuda")` to use the model on any device even with multi-GPU training!
 
