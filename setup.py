@@ -22,6 +22,7 @@ INSTALL_REQUIRES = [
     "timm",
     "torchvision",
     "pytorch_lightning",
+    "byol-pytorch",
     "plotly",
     "streamlit",
 ]

@@ -56,6 +56,8 @@ model = LitVideoClf(use_lstm=False, model_config=config)
 
 Before starting your fine-tuning training, try this trianign API that produces better initial weight by running a self-supervised learning to your training dataset. Only images are used and no annotation nor data cleaning is required.
 
+Other training schemes are coming soon!
+
 ```python
 from NaMAZU.lightingwingman import self_supervised_learning
 
@@ -65,7 +67,7 @@ dir_images2 = "dataset/something2"
 self_supervised_training("resnet50", [dir_images, dir_images2], batch_size=64, save_dir="pretrained_models/")
 ```
 
-* pretrainer: Simple interface that you can obtain self-supervised CNN with just one line of code! (requires [byol-pytorch](https://github.com/lucidrains/byol-pytorch))
+* self_supervised_training: Simple interface that you can obtain self-supervised CNN with just one line of code! 
 
 ### Statistical Models
 
