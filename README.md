@@ -67,7 +67,7 @@ dir_images2 = "dataset/something2"
 self_supervised_training("resnet50", [dir_images, dir_images2], batch_size=64, save_dir="pretrained_models/")
 ```
 
-* self_supervised_training: Simple interface that you can obtain self-supervised CNN with just one line of code! (requires [byol-pytorch](https://github.com/lucidrains/byol-pytorch))
+* self_supervised_training: Simple interface that you can obtain self-supervised CNN with just one line of code! 
 
 ### Statistical Models
 
