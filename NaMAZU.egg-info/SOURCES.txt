@@ -29,6 +29,8 @@ NaMAZU/lightning_wingman/torch_knn.py
 NaMAZU/lightning_wingman/torch_nbc.py
 NaMAZU/lightning_wingman/u2net.py
 NaMAZU/lightning_wingman/video_clf.py
+NaMAZU/namadeco/__init__.py
+NaMAZU/namadeco/decorations.py
 NaMAZU/st_integration/__init__.py
 NaMAZU/st_integration/clf_template.py
 NaMAZU/st_integration/st_utils.py
