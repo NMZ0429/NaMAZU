@@ -52,7 +52,7 @@ model = LitVideoClf(use_lstm=False, model_config=config)
 * **LitVideoClf**: LightningModule video classfier using either single frame CNN or CNNLSTM.
 * **MultiModalNet**: LightningModule for multi-modal learning which can learn any modality with high robustness. Can be combined with any backbone.
 
-### Training Interface
+### Feature Learning Interface
 
 Before starting your fine-tuning training, try this trianign API that produces better initial weight by running a self-supervised learning to your training dataset. Only images are used and no annotation nor data cleaning is required.
 
@@ -61,6 +61,7 @@ Other training schemes are coming soon!
 ```python
 from NaMAZU.lightingwingman import self_supervised_learning
 
+# images may be stored in single or multiple directories. Stratified sampling is supported!
 dir_images = "dataset/something"
 dir_images2 = "dataset/something2"
 
@@ -158,6 +159,13 @@ F.change_frame_rates_in("./test_data.mp4",fps=5)
 
 * hide_default_header_and_footer
 * plot_plotly_supervised
+
+## Decorator
+
+Some utility decorators to speed up your development.
+
+* print_docstring
+* measure_runtime
 
 * * *
 
