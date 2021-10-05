@@ -134,6 +134,7 @@ F.change_frame_rates_in("./test_data.mp4",fps=5)
 * rename_file
 * collect_file_pathes_by_ext
 * zip_files
+* randomly_choose_files
 * export_list_str_as
 
 ### text_control

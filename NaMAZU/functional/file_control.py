@@ -1,6 +1,7 @@
+import random
 import zipfile
 from pathlib import Path
-from typing import List, Dict
+from typing import Dict, List
 
 try:
     from typing import Literal
@@ -12,6 +13,7 @@ __all__ = [
     "rename_file",
     "collect_file_pathes_by_ext",
     "zip_files",
+    "randomly_choose_files",
     "export_list_str_as",
 ]
 
@@ -71,6 +73,26 @@ def zip_files(target_dir: str, zip_name: str, ext_list: List[str]) -> None:
         for file in target.glob(f"**/*.{ext}"):
             zip_file.write(file, file.name)
     zip_file.close()
+
+
+def randomly_choose_files(target_dir: str, num_files: int) -> List[Path]:
+    """Return a list of randomly chosen files in the target_dir.
+
+    Args:
+        target_dir (str): Directory to search for files.
+        num_files (int): Number of files to return.
+
+    Returns:
+        List[Path]: List of randomly chosen files.
+    """
+    target = Path(target_dir)
+    file_list = list(target.glob("*"))
+    return [
+        file_list[i]
+        for i in sorted(list(range(len(file_list))), key=lambda x: random.random())[
+            :num_files
+        ]
+    ]
 
 
 ##################
