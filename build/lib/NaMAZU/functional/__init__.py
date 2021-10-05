@@ -21,5 +21,6 @@ __all__ = [
     "search_word_from",
     "collect_images",
     "drop_negative",
+    "randomly_choose_files",
 ]
 

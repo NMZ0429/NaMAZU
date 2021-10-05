@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: NaMAZU
-Version: 0.0.57
+Version: 0.0.58
 Summary: NaMAZU: Pretty Usefull Library
 Home-page: https://github.com/NMZ0429/NaMAZU
 Author: NaMAZU Team
@@ -163,6 +163,7 @@ F.change_frame_rates_in("./test_data.mp4",fps=5)
 * rename_file
 * collect_file_pathes_by_ext
 * zip_files
+* randomly_choose_files
 * export_list_str_as
 
 ### text_control
