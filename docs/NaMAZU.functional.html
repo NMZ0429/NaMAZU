@@ -46,7 +46,7 @@
   
   
   
-    <title>NaMAZU.functional package &#8212; NaMAZU 0.0.14 documentation</title>
+    <title>NaMAZU.functional package &#8212; NaMAZU 0.0.58 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/material.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
@@ -78,7 +78,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="index.html" title="NaMAZU 0.0.14 documentation"
+        <a href="index.html" title="NaMAZU 0.0.58 documentation"
            class="md-header-nav__button md-logo">
           
             &nbsp;
@@ -164,7 +164,7 @@
   <nav class="md-tabs" data-md-component="tabs">
     <div class="md-tabs__inner md-grid">
       <ul class="md-tabs__list">
-          <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">NaMAZU 0.0.14 documentation</a></li>
+          <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">NaMAZU 0.0.58 documentation</a></li>
       </ul>
     </div>
   </nav>
@@ -176,13 +176,13 @@
               <div class="md-sidebar__inner">
                 <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="index.html" title="NaMAZU 0.0.14 documentation" class="md-nav__button md-logo">
+    <a href="index.html" title="NaMAZU 0.0.58 documentation" class="md-nav__button md-logo">
       
         <img src="_static/" alt=" logo" width="48" height="48">
       
     </a>
     <a href="index.html"
-       title="NaMAZU 0.0.14 documentation">NaMAZU</a>
+       title="NaMAZU 0.0.58 documentation">NaMAZU</a>
   </label>
     <div class="md-nav__source">
       <a href="https://github.com/NMZ0429/NaMAZU" title="Go to repository" class="md-source" data-md-source="github">
@@ -216,9 +216,15 @@
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#submodules" class="md-nav__link">Submodules</a>
         </li>
+        <li class="md-nav__item"><a href="#module-NaMAZU.functional.coreml_control" class="md-nav__link">NaMAZU.functional.coreml_control module</a>
+        </li>
+        <li class="md-nav__item"><a href="#module-NaMAZU.functional.data_science" class="md-nav__link">NaMAZU.functional.data_science module</a>
+        </li>
         <li class="md-nav__item"><a href="#module-NaMAZU.functional.file_control" class="md-nav__link">NaMAZU.functional.file_control module</a>
         </li>
         <li class="md-nav__item"><a href="#module-NaMAZU.functional.image_control" class="md-nav__link">NaMAZU.functional.image_control module</a>
+        </li>
+        <li class="md-nav__item"><a href="#module-NaMAZU.functional.text_control" class="md-nav__link">NaMAZU.functional.text_control module</a>
         </li>
         <li class="md-nav__item"><a href="#module-NaMAZU.functional" class="md-nav__link">Module contents</a>
         </li></ul>
@@ -244,6 +250,53 @@
 <h2 id="submodules">Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 
 
+<span id="namazu-functional-coreml-control-module"></span><h2 id="module-NaMAZU.functional.coreml_control">NaMAZU.functional.coreml_control module<a class="headerlink" href="#module-NaMAZU.functional.coreml_control" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="NaMAZU.functional.coreml_control.drop_negative">
+<span class="sig-prename descclassname"><span class="pre">NaMAZU.functional.coreml_control.</span></span><span class="sig-name descname"><span class="pre">drop_negative</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">json_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/NaMAZU/functional/coreml_control.html#drop_negative"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.functional.coreml_control.drop_negative" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load annotation file for CoreML API and drop negative samples.</p>
+<p>Return value is the number of samples successfully removed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>json_path</strong> (<em>str</em>) – Path to the annotation file.</p></li>
+<li><p><strong>save</strong> (<em>bool</em>) – Whether to save the mutated annotation file.</p></li>
+<li><p><strong>out_path</strong> (<em>str</em><em>, </em><em>optional</em>) – Output path of json. Defaults to use f”droped_{json_path}”</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Number of successful deletion.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+
+<span id="namazu-functional-data-science-module"></span><h2 id="module-NaMAZU.functional.data_science">NaMAZU.functional.data_science module<a class="headerlink" href="#module-NaMAZU.functional.data_science" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="NaMAZU.functional.data_science.train_linear_regressor">
+<span class="sig-prename descclassname"><span class="pre">NaMAZU.functional.data_science.</span></span><span class="sig-name descname"><span class="pre">train_linear_regressor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NaMAZU/functional/data_science.html#train_linear_regressor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.functional.data_science.train_linear_regressor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trains a linear regression model using the sklearn library.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – The dataframe to train the model on.</p></li>
+<li><p><strong>x</strong> (<em>Union</em><em>[</em><em>str</em><em>, </em><em>List</em><em>[</em><em>str</em><em>]</em><em>]</em>) – Single or list of column names to use as features.</p></li>
+<li><p><strong>y</strong> (<em>str</em>) – The column name of the target variable.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The trained model.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>sklearn.linear_model.LinearRegression</p>
+</dd>
+</dl>
+</dd></dl>
+
+
 <span id="namazu-functional-file-control-module"></span><h2 id="module-NaMAZU.functional.file_control">NaMAZU.functional.file_control module<a class="headerlink" href="#module-NaMAZU.functional.file_control" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="NaMAZU.functional.file_control.collect_file_pathes_by_ext">
@@ -262,6 +315,39 @@ in the ext_list. The second list contains the files having the second extension 
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>List[List[Path]]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="NaMAZU.functional.file_control.export_list_str_as">
+<span class="sig-prename descclassname"><span class="pre">NaMAZU.functional.file_control.</span></span><span class="sig-name descname"><span class="pre">export_list_str_as</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extension</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="pre">csv</span><span class="p"><span class="pre">,</span> </span><span class="pre">json</span><span class="p"><span class="pre">,</span> </span><span class="pre">txt</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_str</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/NaMAZU/functional/file_control.html#export_list_str_as"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.functional.file_control.export_list_str_as" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export a list of strings to a file of given extension. The file name is out_name if given.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>extension</strong> (<em>Literal</em><em>[</em><em>"csv"</em><em>, </em><em>"json"</em><em>, </em><em>"txt"</em><em>]</em>) – Extension of the file to create.</p></li>
+<li><p><strong>list_str</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of strings to export.</p></li>
+<li><p><strong>out_name</strong> (<em>str</em>) – Name of the file to create. Default is “”.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="NaMAZU.functional.file_control.randomly_choose_files">
+<span class="sig-prename descclassname"><span class="pre">NaMAZU.functional.file_control.</span></span><span class="sig-name descname"><span class="pre">randomly_choose_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_files</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib.Path</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/NaMAZU/functional/file_control.html#randomly_choose_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.functional.file_control.randomly_choose_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of randomly chosen files in the target_dir.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target_dir</strong> (<em>str</em>) – Directory to search for files.</p></li>
+<li><p><strong>num_files</strong> (<em>int</em>) – Number of files to return.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of randomly chosen files.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[Path]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -296,6 +382,25 @@ in the ext_list. The second list contains the files having the second extension 
 
 <span id="namazu-functional-image-control-module"></span><h2 id="module-NaMAZU.functional.image_control">NaMAZU.functional.image_control module<a class="headerlink" href="#module-NaMAZU.functional.image_control" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
+<dt class="sig sig-object py" id="NaMAZU.functional.image_control.apply_mask_to">
+<span class="sig-prename descclassname"><span class="pre">NaMAZU.functional.image_control.</span></span><span class="sig-name descname"><span class="pre">apply_mask_to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_img</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">PIL.Image.Image</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_img</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">PIL.Image.Image</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">PIL.Image.Image</span></span></span><a class="reference internal" href="_modules/NaMAZU/functional/image_control.html#apply_mask_to"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.functional.image_control.apply_mask_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply mask to target image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target_img</strong> (<em>Union</em><em>[</em><em>Image</em><em>, </em><em>str</em><em>]</em>) – PIL Image or path to image to apply mask to.</p></li>
+<li><p><strong>mask_img</strong> (<em>Union</em><em>[</em><em>Image</em><em>, </em><em>str</em><em>]</em>) – PIL Image or path to mask image.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>PIL Image object with applied mask.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Image</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
 <dt class="sig sig-object py" id="NaMAZU.functional.image_control.apply_to_all">
 <span class="sig-prename descclassname"><span class="pre">NaMAZU.functional.image_control.</span></span><span class="sig-name descname"><span class="pre">apply_to_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imgs_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/NaMAZU/functional/image_control.html#apply_to_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.functional.image_control.apply_to_all" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply function to all images in imgs_dir and save to out_dir.</p>
@@ -325,6 +430,30 @@ in the ext_list. The second list contains the files having the second extension 
 </ul>
 </dd>
 </dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="NaMAZU.functional.image_control.collect_images">
+<span class="sig-prename descclassname"><span class="pre">NaMAZU.functional.image_control.</span></span><span class="sig-name descname"><span class="pre">collect_images</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keywords</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_num_images</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'collected_images'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_threads</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_engine</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="pre">google</span><span class="p"><span class="pre">,</span> </span><span class="pre">bing</span><span class="p"><span class="pre">,</span> </span><span class="pre">baidu</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'bing'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/NaMAZU/functional/image_control.html#collect_images"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.functional.image_control.collect_images" title="Permalink to this definition">¶</a></dt>
+<dd><p>Collect images from Bing image search.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keywords</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of keywords to search.</p></li>
+<li><p><strong>max_num_images</strong> (<em>int</em><em>, </em><em>optional</em>) – Maximum number of images to download.
+Defaults to 10.</p></li>
+<li><p><strong>out_dir</strong> (<em>str</em><em>, </em><em>optional</em>) – Output directory. Defaults to “collected_images”.</p></li>
+<li><p><strong>num_threads</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of threads to use. Defaults to 4.</p></li>
+<li><p><strong>search_engine</strong> (<em>Literal</em><em>[</em><em>"google"</em><em>, </em><em>"bing"</em><em>, </em><em>"baidu"</em><em>]</em><em>, </em><em>optional</em>) – Search engine to use.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">collect_images</span><span class="p">([</span><span class="s2">"cat"</span><span class="p">,</span> <span class="s2">"dog"</span><span class="p">],</span> <span class="n">max_num_images</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">out_dir</span><span class="o">=</span><span class="s2">"collected_images"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">collect_images</span><span class="p">([</span><span class="s2">"cat"</span><span class="p">,</span> <span class="s2">"dog"</span><span class="p">],</span> <span class="n">max_num_images</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">out_dir</span><span class="o">=</span><span class="s2">"collected_images"</span><span class="p">,</span> <span class="n">search_engine</span><span class="o">=</span><span class="s2">"google"</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="NaMAZU.functional.image_control.compose_two_png">
@@ -432,7 +561,61 @@ If save is True, resultant image is saved as file_name.</p>
 </dd></dl>
 
 
+<span id="namazu-functional-text-control-module"></span><h2 id="module-NaMAZU.functional.text_control">NaMAZU.functional.text_control module<a class="headerlink" href="#module-NaMAZU.functional.text_control" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="NaMAZU.functional.text_control.search_word_from">
+<span class="sig-prename descclassname"><span class="pre">NaMAZU.functional.text_control.</span></span><span class="sig-name descname"><span class="pre">search_word_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split_token</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ingore_case</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/NaMAZU/functional/text_control.html#search_word_from"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.functional.text_control.search_word_from" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search str qurey from list of str db. If split_token is given,
+split each str in db by split_token and check for exact match.
+If ingore_case is True, ignore case.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>db</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of str to search from.</p></li>
+<li><p><strong>query</strong> (<em>str</em>) – String to search.</p></li>
+<li><p><strong>split_token</strong> (<em>str</em><em>, </em><em>optional</em>) – Token to split string into words. Defaults to “”.</p></li>
+<li><p><strong>ingore_case</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to ignore case. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of str that match query.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[str]</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">search_word_from</span><span class="p">([</span><span class="s2">"hello world"</span><span class="p">,</span><span class="s2">"hello"</span><span class="p">,</span><span class="s2">"HelloWorld"</span><span class="p">],</span> <span class="s2">"hellow"</span><span class="p">)</span>
+<span class="go">['HelloWorld']</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">search_word_from</span><span class="p">([</span><span class="s2">"hello world"</span><span class="p">,</span><span class="s2">"hello"</span><span class="p">,</span><span class="s2">"HelloWorld"</span><span class="p">],</span> <span class="s2">"hello"</span><span class="p">,</span> <span class="s2">" "</span><span class="p">)</span>
+<span class="go">['hello world', 'hello']</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">search_word_from</span><span class="p">([</span><span class="s2">"hello world"</span><span class="p">,</span><span class="s2">"hello"</span><span class="p">,</span><span class="s2">"HelloWorld"</span><span class="p">],</span> <span class="s2">"hello"</span><span class="p">,</span> <span class="n">ingore_case</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">['hello world', 'hello']</span>
+</pre></div>
+</div>
+</dd></dl>
+
+
 <span id="module-contents"></span><h2 id="module-NaMAZU.functional">Module contents<a class="headerlink" href="#module-NaMAZU.functional" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="NaMAZU.functional.apply_mask_to">
+<span class="sig-prename descclassname"><span class="pre">NaMAZU.functional.</span></span><span class="sig-name descname"><span class="pre">apply_mask_to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_img</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">PIL.Image.Image</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_img</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">PIL.Image.Image</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">PIL.Image.Image</span></span></span><a class="reference internal" href="_modules/NaMAZU/functional/image_control.html#apply_mask_to"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.functional.apply_mask_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply mask to target image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target_img</strong> (<em>Union</em><em>[</em><em>Image</em><em>, </em><em>str</em><em>]</em>) – PIL Image or path to image to apply mask to.</p></li>
+<li><p><strong>mask_img</strong> (<em>Union</em><em>[</em><em>Image</em><em>, </em><em>str</em><em>]</em>) – PIL Image or path to mask image.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>PIL Image object with applied mask.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Image</p>
+</dd>
+</dl>
+</dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="NaMAZU.functional.apply_to_all">
 <span class="sig-prename descclassname"><span class="pre">NaMAZU.functional.</span></span><span class="sig-name descname"><span class="pre">apply_to_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imgs_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/NaMAZU/functional/image_control.html#apply_to_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.functional.apply_to_all" title="Permalink to this definition">¶</a></dt>
@@ -485,6 +668,30 @@ in the ext_list. The second list contains the files having the second extension 
 </dl>
 </dd></dl>
 <dl class="py function">
+<dt class="sig sig-object py" id="NaMAZU.functional.collect_images">
+<span class="sig-prename descclassname"><span class="pre">NaMAZU.functional.</span></span><span class="sig-name descname"><span class="pre">collect_images</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keywords</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_num_images</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'collected_images'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_threads</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_engine</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="pre">google</span><span class="p"><span class="pre">,</span> </span><span class="pre">bing</span><span class="p"><span class="pre">,</span> </span><span class="pre">baidu</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'bing'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/NaMAZU/functional/image_control.html#collect_images"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.functional.collect_images" title="Permalink to this definition">¶</a></dt>
+<dd><p>Collect images from Bing image search.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keywords</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of keywords to search.</p></li>
+<li><p><strong>max_num_images</strong> (<em>int</em><em>, </em><em>optional</em>) – Maximum number of images to download.
+Defaults to 10.</p></li>
+<li><p><strong>out_dir</strong> (<em>str</em><em>, </em><em>optional</em>) – Output directory. Defaults to “collected_images”.</p></li>
+<li><p><strong>num_threads</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of threads to use. Defaults to 4.</p></li>
+<li><p><strong>search_engine</strong> (<em>Literal</em><em>[</em><em>"google"</em><em>, </em><em>"bing"</em><em>, </em><em>"baidu"</em><em>]</em><em>, </em><em>optional</em>) – Search engine to use.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">collect_images</span><span class="p">([</span><span class="s2">"cat"</span><span class="p">,</span> <span class="s2">"dog"</span><span class="p">],</span> <span class="n">max_num_images</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">out_dir</span><span class="o">=</span><span class="s2">"collected_images"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">collect_images</span><span class="p">([</span><span class="s2">"cat"</span><span class="p">,</span> <span class="s2">"dog"</span><span class="p">],</span> <span class="n">max_num_images</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">out_dir</span><span class="o">=</span><span class="s2">"collected_images"</span><span class="p">,</span> <span class="n">search_engine</span><span class="o">=</span><span class="s2">"google"</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
 <dt class="sig sig-object py" id="NaMAZU.functional.compose_two_png">
 <span class="sig-prename descclassname"><span class="pre">NaMAZU.functional.</span></span><span class="sig-name descname"><span class="pre">compose_two_png</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">back_png_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">front_png_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">PIL.Image.Image</span></span></span><a class="reference internal" href="_modules/NaMAZU/functional/image_control.html#compose_two_png"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.functional.compose_two_png" title="Permalink to this definition">¶</a></dt>
 <dd><p>Overray second png to first png with given position. Save output png to save_path if save is True.</p>
@@ -503,6 +710,41 @@ in the ext_list. The second list contains the files having the second extension 
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>Image</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="NaMAZU.functional.drop_negative">
+<span class="sig-prename descclassname"><span class="pre">NaMAZU.functional.</span></span><span class="sig-name descname"><span class="pre">drop_negative</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">json_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/NaMAZU/functional/coreml_control.html#drop_negative"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.functional.drop_negative" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load annotation file for CoreML API and drop negative samples.</p>
+<p>Return value is the number of samples successfully removed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>json_path</strong> (<em>str</em>) – Path to the annotation file.</p></li>
+<li><p><strong>save</strong> (<em>bool</em>) – Whether to save the mutated annotation file.</p></li>
+<li><p><strong>out_path</strong> (<em>str</em><em>, </em><em>optional</em>) – Output path of json. Defaults to use f”droped_{json_path}”</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Number of successful deletion.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="NaMAZU.functional.export_list_str_as">
+<span class="sig-prename descclassname"><span class="pre">NaMAZU.functional.</span></span><span class="sig-name descname"><span class="pre">export_list_str_as</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extension</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="pre">csv</span><span class="p"><span class="pre">,</span> </span><span class="pre">json</span><span class="p"><span class="pre">,</span> </span><span class="pre">txt</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_str</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/NaMAZU/functional/file_control.html#export_list_str_as"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.functional.export_list_str_as" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export a list of strings to a file of given extension. The file name is out_name if given.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>extension</strong> (<em>Literal</em><em>[</em><em>"csv"</em><em>, </em><em>"json"</em><em>, </em><em>"txt"</em><em>]</em>) – Extension of the file to create.</p></li>
+<li><p><strong>list_str</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of strings to export.</p></li>
+<li><p><strong>out_name</strong> (<em>str</em>) – Name of the file to create. Default is “”.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -545,6 +787,25 @@ in the ext_list. The second list contains the files having the second extension 
 </dl>
 </dd></dl>
 <dl class="py function">
+<dt class="sig sig-object py" id="NaMAZU.functional.randomly_choose_files">
+<span class="sig-prename descclassname"><span class="pre">NaMAZU.functional.</span></span><span class="sig-name descname"><span class="pre">randomly_choose_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_files</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib.Path</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/NaMAZU/functional/file_control.html#randomly_choose_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.functional.randomly_choose_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of randomly chosen files in the target_dir.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target_dir</strong> (<em>str</em>) – Directory to search for files.</p></li>
+<li><p><strong>num_files</strong> (<em>int</em>) – Number of files to return.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of randomly chosen files.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[Path]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
 <dt class="sig sig-object py" id="NaMAZU.functional.rename_file">
 <span class="sig-prename descclassname"><span class="pre">NaMAZU.functional.</span></span><span class="sig-name descname"><span class="pre">rename_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/NaMAZU/functional/file_control.html#rename_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.functional.rename_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Rename a file.</p>
@@ -580,6 +841,38 @@ Naming format must contains {} which will be replaced by the frame number.</p>
 </dl>
 </dd></dl>
 <dl class="py function">
+<dt class="sig sig-object py" id="NaMAZU.functional.search_word_from">
+<span class="sig-prename descclassname"><span class="pre">NaMAZU.functional.</span></span><span class="sig-name descname"><span class="pre">search_word_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split_token</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ingore_case</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/NaMAZU/functional/text_control.html#search_word_from"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.functional.search_word_from" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search str qurey from list of str db. If split_token is given,
+split each str in db by split_token and check for exact match.
+If ingore_case is True, ignore case.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>db</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of str to search from.</p></li>
+<li><p><strong>query</strong> (<em>str</em>) – String to search.</p></li>
+<li><p><strong>split_token</strong> (<em>str</em><em>, </em><em>optional</em>) – Token to split string into words. Defaults to “”.</p></li>
+<li><p><strong>ingore_case</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to ignore case. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of str that match query.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[str]</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">search_word_from</span><span class="p">([</span><span class="s2">"hello world"</span><span class="p">,</span><span class="s2">"hello"</span><span class="p">,</span><span class="s2">"HelloWorld"</span><span class="p">],</span> <span class="s2">"hellow"</span><span class="p">)</span>
+<span class="go">['HelloWorld']</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">search_word_from</span><span class="p">([</span><span class="s2">"hello world"</span><span class="p">,</span><span class="s2">"hello"</span><span class="p">,</span><span class="s2">"HelloWorld"</span><span class="p">],</span> <span class="s2">"hello"</span><span class="p">,</span> <span class="s2">" "</span><span class="p">)</span>
+<span class="go">['hello world', 'hello']</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">search_word_from</span><span class="p">([</span><span class="s2">"hello world"</span><span class="p">,</span><span class="s2">"hello"</span><span class="p">,</span><span class="s2">"HelloWorld"</span><span class="p">],</span> <span class="s2">"hello"</span><span class="p">,</span> <span class="n">ingore_case</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">['hello world', 'hello']</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
 <dt class="sig sig-object py" id="NaMAZU.functional.split_image">
 <span class="sig-prename descclassname"><span class="pre">NaMAZU.functional.</span></span><span class="sig-name descname"><span class="pre">split_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/NaMAZU/functional/image_control.html#split_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.functional.split_image" title="Permalink to this definition">¶</a></dt>
 <dd><p>Split image by vertical centre line if direction is 0 otherwise by horizontal line.
@@ -598,6 +891,26 @@ If save is True, resultant image is saved as file_name.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>Tuple[np.ndarray, np.ndarray]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="NaMAZU.functional.train_linear_regressor">
+<span class="sig-prename descclassname"><span class="pre">NaMAZU.functional.</span></span><span class="sig-name descname"><span class="pre">train_linear_regressor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NaMAZU/functional/data_science.html#train_linear_regressor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NaMAZU.functional.train_linear_regressor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trains a linear regression model using the sklearn library.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – The dataframe to train the model on.</p></li>
+<li><p><strong>x</strong> (<em>Union</em><em>[</em><em>str</em><em>, </em><em>List</em><em>[</em><em>str</em><em>]</em><em>]</em>) – Single or list of column names to use as features.</p></li>
+<li><p><strong>y</strong> (<em>str</em>) – The column name of the target variable.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The trained model.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>sklearn.linear_model.LinearRegression</p>
 </dd>
 </dl>
 </dd></dl>

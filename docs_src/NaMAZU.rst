@@ -9,6 +9,7 @@ Subpackages
 
    NaMAZU.functional
    NaMAZU.lightning_wingman
+   NaMAZU.namadeco
    NaMAZU.st_integration
 
 Module contents

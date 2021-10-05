@@ -46,7 +46,7 @@
   
   
   
-    <title>NaMAZU.functional.image_control &#8212; NaMAZU 0.0.14 documentation</title>
+    <title>NaMAZU.functional.image_control &#8212; NaMAZU 0.0.58 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/material.css" />
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
@@ -78,7 +78,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../../../index.html" title="NaMAZU 0.0.14 documentation"
+        <a href="../../../index.html" title="NaMAZU 0.0.58 documentation"
            class="md-header-nav__button md-logo">
           
             &nbsp;
@@ -164,7 +164,7 @@
   <nav class="md-tabs" data-md-component="tabs">
     <div class="md-tabs__inner md-grid">
       <ul class="md-tabs__list">
-          <li class="md-tabs__item"><a href="../../../index.html" class="md-tabs__link">NaMAZU 0.0.14 documentation</a></li>
+          <li class="md-tabs__item"><a href="../../../index.html" class="md-tabs__link">NaMAZU 0.0.58 documentation</a></li>
           <li class="md-tabs__item"><a href="../../index.html" class="md-tabs__link">Module code</a></li>
       </ul>
     </div>
@@ -177,13 +177,13 @@
               <div class="md-sidebar__inner">
                 <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../../../index.html" title="NaMAZU 0.0.14 documentation" class="md-nav__button md-logo">
+    <a href="../../../index.html" title="NaMAZU 0.0.58 documentation" class="md-nav__button md-logo">
       
         <img src="../../../_static/" alt=" logo" width="48" height="48">
       
     </a>
     <a href="../../../index.html"
-       title="NaMAZU 0.0.14 documentation">NaMAZU</a>
+       title="NaMAZU 0.0.58 documentation">NaMAZU</a>
   </label>
     <div class="md-nav__source">
       <a href="https://github.com/NMZ0429/NaMAZU" title="Go to repository" class="md-source" data-md-source="github">
@@ -228,7 +228,12 @@
   <h1 id="modules-namazu-functional-image-control--page-root">Source code for NaMAZU.functional.image_control</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Tuple</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">List</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Literal</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Literal</span>
 
 <span class="kn">import</span> <span class="nn">cv2</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -237,14 +242,16 @@
 <span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
 
 
-<span class="n">all_funcs</span> <span class="o">=</span> <span class="p">[</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s2">"img_to_npy"</span><span class="p">,</span>
     <span class="s2">"npy_to_png"</span><span class="p">,</span>
+    <span class="s2">"apply_mask_to"</span><span class="p">,</span>
     <span class="s2">"split_image"</span><span class="p">,</span>
     <span class="s2">"compose_two_png"</span><span class="p">,</span>
     <span class="s2">"apply_to_all"</span><span class="p">,</span>
     <span class="s2">"change_frame_rates_in"</span><span class="p">,</span>
     <span class="s2">"save_all_frames"</span><span class="p">,</span>
+    <span class="s2">"collect_images"</span><span class="p">,</span>
 <span class="p">]</span>
 
 
@@ -262,7 +269,7 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        numpy.ndarray: Numpy array of the image</span>
 <span class="sd">    """</span>
-    <span class="n">img</span> <span class="o">=</span> <span class="n">PILImage</span><span class="p">(</span><span class="n">jpg_path</span><span class="p">)</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">PILImage</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">jpg_path</span><span class="p">)</span>
     <span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asanyarray</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 
     <span class="n">ext</span> <span class="o">=</span> <span class="s2">"."</span> <span class="o">+</span> <span class="n">jpg_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"."</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
@@ -295,6 +302,28 @@
     <span class="k">return</span> <span class="n">img</span></div>
 
 
+<div class="viewcode-block" id="apply_mask_to"><a class="viewcode-back" href="../../../NaMAZU.functional.html#NaMAZU.functional.image_control.apply_mask_to">[docs]</a><span class="k">def</span> <span class="nf">apply_mask_to</span><span class="p">(</span><span class="n">target_img</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Image</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="n">mask_img</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Image</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Image</span><span class="p">:</span>
+    <span class="sd">"""Apply mask to target image.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        target_img (Union[Image, str]): PIL Image or path to image to apply mask to.</span>
+<span class="sd">        mask_img (Union[Image, str]): PIL Image or path to mask image.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Image: PIL Image object with applied mask.</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">target_img</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">target_img</span> <span class="o">=</span> <span class="n">PILImage</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">target_img</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">mask_img</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">mask_img</span> <span class="o">=</span> <span class="n">PILImage</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">mask_img</span><span class="p">)</span>
+
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">mask_img</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s2">"L"</span><span class="p">)</span>
+    <span class="n">target_img_cp</span> <span class="o">=</span> <span class="n">target_img</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">target_img_cp</span><span class="o">.</span><span class="n">putalpha</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">target_img_cp</span></div>
+
+
 <div class="viewcode-block" id="split_image"><a class="viewcode-back" href="../../../NaMAZU.functional.html#NaMAZU.functional.image_control.split_image">[docs]</a><span class="k">def</span> <span class="nf">split_image</span><span class="p">(</span>
     <span class="n">img_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">direction</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">save</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">file_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
@@ -310,7 +339,7 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        Tuple[np.ndarray, np.ndarray]: Tuple of numpy arrays.</span>
 <span class="sd">    """</span>
-    <span class="n">img</span> <span class="o">=</span> <span class="n">PILImage</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">PILImage</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span>
     <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">size</span>
 
     <span class="k">if</span> <span class="n">direction</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -349,8 +378,8 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        Image: PIL Image object</span>
 <span class="sd">    """</span>
-    <span class="n">back</span> <span class="o">=</span> <span class="n">PILImage</span><span class="p">(</span><span class="n">back_png_path</span><span class="p">)</span>
-    <span class="n">front</span> <span class="o">=</span> <span class="n">PILImage</span><span class="p">(</span><span class="n">front_png_path</span><span class="p">)</span>
+    <span class="n">back</span> <span class="o">=</span> <span class="n">PILImage</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">back_png_path</span><span class="p">)</span>
+    <span class="n">front</span> <span class="o">=</span> <span class="n">PILImage</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">front_png_path</span><span class="p">)</span>
 
     <span class="n">back</span><span class="o">.</span><span class="n">paste</span><span class="p">(</span><span class="n">front</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="n">front</span><span class="p">)</span>
 
@@ -449,6 +478,56 @@
             <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="mi">1</span></div>
+
+
+<span class="c1">###################</span>
+<span class="c1"># Data Collection #</span>
+<span class="c1">###################</span>
+
+
+<div class="viewcode-block" id="collect_images"><a class="viewcode-back" href="../../../NaMAZU.functional.html#NaMAZU.functional.image_control.collect_images">[docs]</a><span class="k">def</span> <span class="nf">collect_images</span><span class="p">(</span>
+    <span class="n">keywords</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="n">max_num_images</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">out_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"collected_images"</span><span class="p">,</span>
+    <span class="n">num_threads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="n">search_engine</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">"google"</span><span class="p">,</span> <span class="s2">"bing"</span><span class="p">,</span> <span class="s2">"baidu"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"bing"</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">"""</span>
+<span class="sd">    Collect images from Bing image search.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        keywords (List[str]): List of keywords to search.</span>
+<span class="sd">        max_num_images (int, optional): Maximum number of images to download.</span>
+<span class="sd">            Defaults to 10.</span>
+<span class="sd">        out_dir (str, optional): Output directory. Defaults to "collected_images".</span>
+<span class="sd">        num_threads (int, optional): Number of threads to use. Defaults to 4.</span>
+<span class="sd">        search_engine (Literal["google", "bing", "baidu"], optional): Search engine to use.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; collect_images(["cat", "dog"], max_num_images=10, out_dir="collected_images")</span>
+
+<span class="sd">        &gt;&gt;&gt; collect_images(["cat", "dog"], max_num_images=10, out_dir="collected_images", search_engine="google")</span>
+<span class="sd">    """</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">icrawler.builtin</span> <span class="kn">import</span> <span class="p">(</span>
+            <span class="n">BingImageCrawler</span><span class="p">,</span>
+            <span class="n">GoogleImageCrawler</span><span class="p">,</span>
+            <span class="n">BaiduImageCrawler</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span>
+            <span class="s2">"Please install icrawler to use the function 'collect_images()'"</span>
+        <span class="p">)</span>
+    <span class="n">engines</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">"google"</span><span class="p">:</span> <span class="n">GoogleImageCrawler</span><span class="p">,</span>
+        <span class="s2">"bing"</span><span class="p">:</span> <span class="n">BingImageCrawler</span><span class="p">,</span>
+        <span class="s2">"baidu"</span><span class="p">:</span> <span class="n">BaiduImageCrawler</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">crawler</span> <span class="o">=</span> <span class="n">engines</span><span class="p">[</span><span class="n">search_engine</span><span class="p">](</span>
+        <span class="n">downloader_threads</span><span class="o">=</span><span class="n">num_threads</span><span class="p">,</span> <span class="n">storage</span><span class="o">=</span><span class="p">{</span><span class="s2">"root_dir"</span><span class="p">:</span> <span class="n">out_dir</span><span class="p">}</span>
+    <span class="p">)</span>
+    <span class="n">kwargs</span> <span class="o">=</span> <span class="s2">" "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">keywords</span><span class="p">)</span>
+    <span class="n">crawler</span><span class="o">.</span><span class="n">crawl</span><span class="p">(</span><span class="n">keyword</span><span class="o">=</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">max_num</span><span class="o">=</span><span class="n">max_num_images</span><span class="p">)</span></div>
 </pre></div>
 
           </article>

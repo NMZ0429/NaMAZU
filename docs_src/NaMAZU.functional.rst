@@ -4,6 +4,22 @@ NaMAZU.functional package
 Submodules
 ----------
 
+NaMAZU.functional.coreml\_control module
+----------------------------------------
+
+.. automodule:: NaMAZU.functional.coreml_control
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+NaMAZU.functional.data\_science module
+--------------------------------------
+
+.. automodule:: NaMAZU.functional.data_science
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 NaMAZU.functional.file\_control module
 --------------------------------------
 
@@ -16,6 +32,14 @@ NaMAZU.functional.image\_control module
 ---------------------------------------
 
 .. automodule:: NaMAZU.functional.image_control
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+NaMAZU.functional.text\_control module
+--------------------------------------
+
+.. automodule:: NaMAZU.functional.text_control
    :members:
    :undoc-members:
    :show-inheritance:

@@ -1,0 +1,500 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../../../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../../../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../../../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../../../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#3f51b5">
+  <script src="../../../_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>NaMAZU.lightning_wingman.lit_multimodal &#8212; NaMAZU 0.0.58 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/material.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=blue data-md-color-accent=light-blue>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#_modules/NaMAZU/lightning_wingman/lit_multimodal" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../../../index.html" title="NaMAZU 0.0.58 documentation"
+           class="md-header-nav__button md-logo">
+          
+            &nbsp;
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">NaMAZU</span>
+          <span class="md-header-nav__topic"> NaMAZU.lightning_wingman.lit_multimodal </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../../../search.html" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder="Search"
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            <a href="https://github.com/NMZ0429/NaMAZU" title="Go to repository" class="md-source" data-md-source="github">
+
+    <div class="md-source__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="28" height="28">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    Project
+  </div>
+</a>
+          </div>
+        </div>
+      
+      
+  
+  <script src="../../../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../../../"versions.json"",
+        target_loc = "../../../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="../../../index.html" class="md-tabs__link">NaMAZU 0.0.58 documentation</a></li>
+          <li class="md-tabs__item"><a href="../../index.html" class="md-tabs__link">Module code</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../../../index.html" title="NaMAZU 0.0.58 documentation" class="md-nav__button md-logo">
+      
+        <img src="../../../_static/" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="../../../index.html"
+       title="NaMAZU 0.0.58 documentation">NaMAZU</a>
+  </label>
+    <div class="md-nav__source">
+      <a href="https://github.com/NMZ0429/NaMAZU" title="Go to repository" class="md-source" data-md-source="github">
+
+    <div class="md-source__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="28" height="28">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    Project
+  </div>
+</a>
+    </div>
+  
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+
+<li id="searchbox" class="md-nav__item"></li>
+
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <h1 id="modules-namazu-lightning-wingman-lit-multimodal--page-root">Source code for NaMAZU.lightning_wingman.lit_multimodal</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">Tensor</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Dict</span>
+<span class="kn">from</span> <span class="nn">torch.optim</span> <span class="kn">import</span> <span class="n">Adam</span>
+<span class="kn">from</span> <span class="nn">torch.optim.lr_scheduler</span> <span class="kn">import</span> <span class="n">StepLR</span>
+<span class="kn">from</span> <span class="nn">pytorch_lightning</span> <span class="kn">import</span> <span class="n">LightningModule</span>
+
+<span class="kn">from</span> <span class="nn">.multi_modal</span> <span class="kn">import</span> <span class="n">StochasticFusion</span>
+
+
+<div class="viewcode-block" id="MultiModalNet"><a class="viewcode-back" href="../../../NaMAZU.lightning_wingman.html#NaMAZU.lightning_wingman.lit_multimodal.MultiModalNet">[docs]</a><span class="k">class</span> <span class="nc">MultiModalNet</span><span class="p">(</span><span class="n">LightningModule</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">modality_dimensions</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
+        <span class="n">modality_encoders</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">],</span>
+        <span class="n">latent_dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">512</span><span class="p">,</span>
+        <span class="n">direct_fusion</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">num_classes</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">is_regression</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">train_encoders</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">use_modality_dropout</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">md_prob</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">use_stochastic_fusion</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">"""Multipurpose multimodal network.</span>
+
+<span class="sd">        This model operates stochastic modality sampling to increase robustness of fusion vector.</span>
+<span class="sd">        Is consists of three parts:</span>
+<span class="sd">            1. Encoder:</span>
+<span class="sd">                List of encoder models for each modality. The choice of encoder is determined by the user depending on modalities.</span>
+<span class="sd">            2. Fusion layers:</span>
+<span class="sd">                Main part of the model. They are the list of linear layers and one sampling function.</span>
+<span class="sd">                They takes the list of vectors from encoders and fuse them stochastically.</span>
+<span class="sd">                There are two adjustable parameters for the fusion layers:</span>
+<span class="sd">                    1. modal_state:</span>
+<span class="sd">                        This is a tensor of shape (batch_size, num_modalities) which indicates whether the modality is given or not. </span>
+<span class="sd">                        Use built-in modality droput functionality to utilize this and make the model more robust.</span>
+<span class="sd">                    2. prior_modality_distribution:</span>
+<span class="sd">                        This is a tensor of of shape [batch_size, num_modalities], which indicates the prior distribution of feature importance of each modality.</span>
+<span class="sd">                        Changing this dynamically can improve the performance of the model and there is a built-in adjustment algorithm for this. But you can </span>
+<span class="sd">                        implment your own (書いたらPRしてね。)</span>
+<span class="sd">                        </span>
+<span class="sd">            3. Output layer:</span>
+<span class="sd">                Output layer. It is a linear layer to convert the fusion vector to the desired output.</span>
+
+<span class="sd">        The written network is only for fusion operation and output layers so by passing modality encoders, </span>
+<span class="sd">        this model can process any type of modality and output strandarized vector for eithre classification or regression.</span>
+<span class="sd">        Make you that you pass correct modality dimension and encoder.</span>
+
+<span class="sd">        For example, pass two CNNs if the input modalities are RGB image and audio spectrogram.</span>
+<span class="sd">        If you are dealing with audio and video, you can pass CNNLSTM and LSTM respectively.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            modality_dimensions (List[int]): List of output dimensions for each modality encoder.</span>
+<span class="sd">            modality_encoders (List[torch.nn.Module], optional): List of modality encoders.</span>
+<span class="sd">            latent_dim (int, optional): Dimension to which adjust output from each encoder. Output of fusion layer is also this. Defaults to 512.</span>
+<span class="sd">            direct_fusion (bool, optional): True to skip the adjustment FC layer but doing so requires all </span>
+<span class="sd">                                             encoders output the same shape of vector. Defaults to False.</span>
+<span class="sd">            num_classes (int, optional): Number of classes for classification task. Defaults to 1.</span>
+<span class="sd">            is_regression (bool, optional): True to train it with MSE. Don't forget to set num_classes to 1. Defaults to False.</span>
+<span class="sd">            train_encoders (bool, optional): True to train encoders too. Defaults to False.</span>
+<span class="sd">            use_modality_dropout (bool, optional): True to use default modality dropout and stochastic fusion. Defaults to True.</span>
+<span class="sd">            md_prob (float, optional): Probability of modality dropout. Defaults to 0.5.</span>
+<span class="sd">            use_stochastic_fusion (bool, optional): True to use stochastic fusion. Defaults to False.</span>
+<span class="sd">        """</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">save_hyperparameters</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_modalities</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">modality_dimensions</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__prepare_model</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_layer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">latent_dim</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">is_regression</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">loss</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">loss</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">train_encoders</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">encoders</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">use_stochastic_fusion</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fusioner</span> <span class="o">=</span> <span class="n">StochasticFusion</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_modalities</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fusioner</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="MultiModalNet.forward"><a class="viewcode-back" href="../../../NaMAZU.lightning_wingman.html#NaMAZU.lightning_wingman.lit_multimodal.MultiModalNet.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">ma</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">prior</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_varify_batch</span><span class="p">(</span><span class="n">x_list</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fusioner</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">prior</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stochstic_fusion</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x_list</span><span class="p">))</span>
+
+        <span class="n">y_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">encoder</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">encoder</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">encoders</span><span class="p">,</span> <span class="n">x_list</span><span class="p">)]</span>
+        <span class="n">y_stack</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_by_modal_forward</span><span class="p">(</span><span class="n">y_list</span><span class="p">)</span>
+        <span class="n">availability</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_lacking_modality</span><span class="p">(</span><span class="n">y_stack</span><span class="p">,</span> <span class="n">modal_state</span><span class="o">=</span><span class="n">ma</span><span class="p">)</span>
+        <span class="n">prior_modality_distribution</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_prior</span><span class="p">(</span>
+            <span class="n">prior_modality_distribution</span><span class="o">=</span><span class="n">prior</span>
+        <span class="p">)</span>
+        <span class="n">fusion_vector</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mulnom_sampling</span><span class="p">(</span>
+            <span class="n">y_stack</span><span class="p">,</span> <span class="n">prior_modality_distribution</span><span class="p">,</span> <span class="n">availability</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_layer</span><span class="p">(</span><span class="n">fusion_vector</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MultiModalNet.training_step"><a class="viewcode-back" href="../../../NaMAZU.lightning_wingman.html#NaMAZU.lightning_wingman.lit_multimodal.MultiModalNet.training_step">[docs]</a>    <span class="k">def</span> <span class="nf">training_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
+        <span class="n">x_list</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">batch</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">hparams</span><span class="o">.</span><span class="n">use_modality_dropout</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
+            <span class="n">ma</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modality_dropout</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x_list</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_modalities</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">ma</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">y_hat</span> <span class="o">=</span> <span class="bp">self</span><span class="p">(</span><span class="n">x_list</span><span class="p">,</span> <span class="n">ma</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loss</span><span class="p">(</span><span class="n">y_hat</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">{</span><span class="s2">"loss"</span><span class="p">:</span> <span class="n">loss</span><span class="p">}</span></div>
+
+<div class="viewcode-block" id="MultiModalNet.configure_optimizers"><a class="viewcode-back" href="../../../NaMAZU.lightning_wingman.html#NaMAZU.lightning_wingman.lit_multimodal.MultiModalNet.configure_optimizers">[docs]</a>    <span class="k">def</span> <span class="nf">configure_optimizers</span><span class="p">(</span><span class="bp">self</span><span class="p">,)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">Adam</span><span class="p">,</span> <span class="n">StepLR</span><span class="p">]]:</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_modalities</span><span class="p">):</span>
+            <span class="n">params</span> <span class="o">+=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"fc_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">hparams</span><span class="o">.</span><span class="n">train_encoders</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
+            <span class="n">params</span> <span class="o">+=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">encoders</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span>
+        <span class="n">optimizer</span> <span class="o">=</span> <span class="n">Adam</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">"optimizer"</span><span class="p">:</span> <span class="n">optimizer</span><span class="p">,</span>
+            <span class="s2">"lr_scheduler"</span><span class="p">:</span> <span class="n">StepLR</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">step_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.8</span><span class="p">),</span>
+        <span class="p">}</span></div>
+
+    <span class="k">def</span> <span class="nf">_varify_batch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_modalities</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">"The number of modalities in the batch must be </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">num_modalities</span><span class="si">}</span><span class="s2"> but </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span><span class="si">}</span><span class="s2"> was given."</span>
+            <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_by_modal_forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">modalities</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tensor</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+        <span class="n">output_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">bypass_docking</span><span class="p">:</span>
+            <span class="n">output_list</span> <span class="o">=</span> <span class="n">modalities</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">modality</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">modalities</span><span class="p">):</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"fc_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">"</span><span class="p">)(</span><span class="n">modality</span><span class="p">)</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+                <span class="n">output_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span>
+            <span class="n">output_list</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span>
+        <span class="p">)</span>  <span class="c1"># [batch_size, latent_dim, num_modalities]</span>
+
+    <span class="k">def</span> <span class="nf">_check_lacking_modality</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">modal_state</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">modal_state</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span>
+                <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_modalities</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">modal_state</span>
+
+    <span class="k">def</span> <span class="nf">_check_prior</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">prior_modality_distribution</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">prior_modality_distribution</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">num_modalities</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">prior_modality_distribution</span>
+
+    <span class="k">def</span> <span class="nf">_mulnom_sampling</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">laten_modalities</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
+        <span class="n">prior_modality_distribution</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
+        <span class="n">modal_state</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="n">weighted_prior</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">prior_modality_distribution</span><span class="p">,</span> <span class="n">modal_state</span><span class="p">)</span>
+        <span class="n">weighted_prior</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">prior_modality_distribution</span><span class="p">,</span> <span class="n">weighted_prior</span><span class="p">)</span>
+
+        <span class="n">modality_idx</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">multinomial</span><span class="p">(</span>
+            <span class="n">weighted_prior</span><span class="p">,</span>
+            <span class="n">num_samples</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">hparams</span><span class="o">.</span><span class="n">latend_dim</span><span class="p">,</span>  <span class="c1"># type: ignore</span>
+            <span class="n">replacement</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">chosen_modalities</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">one_hot</span><span class="p">(</span>  <span class="c1"># type: ignore</span>
+            <span class="n">modality_idx</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_modalities</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">laten_modalities</span><span class="p">,</span> <span class="n">chosen_modalities</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Setup methods</span>
+
+    <span class="k">def</span> <span class="nf">__prepare_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">hparams</span><span class="o">.</span><span class="n">direct_fusion</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">modal_dim</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hparams</span><span class="o">.</span><span class="n">modality_dimensions</span><span class="p">):</span>  <span class="c1"># type: ignore</span>
+                <span class="nb">setattr</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="p">,</span>
+                    <span class="sa">f</span><span class="s2">"fc_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+                    <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">modal_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hparams</span><span class="o">.</span><span class="n">latent_dim</span><span class="p">),</span>  <span class="c1"># type: ignore</span>
+                <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">hparams</span><span class="o">.</span><span class="n">modality_dimensions</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hparams</span><span class="o">.</span><span class="n">latend_dim</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">"The input data must be the shape of (batch_size, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">hparams</span><span class="o">.</span><span class="n">latent_dim</span><span class="si">}</span><span class="s2">) but input_size_list containes </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">."</span>  <span class="c1"># type: ignore</span>
+                    <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">encoders</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hparams</span><span class="o">.</span><span class="n">modality_encoders</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+
+    <span class="c1"># Optional Operations</span>
+
+<div class="viewcode-block" id="MultiModalNet.modality_dropout"><a class="viewcode-back" href="../../../NaMAZU.lightning_wingman.html#NaMAZU.lightning_wingman.lit_multimodal.MultiModalNet.modality_dropout">[docs]</a>    <span class="k">def</span> <span class="nf">modality_dropout</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">num_modalities</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+        <span class="sd">"""Return a tensor of shape (batch_size, num_modalities) whose values are either 0 or 1.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            batch_size (int): The batch size.</span>
+<span class="sd">            num_modalities (int): Number of modalities.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Union[Tensor, None]: Dropped modalities or None if the dropout is disabled.</span>
+<span class="sd">        """</span>
+        <span class="n">drop</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">drop</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">hparams</span><span class="o">.</span><span class="n">md_prob</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
+            <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">([</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_modalities</span><span class="p">]))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="MultiModalNet.stochstic_fusion"><a class="viewcode-back" href="../../../NaMAZU.lightning_wingman.html#NaMAZU.lightning_wingman.lit_multimodal.MultiModalNet.stochstic_fusion">[docs]</a>    <span class="k">def</span> <span class="nf">stochstic_fusion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+        <span class="n">w_list</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">fusioner</span><span class="p">()</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)]</span>  <span class="c1"># type: ignore</span>
+        <span class="n">ws</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">w_list</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">ws</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># type: ignore</span></div></div>
+
+</pre></div>
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2021, NMZ.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../../../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>
