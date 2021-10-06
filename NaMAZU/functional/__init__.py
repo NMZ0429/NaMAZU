@@ -15,7 +15,7 @@ __all__ = [
     "split_image",
     "compose_two_png",
     "apply_to_all",
-    "change_frame_rates_in",
+    "change_frame_rates",
     "save_all_frames",
     "export_list_str_as",
     "search_word_from",
