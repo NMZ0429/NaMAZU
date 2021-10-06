@@ -1,6 +1,7 @@
+import os
 from os.path import join
-from pathlib import Path
-from typing import Callable, Tuple, Union, List
+from pathlib import Path, PosixPath
+from typing import Callable, List, Tuple, Union
 
 try:
     from typing import Literal
@@ -13,7 +14,6 @@ from PIL import Image as PILImage
 from PIL.Image import Image
 from tqdm import tqdm
 
-
 __all__ = [
     "img_to_npy",
     "npy_to_png",
@@ -21,7 +21,7 @@ __all__ = [
     "split_image",
     "compose_two_png",
     "apply_to_all",
-    "change_frame_rates_in",
+    "change_frame_rates",
     "save_all_frames",
     "collect_images",
 ]
@@ -200,16 +200,44 @@ def apply_to_all(func: Callable, imgs_dir: str, out_dir: str = None, **kwargs) -
 #################
 
 
-def change_frame_rates_in(mp4_dir: str, fps: int) -> None:
-    """Change frame rate of all mp4 files in mp4_dir.
+def change_frame_rates(
+    mp4_dir: Union[str, List[str], List[PosixPath]],
+    fps: int,
+    out_dir: str = "",
+    out_name: str = "",
+) -> int:
+    """Change frame rate of given mp4.
+
+    If list of mp4 are given, apply this function to all of them.
 
     Args:
-        mp4_dir (str): Path to directory containing mp4 files.
-        fps (int): New frame rate.
-    """
-    import subprocess
+        mp4_dir (Union[str, List[str], List[PosixPath]]): Single of list of path to mp4 files.
+        fps (int): Frame rate to change to.
+        out_dir (str, optional): Path to directory to save output. Defaults to "".
+        out_name (str, optional): Name of output file. Defaults to "".
 
-    subprocess.call("./fps_change.sh {} {}".format(mp4_dir, fps), shell=True)
+    Returns:
+        int: Number of mp4 files changed.
+    """
+    if isinstance(mp4_dir, str):
+        mp4_dir = [mp4_dir]
+
+    if out_dir == "":
+        out_dir = Path("./output")  # type: ignore
+        out_dir.mkdir(parents=True, exist_ok=True)  # type: ignore
+
+    for mp4 in mp4_dir:
+        print(f"Changing frame rate of {mp4} to {fps}")
+        if type(mp4) == str:
+            mp4 = Path(mp4)
+        out_name = out_name if out_name else mp4.name  # type: ignore
+        out_name = out_name.replace(".mp4", "_fps{}.mp4".format(fps))
+        out_name = join(out_dir, out_name)
+
+        cmd = f"ffmpeg -i {mp4} -vf fps={fps} {out_name}"
+        os.system(cmd)
+
+    return len(mp4_dir)
 
 
 def save_all_frames(
@@ -282,9 +310,9 @@ def collect_images(
     """
     try:
         from icrawler.builtin import (
+            BaiduImageCrawler,
             BingImageCrawler,
             GoogleImageCrawler,
-            BaiduImageCrawler,
         )
     except ImportError:
         raise ImportError(
