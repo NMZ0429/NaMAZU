@@ -114,7 +114,7 @@ You can use below functions via
 ```python
 import NaMAZU.functional as F
 
-F.change_frame_rates_in("./test_data.mp4",fps=5)
+F.change_frame_rates("./test_data.mp4",fps=5)
 ```
 
 ### image_control
@@ -125,7 +125,7 @@ F.change_frame_rates_in("./test_data.mp4",fps=5)
 * compose_two_png
 * apply_mask_to
 * apply_to_all
-* change_frame_rates_in
+* change_frame_rates
 * save_all_frames
 * collect_images (requires [icrawler](https://icrawler.readthedocs.io/en/latest/))
 
