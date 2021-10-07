@@ -19,7 +19,7 @@ except ImportError:
 __all__ = ["self_supervised_training"]
 
 
-def choose_model(model: str) -> torch.nn.Module:
+def __choose_model(model: str) -> torch.nn.Module:
     if model == "vgg16":
         return models.vgg16(pretrained=True)
     elif model == "vgg19":
@@ -39,21 +39,25 @@ def choose_model(model: str) -> torch.nn.Module:
     elif model == "densenet201":
         return models.densenet201(pretrained=True)
     else:
-        raise ValueError("Unknown model")
+        raise ValueError(f"Unknown model: {model}")
 
 
-def set_number_of_threads(num_threads: int) -> None:
+def __set_number_of_threads(num_threads: int) -> None:
     print("Setting number of threads to {}".format(num_threads))
     torch.set_num_threads(num_threads)
 
 
-def prepare_image_pathes(image_dirs: List[str]) -> Dict[str, List[str]]:
+def __prepare_image_pathes(image_dirs: List[str]) -> Dict[str, List[str]]:
     """Return the dict of list of image paths for each directory in image_dirs"""
     image_paths = {}
     for img_dir in image_dirs:
         if not os.path.isdir(img_dir):
             raise ValueError("Image directory {} does not exist".format(img_dir))
-        imgs = glob("*.png") + glob("*.jpg") + glob("*.jpeg")
+        imgs = (
+            glob(os.path.join(img_dir, "*.png"))
+            + glob(os.path.join(img_dir, "*.jpg"))
+            + glob(os.path.join(img_dir, "*.jpeg"))
+        )
         image_paths[img_dir] = imgs
 
     return image_paths
@@ -72,7 +76,9 @@ def sample_unlabelled_images(list_imgs: List[str], n: int) -> torch.Tensor:
     return batch
 
 
-def stratified_sampling(datasets: List[List[str]], n: int) -> torch.Tensor:
+def __stratified_sampling(
+    datasets: List[List[str]], n: int, img_size: int
+) -> torch.Tensor:
     """Sample n images from each dataset and return a tensor
     
     Args:
@@ -85,11 +91,12 @@ def stratified_sampling(datasets: List[List[str]], n: int) -> torch.Tensor:
     batch = []
     for dataset in datasets:
         imgs = random.sample(dataset, n)
-        batch.append(imgs)
+        for img_path in imgs:
+            img = Image.open(img_path).convert("RGB").resize((img_size, img_size))
+            img = transforms.ToTensor()(img)
+            batch.append(img)
 
-    batch = torch.cat(batch, dim=0)
-
-    return batch
+    return torch.stack(batch, dim=0)
 
 
 def print_training_summary(dataset_dict: Dict[str, List[str]], model) -> None:
@@ -97,7 +104,7 @@ def print_training_summary(dataset_dict: Dict[str, List[str]], model) -> None:
     print(f"\tModel: {model}")
     print("\tNumber of images:")
     for key, value in dataset_dict.items():
-        print("\t{}: {}".format(key, len(value)))
+        print("\t\t{}: {}".format(key, len(value)))
 
 
 def self_supervised_training(
@@ -107,6 +114,7 @@ def self_supervised_training(
     num_threads: int = 6,
     num_iterations: int = 10000,
     save_dir: str = "",
+    img_size: int = 256,
     device: str = "cuda",
     simsiam: bool = False,
 ) -> torch.nn.Module:  # type: ignore
@@ -123,13 +131,14 @@ def self_supervised_training(
         num_threads (int): Number of cpu threads to use.
         num_iterations (int): Number of epochs. Default is 10000.
         save_dir (str, optional): Trained model is saved to the directory if given otherwise returned. Defaults to "".
+        img_size (int, optional): Image size. Defaults to 256.
         device (str, optional): Device to use. Defaults to "cuda".
         simsiam (bool, optional): If True, use SimSiam. Defaults to False.
 
     Returns:
         torch.nn.Module: Trained model.
     """
-    set_number_of_threads(num_threads)
+    __set_number_of_threads(num_threads)
 
     # Set up dataset
     if batch_size % len(image_dirs) != 0:
@@ -137,14 +146,17 @@ def self_supervised_training(
         batch_size -= batch_size % len(image_dirs)
     n_per_subset = batch_size // len(image_dirs)
 
-    image_path_dict = prepare_image_pathes(image_dirs)
+    image_path_dict = __prepare_image_pathes(image_dirs)
     datasets = list(image_path_dict.values())
 
     # Set up required things
-    model = choose_model(model_choice)
+    model = __choose_model(model_choice)
     model.to(torch.device(device))
     learner = BYOL(
-        net=model, image_size=256, hidden_layer="avgpool", use_momentum=(not simsiam)
+        net=model,
+        image_size=img_size,
+        hidden_layer="avgpool",
+        use_momentum=(not simsiam),
     )
     learner.to(torch.device(device))
     opt = torch.optim.Adam(learner.parameters(), lr=3e-4)
@@ -154,8 +166,10 @@ def self_supervised_training(
 
     # Run main loop
     for _ in tqdm(range(num_iterations)):
-        images = stratified_sampling(datasets=datasets, n=n_per_subset)
-        images = images.to(torch.device("cuda:7"))
+        images = __stratified_sampling(
+            datasets=datasets, n=n_per_subset, img_size=img_size
+        )
+        images = images.to(torch.device(device))
         loss = learner(images)
         opt.zero_grad()
         loss.backward()
