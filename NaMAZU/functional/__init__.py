@@ -22,5 +22,9 @@ __all__ = [
     "collect_images",
     "drop_negative",
     "randomly_choose_files",
+    "calculate_sample_stats",
+    "estimated_total",
+    "error_bound_of_total",
+    "calculate_succifient_n_for_total",
 ]
 

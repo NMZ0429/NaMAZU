@@ -144,6 +144,10 @@ F.change_frame_rates("./test_data.mp4",fps=5)
 ### data_science
 
 * train_linear_regressor
+* calculate_sample_stats
+* estimated_total
+* error_bound_of_total
+* calculate_succifient_n_for_total
 
 ### coreml
 
