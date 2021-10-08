@@ -7,6 +7,7 @@ from sklearn.linear_model import LinearRegression
 __all__ = [
     "train_linear_regressor",
     "calculate_sample_stats",
+    "error_bound_of_mean",
     "estimated_total",
     "error_bound_of_total",
     "calculate_succifient_n_for_total",
@@ -51,12 +52,37 @@ def calculate_sample_stats(ys: Union[np.ndarray, List[float]]) -> Tuple[float, f
     return (mean, var)
 
 
+def error_bound_of_mean(
+    N: int, n: int, sample_var: float, alpha: float = 0.05
+) -> float:
+    """Return the error bound of the estimation of population mean 
+    given the number of samples and the sample variance.
+
+    Args:
+        N (int): Population size.
+        n (int): Sample size.
+        sample_var (float): Sample variance.
+        alpha (float, optional): Confidence level. Defaults to 0.5.
+
+    Returns:
+        float: Error bound of the estimation of population mean. B.
+    """
+    sample_sd = np.sqrt(sample_var)
+    if alpha != 0.05:
+        raise NotImplementedError(
+            "alpha != 0.05, Other values are not permitted at this moment."
+        )
+    else:
+        z_value = 2
+    return z_value * sample_sd * np.sqrt(1 - n / N) / np.sqrt(n)
+
+
 def estimated_total(N: int, sample_mean: float) -> float:
     """Calculates the estimated population total given the sample mean."""
     return sample_mean * N
 
 
-def error_bound_of_total(N: int, n: int, sample_v: float) -> float:
+def error_bound_of_total(N: int, n: int, sample_v: float, alpha: float = 0.5) -> float:
     """Return the error bound of the estimation of population total 
     given the number of samples and the sample variance.
 
@@ -64,12 +90,17 @@ def error_bound_of_total(N: int, n: int, sample_v: float) -> float:
         N (int): Population size.
         n (int): Sample size.
         sample_v (float): Sample variance.
+        alpha (float, optional): Confidence level. Defaults to 0.5.
 
     Returns:
         float: [description]
     """
     sample_sd = np.sqrt(sample_v)
-    return 2 * N * sample_sd * np.sqrt(1 - n / N) / np.sqrt(n)
+    if alpha != 0.05:
+        raise NotImplementedError("alpha != 0.05, Other values are not permitted")
+    else:
+        z_value = 2
+    return z_value * N * sample_sd * np.sqrt(1 - n / N) / np.sqrt(n)
 
 
 def calculate_succifient_n_for_total(
@@ -113,4 +144,3 @@ def calculate_succifient_n_for_total(
         )
     D = (B ** 2) / (4 * (N ** 2))
     return (N * v) / ((N - 1) * D + v)
-
