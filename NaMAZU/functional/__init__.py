@@ -26,6 +26,7 @@ __all__ = [
     "error_bound_of_mean",
     "estimated_total",
     "error_bound_of_total",
-    "calculate_succifient_n_for_total",
+    "calculate_sufficient_n_for_population_total",
+    "calculate_sufficient_n_for_mean",
 ]
 

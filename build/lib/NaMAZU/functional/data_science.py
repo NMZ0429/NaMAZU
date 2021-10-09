@@ -10,7 +10,7 @@ __all__ = [
     "error_bound_of_mean",
     "estimated_total",
     "error_bound_of_total",
-    "calculate_succifient_n_for_total",
+    "calculate_sufficient_n_for_population_total",
 ]
 
 
@@ -103,7 +103,7 @@ def error_bound_of_total(N: int, n: int, sample_v: float, alpha: float = 0.5) ->
     return z_value * N * sample_sd * np.sqrt(1 - n / N) / np.sqrt(n)
 
 
-def calculate_succifient_n_for_total(
+def calculate_sufficient_n_for_population_total(
     N: int,
     B: float,
     population_var: float = None,

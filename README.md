@@ -146,9 +146,10 @@ F.change_frame_rates("./test_data.mp4",fps=5)
 * train_linear_regressor
 * calculate_sample_stats
 * error_bound_of_mean
+* calculate_sufficient_n_for_mean
 * estimated_total
 * error_bound_of_total
-* calculate_succifient_n_for_total
+* calculate_sufficient_n_for_population_total
 
 ### coreml
 

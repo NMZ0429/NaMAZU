@@ -176,7 +176,7 @@ F.change_frame_rates("./test_data.mp4",fps=5)
 * calculate_sample_stats
 * estimated_total
 * error_bound_of_total
-* calculate_succifient_n_for_total
+* calculate_sufficient_n_for_population_total
 
 ### coreml
 
