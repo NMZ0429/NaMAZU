@@ -2,6 +2,7 @@ import os
 import random
 from glob import glob
 from typing import Dict, List
+from pathlib import Path
 
 import torch
 from PIL import Image
@@ -179,6 +180,7 @@ def self_supervised_training(
 
     # Save model
     if save_dir:
+        Path(save_dir).mkdir(parents=True, exist_ok=True)
         print(f"Saving model to {save_dir}")
         torch.save(
             learner.state_dict(), os.path.join(save_dir, f"trained_{model_choice}.pth")
