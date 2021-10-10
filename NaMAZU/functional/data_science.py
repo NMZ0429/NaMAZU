@@ -1,4 +1,4 @@
-from typing import Dict, List, Union, Tuple
+from typing import Dict, Iterable, List, Union, Tuple
 
 import numpy as np
 import pandas as pd
@@ -12,7 +12,16 @@ __all__ = [
     "error_bound_of_total",
     "calculate_sufficient_n_for_population_total",
     "calculate_sufficient_n_for_mean",
+    "parse_tab_seperated_txt",
+    "sxy_of",
+    "sxx_of",
+    "least_square_estimate",
+    "estimate_variance_of_linear_regressor",
+    "t_statistic_of_beta1",
+    "calculate_CI_of_centred_model_at",
 ]
+
+ArrayLike = Union[List[float], np.ndarray]
 
 
 def train_linear_regressor(df: pd.DataFrame, x: Union[str, List[str]], y: str):
@@ -37,7 +46,7 @@ def train_linear_regressor(df: pd.DataFrame, x: Union[str, List[str]], y: str):
 #################################
 
 
-def calculate_sample_stats(ys: Union[np.ndarray, List[float]]) -> Tuple[float, float]:
+def calculate_sample_stats(ys: ArrayLike) -> Tuple[float, float]:
     """Calculates the sample mean and variance of a list of values.
 
     Args:
@@ -197,3 +206,138 @@ def calculate_sufficient_n_for_population_total(
         )
     D = (B ** 2) / (4 * (N ** 2))
     return (N * v) / ((N - 1) * D + v)
+
+
+###########################
+### Regression Analysis ###
+###########################
+
+
+def __parse_list_or_array(x: ArrayLike) -> np.ndarray:
+    if isinstance(x, np.ndarray):
+        x = x.reshape(-1, 1)
+        print(f"reshaping x to {x.shape}, n = {x.shape[0]}")
+    else:
+        x = np.array(x).reshape(-1, 1)
+        print(f"reshaping x to {x.shape}, n = {x.shape[0]}")
+
+    return x
+
+
+def parse_tab_seperated_txt(txt_path: str) -> Dict[str, List[float]]:
+    """Parses a tab seperated text file into a dictionary of lists of floats.
+
+    Args:
+        txt_path: The path to the text file.
+    
+    Returns:
+        Dict[str, List[float]]: A dictionary of lists of floats.
+    """
+
+    rtn = {}
+
+    with open("q4.txt") as file:
+        lines = file.readlines()
+        col_names = lines[0].split("\t")
+        data = lines[1:]
+        for col in col_names:
+            col_data = [float(line.split("\t")) for line in data]  # type: ignore
+            rtn[col] = col_data
+
+    return rtn
+
+
+def sxy_of(x: np.ndarray, y: np.ndarray) -> float:
+    return np.sum((x - np.mean(x)) * (y - np.mean(y)))
+
+
+def sxx_of(x: np.ndarray) -> float:
+    return np.sum((x - np.mean(x)) ** 2)
+
+
+def least_square_estimate(x: ArrayLike, y: ArrayLike) -> Tuple[float, float]:
+    x = __parse_list_or_array(x)
+    y = __parse_list_or_array(y)
+
+    sxy = sxy_of(x, y)
+    sxx = sxx_of(x)
+    beta1 = sxy / sxx
+    beta0 = np.mean(y) - beta1 * np.mean(x)
+
+    return beta0, beta1
+
+
+def estimate_variance_of_linear_regressor(
+    x: ArrayLike, y: ArrayLike, beta1: float
+) -> float:
+    x, y = __parse_list_or_array(x), __parse_list_or_array(y)
+    syy = sxx_of(y)
+    SSE = syy - beta1 * sxy_of(x, y)
+    n = x.shape[0]
+    return SSE / (n - 2)
+
+
+def t_statistic_of_beta1(x: ArrayLike, y: ArrayLike, beta1: float) -> float:
+    """Estimates the t-statistic for the beta1 parameter.
+
+    The return value should be used to determine whether the linear regressor
+    is statistically significant. 
+
+    Args:
+        x (ArrayLike): Numpy array or list of floats.
+        y (ArrayLike): Numpy array or list of floats.
+        beta1 (float): Slope of the linear regression.
+
+    Returns:
+        float: t-statistic for the beta1 parameter.
+    """
+    x, y = __parse_list_or_array(x), __parse_list_or_array(y)
+    var = estimate_variance_of_linear_regressor(x=x, y=y, beta1=beta1)
+    t_statistic = beta1 / (np.sqrt(var / sxx_of(x)))
+
+    return t_statistic
+
+
+def calculate_CI_of_centred_model_at(
+    target_x: float,
+    x: ArrayLike,
+    y: ArrayLike,
+    beta0: float,
+    beta1: float,
+    t_value: float,
+    a0: float = None,
+) -> Tuple[float, float]:
+    """Calculates the confidence interval for centred the linear regression at
+    given value x.
+
+    At this moment, t_value must be provided by user.
+
+    Args:
+        target_x (float): The value at which to calculate the confidence interval.
+        x (ArrayLike): Numpy array or list of floats.
+        y (ArrayLike): Numpy array or list of floats.
+        beta0 (float): Intercept of the linear regression.
+        beta1 (float): Slope of the linear regression.
+        t_value (float): t-statistic for the beta1 parameter.
+        a0 (float): Special coefficient of beta0. Defaults to None.
+
+    Returns:
+        Tuple[float, float]: The confidence interval for the linear regression.
+    """
+    x, y = __parse_list_or_array(x), __parse_list_or_array(y)
+    # calculate inside of root
+    n = x.shape[0]
+    x_mean = np.mean(x)
+    target_x = 4000
+
+    a = 1 if a0 is None else a0 ** 2
+    inside_root = (a / n) + (target_x - x_mean) ** 2 / sxx_of(x)
+
+    S = np.sqrt(estimate_variance_of_linear_regressor(x=x, y=y, beta1=beta1))
+
+    error_bound = S * t_value * np.sqrt(inside_root)
+
+    lower_bound = beta0 + beta1 * target_x - error_bound
+    upper_bound = beta0 + beta1 * target_x + error_bound
+
+    return (lower_bound, upper_bound)
