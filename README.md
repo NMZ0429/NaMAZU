@@ -10,7 +10,6 @@
 [![license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/NMZ0429/NaMAZU/blob/main/LICENSE)
 ![pl](https://img.shields.io/badge/PyTorch%20Lightning-1.3-792EE5.svg?logo=PyTorch%20Lightning&style=popout)
 
-
 * * *
 
 </div>
@@ -73,7 +72,7 @@ self_supervised_training(
     )
 ```
 
-* self_supervised_training: Simple interface that you can obtain self-supervised CNN with just one line of code! 
+* self_supervised_training: Simple interface that you can obtain self-supervised CNN with just one line of code!
 
 ### Statistical Models
 
