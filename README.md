@@ -65,7 +65,12 @@ from NaMAZU.lightingwingman import self_supervised_learning
 dir_images = "dataset/something"
 dir_images2 = "dataset/something2"
 
-self_supervised_training("resnet50", [dir_images, dir_images2], batch_size=64, save_dir="pretrained_models/")
+self_supervised_training(
+    "resnet50", 
+    [dir_images, dir_images2],
+    batch_size=64,
+    save_dir="pretrained_models/"
+    )
 ```
 
 * self_supervised_training: Simple interface that you can obtain self-supervised CNN with just one line of code! 
@@ -144,12 +149,25 @@ F.change_frame_rates("./test_data.mp4",fps=5)
 ### data_science
 
 * train_linear_regressor
+* parse_tab_seperated_txt
+
+Sampling Theory
+
 * calculate_sample_stats
 * error_bound_of_mean
 * calculate_sufficient_n_for_mean
 * estimated_total
 * error_bound_of_total
 * calculate_sufficient_n_for_population_total
+
+Regression Analysis
+
+* sxy_of
+* sxx_of
+* least_square_estimate
+* estimate_variance_of_linear_regressor
+* t_statistic_of_beta1
+* calculate_CI_of_centred_model_at
 
 ### coreml
 
