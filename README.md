@@ -167,6 +167,9 @@ Regression Analysis
 * estimate_variance_of_linear_regressor
 * t_statistic_of_beta1
 * calculate_CI_of_centred_model_at
+* get_prediction_interval
+* t_stats_for_correlation
+* get_p_value_of_tstat
 
 ### coreml
 

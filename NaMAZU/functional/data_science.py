@@ -1,4 +1,5 @@
 from typing import Dict, Iterable, List, Union, Tuple
+from scipy.stats import t  # type: ignore
 
 import numpy as np
 import pandas as pd
@@ -19,6 +20,12 @@ __all__ = [
     "estimate_variance_of_linear_regressor",
     "t_statistic_of_beta1",
     "calculate_CI_of_centred_model_at",
+    "get_prediction_interval",
+    "t_stats_for_correlation",
+    "get_p_value_of_tstat",
+    "_search_t_table",
+    "get_alt_sxx",
+    "get_alt_sxy",
 ]
 
 ArrayLike = Union[List[float], np.ndarray]
@@ -341,3 +348,144 @@ def calculate_CI_of_centred_model_at(
     upper_bound = beta0 + beta1 * target_x + error_bound
 
     return (lower_bound, upper_bound)
+
+
+def get_prediction_interval(
+    x_val,
+    x: np.ndarray,
+    y: np.ndarray,
+    t_value: float = None,
+    alpha: float = 0.1,
+    round_to_3: bool = False,
+    debug: bool = False,
+) -> tuple:
+    if x.shape != y.shape:
+        raise ValueError(
+            "x and y must have the same shape, get x.shape={}, y.shape={}".format(
+                x.shape, y.shape
+            )
+        )
+    beta0, beta1 = least_square_estimate(x, y)
+    predict = beta0 + beta1 * x_val
+
+    n = len(x)
+    if t_value is None:
+        if alpha == 0.1:
+            t_value = _search_t_table(alpha=alpha, degrees_of_freedom=n, two_side=False)
+        else:
+            raise NotImplementedError("alpha={} is not implemented".format(alpha))
+
+    s = np.sqrt(estimate_variance_of_linear_regressor(x, y, beta1))
+
+    root = np.sqrt(1 + (1 / n) + ((x_val - np.mean(x)) ** 2 / (sxx_of(x))))
+
+    if round_to_3:
+        # round to 3 digits
+        predict = np.round(predict, 3)
+        s = round(s, 3)
+        root = round(root, 3)
+        print("rounded to 3 decimal. s={}, root={}".format(s, root))
+
+    if debug:
+        print(f"t_value={t_value}", f"predict={predict}" f"s={s}", f"root={root}")
+    error_bound = t_value * s * root
+
+    return predict, error_bound
+
+
+########################
+# Correlation Analysis #
+########################
+
+
+def correlation_coefficient(x: np.ndarray, y: np.ndarray) -> float:
+    """calculate correlation coefficient
+
+    Formula:
+        r = cov(x, y) / sqrt(sxx * syy)
+
+    Args:
+        x (np.ndarray): x
+        y (np.ndarray): y
+
+    Returns:
+        float: correlation coefficient
+    """
+
+    sxy = sxy_of(x, y)
+    sxx = sxx_of(x)
+    syy = sxx_of(y)
+    return sxy / np.sqrt(sxx * syy)
+
+
+def t_stats_for_correlation(corr: float, n: int, text_precision: bool = False) -> float:
+    """calculate t stats for correlation.
+
+    Formulae from:
+        t_stats = r * sqrt(n-2) / sqrt(1-r**2)
+
+    Args:
+        corr (float): correlation coefficient
+        n (int): sample size
+
+    Returns:
+        float: t stats
+    """
+    if text_precision:
+        corr = np.round(corr, 4)
+    return corr * np.sqrt(n - 2) / np.sqrt(1 - corr ** 2)
+
+
+def get_p_value_of_tstat(
+    t_value: float, degrees_of_freedom: int
+) -> Tuple[float, float, float]:
+    """calculate p value of t stat.
+
+    Args:
+        t_value (float): t stat
+        degrees_of_freedom (int): degrees of freedom
+
+    Returns:
+        Tuple[float, float, float]: negative, positive, non_zero test p value
+    """
+    one_sided_pval1 = t.cdf(t_value, degrees_of_freedom)  # 片側検定のp値 1
+    one_sided_pval2 = t.sf(t_value, degrees_of_freedom)  # 片側検定のp値 2
+    two_sided_pval = min(one_sided_pval1, one_sided_pval2) * 2
+
+    return one_sided_pval1, one_sided_pval2, two_sided_pval
+
+
+#####################
+# Utility Functions #
+#####################
+
+
+def _search_t_table(
+    alpha: float, degrees_of_freedom: int, two_side: bool, human_precision: int = 3
+) -> float:
+    """search t table.
+
+    Args:
+        alpha (float): alpha
+        degrees_of_freedom (int): degrees of freedom
+        two_side (bool): two side
+
+    Returns:
+        float: t value
+    """
+    if two_side:
+        alpha = alpha / 2
+    if degrees_of_freedom > 2000:
+        print("Degrees of freedom is too large. Result is not precise.")
+    return round(t.ppf(1 - alpha, degrees_of_freedom), human_precision)
+
+
+def get_alt_sxx(x_sum: float, sqd_x_sum: float, n: int) -> float:
+    """calculate sxx by given sum values"""
+
+    return sqd_x_sum - 2 * x_sum * x_sum / n + x_sum ** 2 / n
+
+
+def get_alt_sxy(x_sum: float, y_sum: float, xy_sum: float, n: int) -> float:
+    """calculate sxy by given sum values"""
+    return xy_sum - x_sum / n * y_sum - y_sum / n * x_sum + x_sum * y_sum / n
