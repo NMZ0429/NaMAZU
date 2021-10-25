@@ -20,17 +20,12 @@ __all__ = [
     "estimate_variance_of_linear_regressor",
     "t_statistic_of_beta1",
     "calculate_CI_of_centred_model_at",
-<<<<<<< HEAD
     "get_prediction_interval",
     "t_stats_for_correlation",
     "get_p_value_of_tstat",
     "_search_t_table",
     "get_alt_sxx",
     "get_alt_sxy",
-=======
-    "test_population_proportion",
-    "calculate_sufficient_n_for_proportion",
->>>>>>> 07abc85f7e9a283d1f9a8f6ce83c0c6fdae510c2
 ]
 
 ArrayLike = Union[List[float], np.ndarray]
