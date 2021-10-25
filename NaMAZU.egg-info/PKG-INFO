@@ -1,6 +1,10 @@
 Metadata-Version: 2.1
 Name: NaMAZU
+<<<<<<< HEAD
 Version: 0.0.67
+=======
+Version: 0.0.66
+>>>>>>> 07abc85f7e9a283d1f9a8f6ce83c0c6fdae510c2
 Summary: NaMAZU: Pretty Usefull Library
 Home-page: https://github.com/NMZ0429/NaMAZU
 Author: NaMAZU Team

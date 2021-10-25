@@ -158,6 +158,8 @@ Sampling Theory
 * estimated_total
 * error_bound_of_total
 * calculate_sufficient_n_for_population_total
+* calculate_sufficient_n_for_proportion
+* calculate_sufficient_n_for_proportion
 
 Regression Analysis
 

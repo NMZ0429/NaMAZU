@@ -20,12 +20,17 @@ __all__ = [
     "estimate_variance_of_linear_regressor",
     "t_statistic_of_beta1",
     "calculate_CI_of_centred_model_at",
+<<<<<<< HEAD
     "get_prediction_interval",
     "t_stats_for_correlation",
     "get_p_value_of_tstat",
     "_search_t_table",
     "get_alt_sxx",
     "get_alt_sxy",
+=======
+    "test_population_proportion",
+    "calculate_sufficient_n_for_proportion",
+>>>>>>> 07abc85f7e9a283d1f9a8f6ce83c0c6fdae510c2
 ]
 
 ArrayLike = Union[List[float], np.ndarray]
@@ -213,6 +218,70 @@ def calculate_sufficient_n_for_population_total(
         )
     D = (B ** 2) / (4 * (N ** 2))
     return (N * v) / ((N - 1) * D + v)
+
+
+def test_population_proportion(
+    n: int, num_positive: int, N: int = 0, alpha: float = 0.05, verbose: bool = False
+) -> Tuple[float, float, float, Tuple[float, float]]:
+    """Test the population proportion of the given number of positive samples.
+
+    Args:
+        n (int): Number of samples.
+        num_positive (int): Number of positive samples.
+        N (int, optional): Population size if known, 0 meaning unknown. Defaults to 0.
+        alpha (float, optional): Confidence level. Defaults to 0.05.
+        verbose (bool, optional): Print the results. Defaults to False.
+
+    Returns:
+        Tuple[float, float, float, Tuple[float, float]]: estimated proportion, sample_variance, error_bound, and confidence interval.
+    """
+    if n < num_positive:
+        raise ValueError(f"n ({n}) must be greater than num_positive ({num_positive})")
+    if N == 0:
+        print(f"N is 0, assuming n/N is 0")
+    if alpha != 0.05:
+        raise NotImplementedError("alpha != 0.05")
+    else:
+        z_value = 2
+    estimated_proportion = num_positive / n
+    sample_variance = n * (n - 1) * (estimated_proportion) * (1 - estimated_proportion)
+    f = 0 if N == 0 else (n / N)
+    error_bound = z_value * np.sqrt(
+        (estimated_proportion) * (1 - estimated_proportion) / (n - 1) * (1 - f)
+    )
+
+    ci = estimated_proportion - error_bound, estimated_proportion + error_bound
+
+    if verbose:
+        summary = f"""
+        estimated_proportion: {estimated_proportion}
+        sample_variance: {sample_variance}
+        error_bound: {error_bound}
+        {1 - alpha}% confidence interval: {ci}
+        """
+        print(summary)
+
+    return estimated_proportion, sample_variance, error_bound, ci
+
+
+def calculate_sufficient_n_for_proportion(
+    N: int, error_bound: float, p: float = None
+) -> int:
+    """Calculates the number of samples enough to estimate population proportion within given error bound.
+
+    Args:
+        N (int): Population size.
+        error_bound (float): Error bound.
+        p (float, optional): Population proportion if known. Defaults to None.
+    
+    Returns:
+        int: Succifient number of samples to estimate population proportion within given error bound.
+    """
+    if p is None:
+        p = 0.5
+    pq = p * (1 - p)
+    D = error_bound ** 2 / 4
+    return np.ceil(N * pq / ((N - 1) * D + pq))
 
 
 ###########################
