@@ -123,6 +123,8 @@ F.change_frame_rates("./test_data.mp4",fps=5)
 
 ### image_control
 
+<details><summary>List of functions</summary><div>
+
 * npy_to_img
 * img_to_npy
 * split_image
@@ -133,7 +135,11 @@ F.change_frame_rates("./test_data.mp4",fps=5)
 * save_all_frames
 * collect_images (requires [icrawler](https://icrawler.readthedocs.io/en/latest/))
 
+</div></details>
+
 ### file_control
+
+<details><summary>List of functions</summary><div>
 
 * rename_file
 * collect_file_pathes_by_ext
@@ -141,11 +147,19 @@ F.change_frame_rates("./test_data.mp4",fps=5)
 * randomly_choose_files
 * export_list_str_as
 
+</div></details>
+
 ### text_control
+
+<details><summary>List of functions</summary><div>
 
 * search_word_from
 
+</div></details>
+
 ### data_science
+
+<details><summary>List of functions</summary><div>
 
 * train_linear_regressor
 * parse_tab_seperated_txt
@@ -173,9 +187,15 @@ Regression Analysis
 * t_stats_for_correlation
 * get_p_value_of_tstat
 
+</div></details>
+
 ### coreml
 
+<details><summary>List of functions</summary><div>
+
 * drop_negative
+
+</div></details>
 
 * * *
 
