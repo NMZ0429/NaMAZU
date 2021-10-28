@@ -23,6 +23,7 @@ __all__ = [
     "apply_to_all",
     "change_frame_rates",
     "save_all_frames",
+    "make_video_from_frames",
     "collect_images",
 ]
 
@@ -277,7 +278,32 @@ def save_all_frames(
             cv2.imwrite(str(file_name), frame)
             n += 1
         else:
-            return 1
+            return n
+
+
+def make_video_from_frames(
+    frames_dir: str, video_path: str = "", in_fps: int = 30, out_fps: int = 30
+) -> int:
+    """Make video from frames in frames_dir.
+
+    Args:
+        frames_dir (str): Path to directory containing frames.
+        video_path (str): Path to output video file.
+        in_fps (int, optional): Input frame rate. Defaults to 30.
+        out_fps (int, optional): Output frame rate. Defaults to 30.
+
+    Returns:
+        int: 1 if success, 0 otherwise.
+    """
+    if video_path == "":
+        video_path = frames_dir.split("/")[-1] + ".mp4"
+    elif video_path.endswith(".mp4"):
+        video_path = video_path.replace(".mp4", "")
+    else:
+        video_path += ".mp4"
+    cmd = f"ffmpeg -r {in_fps} -i {frames_dir}/%d.png -vcodec libx264 -pix_fmt yuv420p -r {out_fps} {video_path}"
+    os.system(cmd)
+    return 1
 
 
 ###################

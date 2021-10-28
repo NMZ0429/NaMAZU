@@ -1,10 +1,6 @@
 Metadata-Version: 2.1
 Name: NaMAZU
-<<<<<<< HEAD
-Version: 0.0.67
-=======
-Version: 0.0.66
->>>>>>> 07abc85f7e9a283d1f9a8f6ce83c0c6fdae510c2
+Version: 0.0.68
 Summary: NaMAZU: Pretty Usefull Library
 Home-page: https://github.com/NMZ0429/NaMAZU
 Author: NaMAZU Team
@@ -156,6 +152,8 @@ F.change_frame_rates("./test_data.mp4",fps=5)
 
 ### image_control
 
+<details><summary>List of functions</summary><div>
+
 * npy_to_img
 * img_to_npy
 * split_image
@@ -164,9 +162,14 @@ F.change_frame_rates("./test_data.mp4",fps=5)
 * apply_to_all
 * change_frame_rates
 * save_all_frames
+* make_video_from_frames
 * collect_images (requires [icrawler](https://icrawler.readthedocs.io/en/latest/))
 
+</div></details>
+
 ### file_control
+
+<details><summary>List of functions</summary><div>
 
 * rename_file
 * collect_file_pathes_by_ext
@@ -174,11 +177,19 @@ F.change_frame_rates("./test_data.mp4",fps=5)
 * randomly_choose_files
 * export_list_str_as
 
+</div></details>
+
 ### text_control
+
+<details><summary>List of functions</summary><div>
 
 * search_word_from
 
+</div></details>
+
 ### data_science
+
+<details><summary>List of functions</summary><div>
 
 * train_linear_regressor
 * parse_tab_seperated_txt
@@ -191,6 +202,8 @@ Sampling Theory
 * estimated_total
 * error_bound_of_total
 * calculate_sufficient_n_for_population_total
+* calculate_sufficient_n_for_proportion
+* calculate_sufficient_n_for_proportion
 
 Regression Analysis
 
@@ -204,9 +217,15 @@ Regression Analysis
 * t_stats_for_correlation
 * get_p_value_of_tstat
 
+</div></details>
+
 ### coreml
 
+<details><summary>List of functions</summary><div>
+
 * drop_negative
+
+</div></details>
 
 * * *
 
