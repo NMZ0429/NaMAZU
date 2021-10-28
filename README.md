@@ -133,6 +133,7 @@ F.change_frame_rates("./test_data.mp4",fps=5)
 * apply_to_all
 * change_frame_rates
 * save_all_frames
+* make_video_from_frames
 * collect_images (requires [icrawler](https://icrawler.readthedocs.io/en/latest/))
 
 </div></details>
