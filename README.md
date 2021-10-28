@@ -187,6 +187,16 @@ Regression Analysis
 * get_prediction_interval
 * t_stats_for_correlation
 * get_p_value_of_tstat
+* fit_general_least_square_regression
+
+Correlation Analysis
+
+* "get_prediction_interval"
+* "t_stats_for_correlation"
+* "get_p_value_of_tstat"
+* "_search_t_table"
+* "get_alt_sxx"
+* "get_alt_sxy"
 
 </div></details>
 

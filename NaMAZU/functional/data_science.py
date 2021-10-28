@@ -20,6 +20,7 @@ __all__ = [
     "estimate_variance_of_linear_regressor",
     "t_statistic_of_beta1",
     "calculate_CI_of_centred_model_at",
+    "fit_general_least_square_regression",
     "get_prediction_interval",
     "t_stats_for_correlation",
     "get_p_value_of_tstat",
@@ -341,6 +342,19 @@ def least_square_estimate(x: ArrayLike, y: ArrayLike) -> Tuple[float, float]:
 def estimate_variance_of_linear_regressor(
     x: ArrayLike, y: ArrayLike, beta1: float
 ) -> float:
+    """calculates the variance of the linear regressor.
+
+    FOrmula:
+        sigma^2 = SSE / (n - 2)
+
+    Args:
+        x (ArrayLike): Independent variable of shape (n, 0).
+        y (ArrayLike): Dependent variable of shape (n, 0).
+        beta1 (float): The slope of the linear regressor.
+
+    Returns:
+        float: Estimated variance of the linear regressor.
+    """
     x, y = __parse_list_or_array(x), __parse_list_or_array(y)
     syy = sxx_of(y)
     SSE = syy - beta1 * sxy_of(x, y)
@@ -517,6 +531,45 @@ def get_p_value_of_tstat(
     two_sided_pval = min(one_sided_pval1, one_sided_pval2) * 2
 
     return one_sided_pval1, one_sided_pval2, two_sided_pval
+
+
+def fit_general_least_square_regression(
+    x: np.ndarray, y: np.ndarray, quad_model: bool = False
+) -> Tuple[np.ndarray, Tuple[np.ndarray, np.ndarray]]:
+    """Return the coefficients of the linear regression model and SSE and variance estimates.
+
+    Formula:
+        betas = (X.T @ X)^-1 @ X.T @ y
+        SSE = Y.T @ Y - betas.T @ X.T @ Y
+        variance = SSE / (n - 2)
+
+    Args:
+        x (np.ndarray): Independent variable. Shape: (n, p)
+        y (np.ndarray): Dependent variable. Shape: (n, 1)
+        quad_model (bool): If True, use quadratic model. Default is False.
+
+    Returns:
+        Tuple[np.ndarray, Tuple[np.ndarray, np.ndarray]]: beta, (SSE, variance).
+    """
+    if quad_model:
+        x = np.concatenate(
+            (
+                np.ones((x.shape[0], 1)),
+                x[:, 1].reshape((-1, 1)),
+                x[:, 1].reshape((-1, 1)) ** 2,
+            ),
+            axis=1,
+        )
+    n = x.shape[0]
+    x_dash_x = np.matmul(x.T, x)
+    x_dash_x_inv = np.linalg.inv(x_dash_x)
+    x_dash_y = np.matmul(x.T, y)
+    beta = np.matmul(x_dash_x_inv, x_dash_y)
+
+    y_dash_y = np.matmul(y.T, y)
+    sse = y_dash_y - np.matmul(beta.T, x_dash_y)
+
+    return beta, (sse.item(), (sse / (n - 2)).item())
 
 
 #####################
