@@ -9,6 +9,7 @@
 [![PyPI Status](https://pepy.tech/badge/NaMAZU)](https://pepy.tech/project/NaMAZU)
 [![license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/NMZ0429/NaMAZU/blob/main/LICENSE)
 ![pl](https://img.shields.io/badge/PyTorch%20Lightning-1.3-792EE5.svg?logo=PyTorch%20Lightning&style=popout)
+![onnx](https://img.shields.io/badge/ONNX-1.10-005CED.svg?logo=ONNX&style=popout)
 
 * * *
 
@@ -103,6 +104,16 @@ class YourLitModule(pl.LightningModule):
 * **KNN**: Available with euqlidean, manhattan, cosine and mahalanobis distance.
 * **NBC**: GPU enabled naive bayes classifier.
 * **GMM**: Gaussian Mixture probabability estimator. Of course GPU enabled.
+
+* * *
+
+## ONNX API
+
+![ONNX](https://img.shields.io/badge/ONNX-005CED.svg?style=for-the-badge&logo=ONNX&logoColor=white)
+
+We provide many readly to use ONNX models comes with preprocess and postprocess methods. They are packed as an class object and you can use it without any coding!
+
+1. MiDAS: Mono Depth Prediction (Light and Large models are available)
 
 * * *
 
