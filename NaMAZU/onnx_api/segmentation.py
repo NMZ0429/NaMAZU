@@ -13,7 +13,7 @@ from .utils import download_weight
 WEIGHT_PATH = {
     "basic": "https://github.com/NMZ0429/NaMAZU/releases/download/Checkpoint/basic.onnx",
     "mobile": "https://github.com/NMZ0429/NaMAZU/releases/download/Checkpoint/mobile.onnx",
-    "human": "https://github.com/NMZ0429/NaMAZU/releases/download/Checkpoint/human_seg.onnx",
+    "human_seg": "https://github.com/NMZ0429/NaMAZU/releases/download/Checkpoint/human_seg.onnx",
     "portrait": "https://github.com/NMZ0429/NaMAZU/releases/download/Checkpoint/portrait.onnx",
 }
 
@@ -23,7 +23,7 @@ __all__ = ["U2NetInference"]
 
 class U2NetInference:
     def __init__(self, model: str):
-        if not os.path.exists(model):
+        if not (os.path.exists(model) or os.path.exists(model + ".onnx")):
             if model in WEIGHT_PATH:
                 model_path = download_weight(WEIGHT_PATH[model])
             else:
