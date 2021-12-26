@@ -25,6 +25,7 @@ INSTALL_REQUIRES = [
     "byol-pytorch",
     "plotly",
     "streamlit",
+    "onnxruntime",
 ]
 
 PACKAGES = setuptools.find_packages()
