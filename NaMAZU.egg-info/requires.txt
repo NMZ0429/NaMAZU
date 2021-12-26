@@ -10,3 +10,4 @@ pytorch_lightning
 byol-pytorch
 plotly
 streamlit
+onnxruntime
