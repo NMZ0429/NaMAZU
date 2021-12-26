@@ -25,12 +25,12 @@ Version in pip server might be older than this repo.
 pip install NaMAZU
 ```
 
-## Lightning API
+## 1.Lightning API
 
 ![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white)
 ![PL](https://img.shields.io/badge/-PyTorch%20Lightning-792EE5.svg?logo=PyTorch%20Lightning&style=for-the-badge)
 
-### Deep Learning Models
+### 1-1.Deep Learning Models
 
 Collection of SOTA or robust baseline models for multiple tasks fully written in pytorch lightning! They are all ready-to-train models with MNIST, ImageNet, UCF101 etc... using [LightingDataModule](https://pytorch-lightning.readthedocs.io/en/latest/extensions/datamodules.html).
 
@@ -52,7 +52,7 @@ model = LitVideoClf(use_lstm=False, model_config=config)
 * **LitVideoClf**: LightningModule video classfier using either single frame CNN or CNNLSTM.
 * **MultiModalNet**: LightningModule for multi-modal learning which can learn any modality with high robustness. Can be combined with any backbone.
 
-### Feature Learning Interface
+### 1-2.Feature Learning Interface
 
 Before starting your fine-tuning training, try this trianign API that produces better initial weight by running a self-supervised learning to your training dataset. Only images are used and no annotation nor data cleaning is required.
 
@@ -75,7 +75,7 @@ self_supervised_training(
 
 * self_supervised_training: Simple interface that you can obtain self-supervised CNN with just one line of code!
 
-### Statistical Models
+### 1-3.Statistical Models
 
 They are all written in PyTorch following best practice to be used with pytorch lightning. They are all GPU enabled controlled by Lightning API. You will never need to call `to("cuda")` to use the model on any device even with multi-GPU training!
 
@@ -107,7 +107,7 @@ class YourLitModule(pl.LightningModule):
 
 * * *
 
-## ONNX API
+## 2.ONNX API
 
 ![ONNX](https://img.shields.io/badge/ONNX-005CED.svg?style=for-the-badge&logo=ONNX&logoColor=white)
 
@@ -117,7 +117,7 @@ We provide many readly to use ONNX models comes with preprocess and postprocess 
 
 * * *
 
-## Functional API
+## 3.Functional API
 
 ![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white)
 ![SKlearn](https://img.shields.io/badge/Scikit_learn-F7931E.svg?style=for-the-badge&logo=scikit-learn&logoColor=white)
@@ -169,7 +169,7 @@ F.change_frame_rates("./test_data.mp4",fps=5)
 
 </div></details>
 
-### data_science
+### data_science  [Under redesign]
 
 <details><summary>List of functions</summary><div>
 
@@ -221,7 +221,7 @@ Correlation Analysis
 
 * * *
 
-## Visual Integration
+## 4.Visual Integration
 
 ![Plotly](https://img.shields.io/badge/Plotly-3F4F75.svg?style=for-the-badge&logo=plotly&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B.svg?style=for-the-badge&logo=Streamlit&logoColor=white)
@@ -231,7 +231,7 @@ Correlation Analysis
 * hide_default_header_and_footer
 * plot_plotly_supervised
 
-## Decorator
+## 5.Decorator [Under redesign]
 
 Some utility decorators to speed up your development.
 
