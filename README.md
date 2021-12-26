@@ -111,9 +111,23 @@ class YourLitModule(pl.LightningModule):
 
 ![ONNX](https://img.shields.io/badge/ONNX-005CED.svg?style=for-the-badge&logo=ONNX&logoColor=white)
 
-We provide many readly to use ONNX models comes with preprocess and postprocess methods. They are packed as an class object and you can use it without any coding!
+We provide many readly to use ONNX models comes with preprocess and postprocess methods.
+They are packed as an class object and you can use it without any coding!
+
+Weight files are automatically downloaded to the currently working directory if you don't have it or you can load existing model.
 
 1. MiDAS: Mono Depth Prediction (Light and Large models are available)
+2. U2Net: Saliency Segmnentation (Available with 4 task-specified weights.)
+
+```python
+from NaMAZU.onnxapi import MiDASInference
+model = MiDASInference(model="mono_depth_large.onnx")
+
+prediction = model.predict("some_image.jpg") # Accept cv2 image as well
+result = model.render(prediction, "some_image.jpg")
+
+plt.imshow(result)
+```
 
 * * *
 
