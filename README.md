@@ -116,8 +116,9 @@ They are packed as an class object and you can use it without any coding!
 
 Weight files are automatically downloaded to the currently working directory if you don't have it or you can load existing model.
 
-1. MiDAS: Mono Depth Prediction (Light and Large models are available)
-2. U2Net: Saliency Segmnentation (Available with 4 task-specified weights.)
+1. **MiDAS**: Mono Depth Prediction (Light and Large models are available)
+2. **U2Net**: Saliency Segmnentation (Available with 4 task-specified weights)
+3. **RealESR**: Super Resolution (3 models. Predict method directly return upscaled image)
 
 ```python
 from NaMAZU.onnxapi import MiDASInference
