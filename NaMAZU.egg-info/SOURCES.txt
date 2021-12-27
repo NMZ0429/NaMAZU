@@ -33,6 +33,7 @@ NaMAZU/namadeco/__init__.py
 NaMAZU/namadeco/decorations.py
 NaMAZU/onnx_api/__init__.py
 NaMAZU/onnx_api/midas.py
+NaMAZU/onnx_api/real_esr.py
 NaMAZU/onnx_api/segmentation.py
 NaMAZU/onnx_api/utils.py
 NaMAZU/st_integration/__init__.py
