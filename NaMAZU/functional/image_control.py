@@ -20,6 +20,7 @@ __all__ = [
     "apply_mask_to",
     "split_image",
     "compose_two_png",
+    "template_matching",
     "apply_to_all",
     "change_frame_rates",
     "save_all_frames",
