@@ -33,7 +33,7 @@ __all__ = [
 #################
 
 
-def img_to_npy(jpg_path: str, save: bool = False, file_name: str = None) -> np.ndarray:
+def img_to_npy(jpg_path: str, save: bool = False, file_name: str = "") -> np.ndarray:
     """Return a numpy array from a jpg image.
     Args:
         img_path (str): The path to the img image.
@@ -48,14 +48,14 @@ def img_to_npy(jpg_path: str, save: bool = False, file_name: str = None) -> np.n
     ext = "." + jpg_path.split(".")[-1]
 
     if save:
-        if file_name is None:
+        if not file_name:
             file_name = jpg_path.replace(ext, ".npy")
         np.save(file_name, img)
 
     return img
 
 
-def npy_to_png(npy_path: str, save: bool = False, file_name: str = None) -> Image:
+def npy_to_png(npy_path: str, save: bool = False, file_name: str = "") -> Image:
     """Return a numpy array from a jpg image.
     Args:
         npy_path (str): The path to the npy image.
@@ -68,7 +68,7 @@ def npy_to_png(npy_path: str, save: bool = False, file_name: str = None) -> Imag
     img = PILImage.fromarray(img)
 
     if save:
-        if file_name is None:
+        if not file_name:
             file_name = npy_path.replace(".npy", ".png")
         img.save(file_name + ".png")
 
@@ -98,7 +98,7 @@ def apply_mask_to(target_img: Union[Image, str], mask_img: Union[Image, str]) ->
 
 
 def split_image(
-    img_path: str, direction: int = 0, save: bool = False, file_name: str = None
+    img_path: str, direction: int = 0, save: bool = False, file_name: str = ""
 ) -> Tuple[np.ndarray, np.ndarray]:
     """Split image by vertical centre line if direction is 0 otherwise by horizontal line.
     If save is True, resultant image is saved as file_name.
@@ -137,7 +137,7 @@ def compose_two_png(
     front_png_path: str,
     position: Tuple[int, int],
     save: bool = False,
-    out_name: str = None,
+    out_name: str = "",
 ) -> Image:
     """Overray second png to first png with given position. Save output png to save_path if save is True.
 
@@ -164,7 +164,36 @@ def compose_two_png(
     return back
 
 
-def apply_to_all(func: Callable, imgs_dir: str, out_dir: str = None, **kwargs) -> None:
+def template_matching(
+    target_img: str,
+    template_img: str,
+    threshold: float = 0.9,
+) -> Tuple[np.ndarray, int, int]:
+    """Carry on template matching to the target_img with the template_img
+    and return the left top corner of the matched area in (x, y) format
+    and the matched area's width and height.
+
+    Arguments:
+        target_img {str} -- target image path
+        template_img {str} -- template image path
+        threshold {float} -- threshold for the similarity
+
+    Returns:
+        Tuple[np.ndarray, int, int] -- left top corners of the matched area
+        and the matched area's width and height
+    """
+    target = cv2.cvtColor(cv2.imread(target_img), cv2.COLOR_BGR2GRAY)
+    template = cv2.cvtColor(cv2.imread(template_img), cv2.COLOR_BGR2GRAY)
+
+    sim = cv2.matchTemplate(target, template, cv2.TM_CCOEFF_NORMED)
+
+    h, w = template.shape
+
+    bb = np.where(sim >= threshold)  # type: ignore
+    return np.vstack(bb[::-1]).T, h, w
+
+
+def apply_to_all(func: Callable, imgs_dir: str, out_dir: str = "", **kwargs) -> None:
     """Apply function to all images in imgs_dir and save to out_dir.
 
     Args:
@@ -176,7 +205,7 @@ def apply_to_all(func: Callable, imgs_dir: str, out_dir: str = None, **kwargs) -
     Returns:
         None
     """
-    if out_dir is None:
+    if not out_dir:
         out_dir = imgs_dir + "_output"
 
     inputs = list(Path(imgs_dir).glob("**/*.jpg"))
